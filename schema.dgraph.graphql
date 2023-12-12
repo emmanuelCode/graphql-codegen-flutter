@@ -1,0 +1,7 @@
+type MyBook {
+    id:ID!
+    bookNumber:Int!
+    title:String!
+    readOn:DateTime!
+    favorite:Boolean
+}
