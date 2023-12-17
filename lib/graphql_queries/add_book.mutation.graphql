@@ -1,0 +1,11 @@
+mutation addMyBook($addBook: [AddMyBookInput!]!){
+    addMyBook(input: $addBook){
+        myBook{
+            id
+            bookNumber
+            title
+            readOn
+            favorite
+        }
+    }
+}

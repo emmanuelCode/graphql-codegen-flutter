@@ -1,0 +1,12 @@
+mutation deleteMyBook($deleteBook: MyBookFilter!){
+    deleteMyBook(input: $deleteBook){
+        msg
+        myBook{
+            id
+            bookNumber
+            title
+            readOn
+            favorite
+        }
+    }
+}

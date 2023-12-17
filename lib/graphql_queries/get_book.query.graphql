@@ -1,0 +1,11 @@
+query getMyBook($getBook: ID!){
+    getMyBook(input: $getBook){
+        myBook{
+            id
+            bookNumber
+            title
+            readOn
+            favorite
+        }
+    }
+}

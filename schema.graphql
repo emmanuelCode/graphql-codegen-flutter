@@ -1,0 +1,367 @@
+directive @hasInverse(field: String!) on FIELD_DEFINITION
+
+directive @secret(field: String!, pred: String) on OBJECT | INTERFACE
+
+directive @remoteResponse(name: String) on FIELD_DEFINITION
+
+directive @lambda on FIELD_DEFINITION
+
+directive @dgraph(type: String, pred: String) on OBJECT | INTERFACE | FIELD_DEFINITION
+
+directive @id on FIELD_DEFINITION
+
+directive @withSubscription on OBJECT | INTERFACE | FIELD_DEFINITION
+
+directive @auth(password: AuthRule, query: AuthRule, add: AuthRule, update: AuthRule, delete: AuthRule) on OBJECT | INTERFACE
+
+directive @remote on OBJECT | INTERFACE | UNION | INPUT_OBJECT | ENUM
+
+directive @cascade(fields: [String]) on FIELD
+
+directive @custom(http: CustomHTTP, dql: String) on FIELD_DEFINITION
+
+directive @lambdaOnMutate(add: Boolean, update: Boolean, delete: Boolean) on OBJECT | INTERFACE
+
+directive @cacheControl(maxAge: Int!) on QUERY
+
+directive @generate(query: GenerateQueryParams, mutation: GenerateMutationParams, subscription: Boolean) on OBJECT | INTERFACE
+
+directive @search(by: [DgraphIndex!]) on FIELD_DEFINITION
+
+input AddMyBookInput {
+  bookNumber: Int!
+  title: String!
+  readOn: DateTime!
+  favorite: Boolean
+}
+
+type AddMyBookPayload {
+  myBook(filter: MyBookFilter, order: MyBookOrder, first: Int, offset: Int): [MyBook]
+  numUids: Int
+}
+
+input AuthRule {
+  and: [AuthRule]
+  or: [AuthRule]
+  not: AuthRule
+  rule: String
+}
+
+input ContainsFilter {
+  point: PointRef
+  polygon: PolygonRef
+}
+
+input CustomHTTP {
+  url: String!
+  method: HTTPMethod!
+  body: String
+  graphql: String
+  mode: Mode
+  forwardHeaders: [String!]
+  secretHeaders: [String!]
+  introspectionHeaders: [String!]
+  skipIntrospection: Boolean
+}
+
+"""
+The DateTime scalar type represents date and time as a string in RFC3339 format.
+For example: "1985-04-12T23:20:50.52Z" represents 20 mins 50.52 secs after the 23rd hour of Apr 12th 1985 in UTC.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  eq: DateTime
+  in: [DateTime]
+  le: DateTime
+  lt: DateTime
+  ge: DateTime
+  gt: DateTime
+  between: DateTimeRange
+}
+
+input DateTimeRange {
+  min: DateTime!
+  max: DateTime!
+}
+
+type DeleteMyBookPayload {
+  myBook(filter: MyBookFilter, order: MyBookOrder, first: Int, offset: Int): [MyBook]
+  msg: String
+  numUids: Int
+}
+
+enum DgraphIndex {
+  int
+  int64
+  float
+  bool
+  hash
+  exact
+  term
+  fulltext
+  trigram
+  regexp
+  year
+  month
+  day
+  hour
+  geo
+}
+
+input FloatFilter {
+  eq: Float
+  in: [Float]
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: FloatRange
+}
+
+input FloatRange {
+  min: Float!
+  max: Float!
+}
+
+input GenerateMutationParams {
+  add: Boolean
+  update: Boolean
+  delete: Boolean
+}
+
+input GenerateQueryParams {
+  get: Boolean
+  query: Boolean
+  password: Boolean
+  aggregate: Boolean
+}
+
+enum HTTPMethod {
+  GET
+  POST
+  PUT
+  PATCH
+  DELETE
+}
+
+"""
+The Int64 scalar type represents a signed 64‐bit numeric non‐fractional value.
+Int64 can represent values in range [-(2^63),(2^63 - 1)].
+"""
+scalar Int64
+
+input Int64Filter {
+  eq: Int64
+  in: [Int64]
+  le: Int64
+  lt: Int64
+  ge: Int64
+  gt: Int64
+  between: Int64Range
+}
+
+input Int64Range {
+  min: Int64!
+  max: Int64!
+}
+
+input IntersectsFilter {
+  polygon: PolygonRef
+  multiPolygon: MultiPolygonRef
+}
+
+input IntFilter {
+  eq: Int
+  in: [Int]
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: IntRange
+}
+
+input IntRange {
+  min: Int!
+  max: Int!
+}
+
+enum Mode {
+  BATCH
+  SINGLE
+}
+
+type MultiPolygon {
+  polygons: [Polygon!]!
+}
+
+input MultiPolygonRef {
+  polygons: [PolygonRef!]!
+}
+
+type Mutation {
+  addMyBook(input: [AddMyBookInput!]!): AddMyBookPayload
+  updateMyBook(input: UpdateMyBookInput!): UpdateMyBookPayload
+  deleteMyBook(filter: MyBookFilter!): DeleteMyBookPayload
+}
+
+type MyBook {
+  id: ID!
+  bookNumber: Int!
+  title: String!
+  readOn: DateTime!
+  favorite: Boolean
+}
+
+type MyBookAggregateResult {
+  count: Int
+  bookNumberMin: Int
+  bookNumberMax: Int
+  bookNumberSum: Int
+  bookNumberAvg: Float
+  titleMin: String
+  titleMax: String
+  readOnMin: DateTime
+  readOnMax: DateTime
+}
+
+input MyBookFilter {
+  id: [ID!]
+  has: [MyBookHasFilter]
+  and: [MyBookFilter]
+  or: [MyBookFilter]
+  not: MyBookFilter
+}
+
+enum MyBookHasFilter {
+  bookNumber
+  title
+  readOn
+  favorite
+}
+
+input MyBookOrder {
+  asc: MyBookOrderable
+  desc: MyBookOrderable
+  then: MyBookOrder
+}
+
+enum MyBookOrderable {
+  bookNumber
+  title
+  readOn
+}
+
+input MyBookPatch {
+  bookNumber: Int
+  title: String
+  readOn: DateTime
+  favorite: Boolean
+}
+
+input MyBookRef {
+  id: ID
+  bookNumber: Int
+  title: String
+  readOn: DateTime
+  favorite: Boolean
+}
+
+input NearFilter {
+  distance: Float!
+  coordinate: PointRef!
+}
+
+type Point {
+  longitude: Float!
+  latitude: Float!
+}
+
+input PointGeoFilter {
+  near: NearFilter
+  within: WithinFilter
+}
+
+type PointList {
+  points: [Point!]!
+}
+
+input PointListRef {
+  points: [PointRef!]!
+}
+
+input PointRef {
+  longitude: Float!
+  latitude: Float!
+}
+
+type Polygon {
+  coordinates: [PointList!]!
+}
+
+input PolygonGeoFilter {
+  near: NearFilter
+  within: WithinFilter
+  contains: ContainsFilter
+  intersects: IntersectsFilter
+}
+
+input PolygonRef {
+  coordinates: [PointListRef!]!
+}
+
+type Query {
+  getMyBook(id: ID!): MyBook
+  queryMyBook(filter: MyBookFilter, order: MyBookOrder, first: Int, offset: Int): [MyBook]
+  aggregateMyBook(filter: MyBookFilter): MyBookAggregateResult
+}
+
+input StringExactFilter {
+  eq: String
+  in: [String]
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: StringRange
+}
+
+input StringFullTextFilter {
+  alloftext: String
+  anyoftext: String
+}
+
+input StringHashFilter {
+  eq: String
+  in: [String]
+}
+
+input StringRange {
+  min: String!
+  max: String!
+}
+
+input StringRegExpFilter {
+  regexp: String
+}
+
+input StringTermFilter {
+  allofterms: String
+  anyofterms: String
+}
+
+input UpdateMyBookInput {
+  filter: MyBookFilter!
+  set: MyBookPatch
+  remove: MyBookPatch
+}
+
+type UpdateMyBookPayload {
+  myBook(filter: MyBookFilter, order: MyBookOrder, first: Int, offset: Int): [MyBook]
+  numUids: Int
+}
+
+input WithinFilter {
+  polygon: PolygonRef!
+}
+
