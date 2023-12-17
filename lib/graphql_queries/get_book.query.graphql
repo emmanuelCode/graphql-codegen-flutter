@@ -1,11 +1,9 @@
 query getMyBook($getBook: ID!){
-    getMyBook(input: $getBook){
-        myBook{
+    getMyBook(id: $getBook){
             id
             bookNumber
             title
             readOn
             favorite
-        }
     }
 }

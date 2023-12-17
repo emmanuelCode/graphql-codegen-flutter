@@ -1,5 +1,5 @@
 mutation deleteMyBook($deleteBook: MyBookFilter!){
-    deleteMyBook(input: $deleteBook){
+    deleteMyBook(filter: $deleteBook){
         msg
         myBook{
             id

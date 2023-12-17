@@ -20,10 +20,8 @@ class MyBook with _$MyBook {
   factory MyBook.fromJson(Map<String, Object?> json) => _$MyBookFromJson(json);
 }
 
-
 @riverpod
 class MyBookQueries extends _$MyBookQueries {
-
   @override
   MyBook build(GraphQLClient client) {
     return MyBook(
