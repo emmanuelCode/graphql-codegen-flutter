@@ -147,7 +147,7 @@ class __$$MyBookImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyBookImpl implements _MyBook {
+class _$MyBookImpl with DiagnosticableTreeMixin implements _MyBook {
   const _$MyBookImpl(
       {required this.id,
       required this.bookNumber,
@@ -170,8 +170,20 @@ class _$MyBookImpl implements _MyBook {
   final bool? favorite;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MyBook(id: $id, bookNumber: $bookNumber, title: $title, readOn: $readOn, favorite: $favorite)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MyBook'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('bookNumber', bookNumber))
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('readOn', readOn))
+      ..add(DiagnosticsProperty('favorite', favorite));
   }
 
   @override

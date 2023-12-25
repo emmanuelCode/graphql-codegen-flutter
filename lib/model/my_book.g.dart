@@ -27,7 +27,7 @@ Map<String, dynamic> _$$MyBookImplToJson(_$MyBookImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myBookQueriesHash() => r'd6a0f90584c7830f7241fdd0373ec651140ab077';
+String _$myBookQueriesHash() => r'001c8d9e9162144daeb8ca29260174a5cd8e44cd';
 
 /// Copied from Dart SDK
 class _SystemHash {

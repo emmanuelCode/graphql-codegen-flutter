@@ -3,8 +3,12 @@ targets:
     builders:
       graphql_codegen:
         options:
+          # add unsupported scalar type to dart type
           scalars:
             DateTime:
               type: DateTime
             Int64:
               type: int
+          # add graphql client to generate helper methods
+          clients:
+            - graphql

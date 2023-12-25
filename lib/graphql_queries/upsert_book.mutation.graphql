@@ -1,5 +1,5 @@
-mutation addMyBook($addBook: [AddMyBookInput!]!){
-    addMyBook(input: $addBook){
+mutation upsertMyBook($upsertBook: [AddMyBookInput!]!){
+    addMyBook(input: $upsertBook, upsert: true){
         myBook{
             id
             bookNumber

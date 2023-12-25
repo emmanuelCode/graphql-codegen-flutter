@@ -1,11 +1,13 @@
 class Input$AddMyBookInput {
   factory Input$AddMyBookInput({
+    required String id,
     required int bookNumber,
     required String title,
     required DateTime readOn,
     bool? favorite,
   }) =>
       Input$AddMyBookInput._({
+        r'id': id,
         r'bookNumber': bookNumber,
         r'title': title,
         r'readOn': readOn,
@@ -16,6 +18,8 @@ class Input$AddMyBookInput {
 
   factory Input$AddMyBookInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
     final l$bookNumber = data['bookNumber'];
     result$data['bookNumber'] = (l$bookNumber as int);
     final l$title = data['title'];
@@ -31,6 +35,8 @@ class Input$AddMyBookInput {
 
   Map<String, dynamic> _$data;
 
+  String get id => (_$data['id'] as String);
+
   int get bookNumber => (_$data['bookNumber'] as int);
 
   String get title => (_$data['title'] as String);
@@ -41,6 +47,8 @@ class Input$AddMyBookInput {
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
     final l$bookNumber = bookNumber;
     result$data['bookNumber'] = l$bookNumber;
     final l$title = title;
@@ -66,6 +74,11 @@ class Input$AddMyBookInput {
       return true;
     }
     if (!(other is Input$AddMyBookInput) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
       return false;
     }
     final l$bookNumber = bookNumber;
@@ -97,11 +110,13 @@ class Input$AddMyBookInput {
 
   @override
   int get hashCode {
+    final l$id = id;
     final l$bookNumber = bookNumber;
     final l$title = title;
     final l$readOn = readOn;
     final l$favorite = favorite;
     return Object.hashAll([
+      l$id,
       l$bookNumber,
       l$title,
       l$readOn,
@@ -120,6 +135,7 @@ abstract class CopyWith$Input$AddMyBookInput<TRes> {
       _CopyWithStubImpl$Input$AddMyBookInput;
 
   TRes call({
+    String? id,
     int? bookNumber,
     String? title,
     DateTime? readOn,
@@ -141,6 +157,7 @@ class _CopyWithImpl$Input$AddMyBookInput<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? id = _undefined,
     Object? bookNumber = _undefined,
     Object? title = _undefined,
     Object? readOn = _undefined,
@@ -148,6 +165,7 @@ class _CopyWithImpl$Input$AddMyBookInput<TRes>
   }) =>
       _then(Input$AddMyBookInput._({
         ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
         if (bookNumber != _undefined && bookNumber != null)
           'bookNumber': (bookNumber as int),
         if (title != _undefined && title != null) 'title': (title as String),
@@ -164,6 +182,7 @@ class _CopyWithStubImpl$Input$AddMyBookInput<TRes>
   TRes _res;
 
   call({
+    String? id,
     int? bookNumber,
     String? title,
     DateTime? readOn,
@@ -3356,7 +3375,7 @@ class _CopyWithStubImpl$Input$MultiPolygonRef<TRes>
 
 class Input$MyBookFilter {
   factory Input$MyBookFilter({
-    List<String>? id,
+    Input$StringHashFilter? id,
     List<Enum$MyBookHasFilter?>? has,
     List<Input$MyBookFilter?>? and,
     List<Input$MyBookFilter?>? or,
@@ -3376,8 +3395,9 @@ class Input$MyBookFilter {
     final result$data = <String, dynamic>{};
     if (data.containsKey('id')) {
       final l$id = data['id'];
-      result$data['id'] =
-          (l$id as List<dynamic>?)?.map((e) => (e as String)).toList();
+      result$data['id'] = l$id == null
+          ? null
+          : Input$StringHashFilter.fromJson((l$id as Map<String, dynamic>));
     }
     if (data.containsKey('has')) {
       final l$has = data['has'];
@@ -3413,7 +3433,7 @@ class Input$MyBookFilter {
 
   Map<String, dynamic> _$data;
 
-  List<String>? get id => (_$data['id'] as List<String>?);
+  Input$StringHashFilter? get id => (_$data['id'] as Input$StringHashFilter?);
 
   List<Enum$MyBookHasFilter?>? get has =>
       (_$data['has'] as List<Enum$MyBookHasFilter?>?);
@@ -3430,7 +3450,7 @@ class Input$MyBookFilter {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('id')) {
       final l$id = id;
-      result$data['id'] = l$id?.map((e) => e).toList();
+      result$data['id'] = l$id?.toJson();
     }
     if (_$data.containsKey('has')) {
       final l$has = has;
@@ -3472,18 +3492,7 @@ class Input$MyBookFilter {
     if (_$data.containsKey('id') != other._$data.containsKey('id')) {
       return false;
     }
-    if (l$id != null && lOther$id != null) {
-      if (l$id.length != lOther$id.length) {
-        return false;
-      }
-      for (int i = 0; i < l$id.length; i++) {
-        final l$id$entry = l$id[i];
-        final lOther$id$entry = lOther$id[i];
-        if (l$id$entry != lOther$id$entry) {
-          return false;
-        }
-      }
-    } else if (l$id != lOther$id) {
+    if (l$id != lOther$id) {
       return false;
     }
     final l$has = has;
@@ -3562,11 +3571,7 @@ class Input$MyBookFilter {
     final l$or = or;
     final l$not = not;
     return Object.hashAll([
-      _$data.containsKey('id')
-          ? l$id == null
-              ? null
-              : Object.hashAll(l$id.map((v) => v))
-          : const {},
+      _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('has')
           ? l$has == null
               ? null
@@ -3597,12 +3602,13 @@ abstract class CopyWith$Input$MyBookFilter<TRes> {
       _CopyWithStubImpl$Input$MyBookFilter;
 
   TRes call({
-    List<String>? id,
+    Input$StringHashFilter? id,
     List<Enum$MyBookHasFilter?>? has,
     List<Input$MyBookFilter?>? and,
     List<Input$MyBookFilter?>? or,
     Input$MyBookFilter? not,
   });
+  CopyWith$Input$StringHashFilter<TRes> get id;
   TRes and(
       Iterable<Input$MyBookFilter?>? Function(
               Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?)
@@ -3636,12 +3642,19 @@ class _CopyWithImpl$Input$MyBookFilter<TRes>
   }) =>
       _then(Input$MyBookFilter._({
         ..._instance._$data,
-        if (id != _undefined) 'id': (id as List<String>?),
+        if (id != _undefined) 'id': (id as Input$StringHashFilter?),
         if (has != _undefined) 'has': (has as List<Enum$MyBookHasFilter?>?),
         if (and != _undefined) 'and': (and as List<Input$MyBookFilter?>?),
         if (or != _undefined) 'or': (or as List<Input$MyBookFilter?>?),
         if (not != _undefined) 'not': (not as Input$MyBookFilter?),
       }));
+
+  CopyWith$Input$StringHashFilter<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$StringHashFilter.stub(_then(_instance))
+        : CopyWith$Input$StringHashFilter(local$id, (e) => call(id: e));
+  }
 
   TRes and(
           Iterable<Input$MyBookFilter?>? Function(
@@ -3682,13 +3695,16 @@ class _CopyWithStubImpl$Input$MyBookFilter<TRes>
   TRes _res;
 
   call({
-    List<String>? id,
+    Input$StringHashFilter? id,
     List<Enum$MyBookHasFilter?>? has,
     List<Input$MyBookFilter?>? and,
     List<Input$MyBookFilter?>? or,
     Input$MyBookFilter? not,
   }) =>
       _res;
+
+  CopyWith$Input$StringHashFilter<TRes> get id =>
+      CopyWith$Input$StringHashFilter.stub(_res);
 
   and(_fn) => _res;
 
@@ -6658,10 +6674,12 @@ Enum$Mode fromJson$Enum$Mode(String value) {
   }
 }
 
-enum Enum$MyBookHasFilter { bookNumber, title, readOn, favorite, $unknown }
+enum Enum$MyBookHasFilter { id, bookNumber, title, readOn, favorite, $unknown }
 
 String toJson$Enum$MyBookHasFilter(Enum$MyBookHasFilter e) {
   switch (e) {
+    case Enum$MyBookHasFilter.id:
+      return r'id';
     case Enum$MyBookHasFilter.bookNumber:
       return r'bookNumber';
     case Enum$MyBookHasFilter.title:
@@ -6677,6 +6695,8 @@ String toJson$Enum$MyBookHasFilter(Enum$MyBookHasFilter e) {
 
 Enum$MyBookHasFilter fromJson$Enum$MyBookHasFilter(String value) {
   switch (value) {
+    case r'id':
+      return Enum$MyBookHasFilter.id;
     case r'bookNumber':
       return Enum$MyBookHasFilter.bookNumber;
     case r'title':
@@ -6690,10 +6710,12 @@ Enum$MyBookHasFilter fromJson$Enum$MyBookHasFilter(String value) {
   }
 }
 
-enum Enum$MyBookOrderable { bookNumber, title, readOn, $unknown }
+enum Enum$MyBookOrderable { id, bookNumber, title, readOn, $unknown }
 
 String toJson$Enum$MyBookOrderable(Enum$MyBookOrderable e) {
   switch (e) {
+    case Enum$MyBookOrderable.id:
+      return r'id';
     case Enum$MyBookOrderable.bookNumber:
       return r'bookNumber';
     case Enum$MyBookOrderable.title:
@@ -6707,6 +6729,8 @@ String toJson$Enum$MyBookOrderable(Enum$MyBookOrderable e) {
 
 Enum$MyBookOrderable fromJson$Enum$MyBookOrderable(String value) {
   switch (value) {
+    case r'id':
+      return Enum$MyBookOrderable.id;
     case r'bookNumber':
       return Enum$MyBookOrderable.bookNumber;
     case r'title':

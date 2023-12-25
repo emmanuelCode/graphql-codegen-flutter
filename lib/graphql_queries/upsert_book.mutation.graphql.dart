@@ -1,38 +1,40 @@
 import '../schema.graphql.dart';
+import 'dart:async';
 import 'package:gql/ast.dart';
+import 'package:graphql/client.dart' as graphql;
 
-class Variables$Mutation$addMyBook {
-  factory Variables$Mutation$addMyBook(
-          {required List<Input$AddMyBookInput> addBook}) =>
-      Variables$Mutation$addMyBook._({
-        r'addBook': addBook,
+class Variables$Mutation$upsertMyBook {
+  factory Variables$Mutation$upsertMyBook(
+          {required List<Input$AddMyBookInput> upsertBook}) =>
+      Variables$Mutation$upsertMyBook._({
+        r'upsertBook': upsertBook,
       });
 
-  Variables$Mutation$addMyBook._(this._$data);
+  Variables$Mutation$upsertMyBook._(this._$data);
 
-  factory Variables$Mutation$addMyBook.fromJson(Map<String, dynamic> data) {
+  factory Variables$Mutation$upsertMyBook.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    final l$addBook = data['addBook'];
-    result$data['addBook'] = (l$addBook as List<dynamic>)
+    final l$upsertBook = data['upsertBook'];
+    result$data['upsertBook'] = (l$upsertBook as List<dynamic>)
         .map((e) => Input$AddMyBookInput.fromJson((e as Map<String, dynamic>)))
         .toList();
-    return Variables$Mutation$addMyBook._(result$data);
+    return Variables$Mutation$upsertMyBook._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  List<Input$AddMyBookInput> get addBook =>
-      (_$data['addBook'] as List<Input$AddMyBookInput>);
+  List<Input$AddMyBookInput> get upsertBook =>
+      (_$data['upsertBook'] as List<Input$AddMyBookInput>);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    final l$addBook = addBook;
-    result$data['addBook'] = l$addBook.map((e) => e.toJson()).toList();
+    final l$upsertBook = upsertBook;
+    result$data['upsertBook'] = l$upsertBook.map((e) => e.toJson()).toList();
     return result$data;
   }
 
-  CopyWith$Variables$Mutation$addMyBook<Variables$Mutation$addMyBook>
-      get copyWith => CopyWith$Variables$Mutation$addMyBook(
+  CopyWith$Variables$Mutation$upsertMyBook<Variables$Mutation$upsertMyBook>
+      get copyWith => CopyWith$Variables$Mutation$upsertMyBook(
             this,
             (i) => i,
           );
@@ -42,19 +44,19 @@ class Variables$Mutation$addMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$addMyBook) ||
+    if (!(other is Variables$Mutation$upsertMyBook) ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$addBook = addBook;
-    final lOther$addBook = other.addBook;
-    if (l$addBook.length != lOther$addBook.length) {
+    final l$upsertBook = upsertBook;
+    final lOther$upsertBook = other.upsertBook;
+    if (l$upsertBook.length != lOther$upsertBook.length) {
       return false;
     }
-    for (int i = 0; i < l$addBook.length; i++) {
-      final l$addBook$entry = l$addBook[i];
-      final lOther$addBook$entry = lOther$addBook[i];
-      if (l$addBook$entry != lOther$addBook$entry) {
+    for (int i = 0; i < l$upsertBook.length; i++) {
+      final l$upsertBook$entry = l$upsertBook[i];
+      final lOther$upsertBook$entry = lOther$upsertBook[i];
+      if (l$upsertBook$entry != lOther$upsertBook$entry) {
         return false;
       }
     }
@@ -63,72 +65,72 @@ class Variables$Mutation$addMyBook {
 
   @override
   int get hashCode {
-    final l$addBook = addBook;
-    return Object.hashAll([Object.hashAll(l$addBook.map((v) => v))]);
+    final l$upsertBook = upsertBook;
+    return Object.hashAll([Object.hashAll(l$upsertBook.map((v) => v))]);
   }
 }
 
-abstract class CopyWith$Variables$Mutation$addMyBook<TRes> {
-  factory CopyWith$Variables$Mutation$addMyBook(
-    Variables$Mutation$addMyBook instance,
-    TRes Function(Variables$Mutation$addMyBook) then,
-  ) = _CopyWithImpl$Variables$Mutation$addMyBook;
+abstract class CopyWith$Variables$Mutation$upsertMyBook<TRes> {
+  factory CopyWith$Variables$Mutation$upsertMyBook(
+    Variables$Mutation$upsertMyBook instance,
+    TRes Function(Variables$Mutation$upsertMyBook) then,
+  ) = _CopyWithImpl$Variables$Mutation$upsertMyBook;
 
-  factory CopyWith$Variables$Mutation$addMyBook.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Mutation$addMyBook;
+  factory CopyWith$Variables$Mutation$upsertMyBook.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$upsertMyBook;
 
-  TRes call({List<Input$AddMyBookInput>? addBook});
+  TRes call({List<Input$AddMyBookInput>? upsertBook});
 }
 
-class _CopyWithImpl$Variables$Mutation$addMyBook<TRes>
-    implements CopyWith$Variables$Mutation$addMyBook<TRes> {
-  _CopyWithImpl$Variables$Mutation$addMyBook(
+class _CopyWithImpl$Variables$Mutation$upsertMyBook<TRes>
+    implements CopyWith$Variables$Mutation$upsertMyBook<TRes> {
+  _CopyWithImpl$Variables$Mutation$upsertMyBook(
     this._instance,
     this._then,
   );
 
-  final Variables$Mutation$addMyBook _instance;
+  final Variables$Mutation$upsertMyBook _instance;
 
-  final TRes Function(Variables$Mutation$addMyBook) _then;
+  final TRes Function(Variables$Mutation$upsertMyBook) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? addBook = _undefined}) =>
-      _then(Variables$Mutation$addMyBook._({
+  TRes call({Object? upsertBook = _undefined}) =>
+      _then(Variables$Mutation$upsertMyBook._({
         ..._instance._$data,
-        if (addBook != _undefined && addBook != null)
-          'addBook': (addBook as List<Input$AddMyBookInput>),
+        if (upsertBook != _undefined && upsertBook != null)
+          'upsertBook': (upsertBook as List<Input$AddMyBookInput>),
       }));
 }
 
-class _CopyWithStubImpl$Variables$Mutation$addMyBook<TRes>
-    implements CopyWith$Variables$Mutation$addMyBook<TRes> {
-  _CopyWithStubImpl$Variables$Mutation$addMyBook(this._res);
+class _CopyWithStubImpl$Variables$Mutation$upsertMyBook<TRes>
+    implements CopyWith$Variables$Mutation$upsertMyBook<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$upsertMyBook(this._res);
 
   TRes _res;
 
-  call({List<Input$AddMyBookInput>? addBook}) => _res;
+  call({List<Input$AddMyBookInput>? upsertBook}) => _res;
 }
 
-class Mutation$addMyBook {
-  Mutation$addMyBook({
+class Mutation$upsertMyBook {
+  Mutation$upsertMyBook({
     this.addMyBook,
     this.$__typename = 'Mutation',
   });
 
-  factory Mutation$addMyBook.fromJson(Map<String, dynamic> json) {
+  factory Mutation$upsertMyBook.fromJson(Map<String, dynamic> json) {
     final l$addMyBook = json['addMyBook'];
     final l$$__typename = json['__typename'];
-    return Mutation$addMyBook(
+    return Mutation$upsertMyBook(
       addMyBook: l$addMyBook == null
           ? null
-          : Mutation$addMyBook$addMyBook.fromJson(
+          : Mutation$upsertMyBook$addMyBook.fromJson(
               (l$addMyBook as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$addMyBook$addMyBook? addMyBook;
+  final Mutation$upsertMyBook$addMyBook? addMyBook;
 
   final String $__typename;
 
@@ -156,7 +158,7 @@ class Mutation$addMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$addMyBook) || runtimeType != other.runtimeType) {
+    if (!(other is Mutation$upsertMyBook) || runtimeType != other.runtimeType) {
       return false;
     }
     final l$addMyBook = addMyBook;
@@ -173,40 +175,40 @@ class Mutation$addMyBook {
   }
 }
 
-extension UtilityExtension$Mutation$addMyBook on Mutation$addMyBook {
-  CopyWith$Mutation$addMyBook<Mutation$addMyBook> get copyWith =>
-      CopyWith$Mutation$addMyBook(
+extension UtilityExtension$Mutation$upsertMyBook on Mutation$upsertMyBook {
+  CopyWith$Mutation$upsertMyBook<Mutation$upsertMyBook> get copyWith =>
+      CopyWith$Mutation$upsertMyBook(
         this,
         (i) => i,
       );
 }
 
-abstract class CopyWith$Mutation$addMyBook<TRes> {
-  factory CopyWith$Mutation$addMyBook(
-    Mutation$addMyBook instance,
-    TRes Function(Mutation$addMyBook) then,
-  ) = _CopyWithImpl$Mutation$addMyBook;
+abstract class CopyWith$Mutation$upsertMyBook<TRes> {
+  factory CopyWith$Mutation$upsertMyBook(
+    Mutation$upsertMyBook instance,
+    TRes Function(Mutation$upsertMyBook) then,
+  ) = _CopyWithImpl$Mutation$upsertMyBook;
 
-  factory CopyWith$Mutation$addMyBook.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$addMyBook;
+  factory CopyWith$Mutation$upsertMyBook.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$upsertMyBook;
 
   TRes call({
-    Mutation$addMyBook$addMyBook? addMyBook,
+    Mutation$upsertMyBook$addMyBook? addMyBook,
     String? $__typename,
   });
-  CopyWith$Mutation$addMyBook$addMyBook<TRes> get addMyBook;
+  CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook;
 }
 
-class _CopyWithImpl$Mutation$addMyBook<TRes>
-    implements CopyWith$Mutation$addMyBook<TRes> {
-  _CopyWithImpl$Mutation$addMyBook(
+class _CopyWithImpl$Mutation$upsertMyBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook<TRes> {
+  _CopyWithImpl$Mutation$upsertMyBook(
     this._instance,
     this._then,
   );
 
-  final Mutation$addMyBook _instance;
+  final Mutation$upsertMyBook _instance;
 
-  final TRes Function(Mutation$addMyBook) _then;
+  final TRes Function(Mutation$upsertMyBook) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -214,47 +216,47 @@ class _CopyWithImpl$Mutation$addMyBook<TRes>
     Object? addMyBook = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$addMyBook(
+      _then(Mutation$upsertMyBook(
         addMyBook: addMyBook == _undefined
             ? _instance.addMyBook
-            : (addMyBook as Mutation$addMyBook$addMyBook?),
+            : (addMyBook as Mutation$upsertMyBook$addMyBook?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$addMyBook$addMyBook<TRes> get addMyBook {
+  CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook {
     final local$addMyBook = _instance.addMyBook;
     return local$addMyBook == null
-        ? CopyWith$Mutation$addMyBook$addMyBook.stub(_then(_instance))
-        : CopyWith$Mutation$addMyBook$addMyBook(
+        ? CopyWith$Mutation$upsertMyBook$addMyBook.stub(_then(_instance))
+        : CopyWith$Mutation$upsertMyBook$addMyBook(
             local$addMyBook, (e) => call(addMyBook: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$addMyBook<TRes>
-    implements CopyWith$Mutation$addMyBook<TRes> {
-  _CopyWithStubImpl$Mutation$addMyBook(this._res);
+class _CopyWithStubImpl$Mutation$upsertMyBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook<TRes> {
+  _CopyWithStubImpl$Mutation$upsertMyBook(this._res);
 
   TRes _res;
 
   call({
-    Mutation$addMyBook$addMyBook? addMyBook,
+    Mutation$upsertMyBook$addMyBook? addMyBook,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$addMyBook$addMyBook<TRes> get addMyBook =>
-      CopyWith$Mutation$addMyBook$addMyBook.stub(_res);
+  CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook =>
+      CopyWith$Mutation$upsertMyBook$addMyBook.stub(_res);
 }
 
-const documentNodeMutationaddMyBook = DocumentNode(definitions: [
+const documentNodeMutationupsertMyBook = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.mutation,
-    name: NameNode(value: 'addMyBook'),
+    name: NameNode(value: 'upsertMyBook'),
     variableDefinitions: [
       VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'addBook')),
+        variable: VariableNode(name: NameNode(value: 'upsertBook')),
         type: ListTypeNode(
           type: NamedTypeNode(
             name: NameNode(value: 'AddMyBookInput'),
@@ -274,8 +276,12 @@ const documentNodeMutationaddMyBook = DocumentNode(definitions: [
         arguments: [
           ArgumentNode(
             name: NameNode(value: 'input'),
-            value: VariableNode(name: NameNode(value: 'addBook')),
-          )
+            value: VariableNode(name: NameNode(value: 'upsertBook')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'upsert'),
+            value: BooleanValueNode(value: true),
+          ),
         ],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
@@ -348,28 +354,122 @@ const documentNodeMutationaddMyBook = DocumentNode(definitions: [
     ]),
   ),
 ]);
+Mutation$upsertMyBook _parserFn$Mutation$upsertMyBook(
+        Map<String, dynamic> data) =>
+    Mutation$upsertMyBook.fromJson(data);
+typedef OnMutationCompleted$Mutation$upsertMyBook = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$upsertMyBook?,
+);
 
-class Mutation$addMyBook$addMyBook {
-  Mutation$addMyBook$addMyBook({
+class Options$Mutation$upsertMyBook
+    extends graphql.MutationOptions<Mutation$upsertMyBook> {
+  Options$Mutation$upsertMyBook({
+    String? operationName,
+    required Variables$Mutation$upsertMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$upsertMyBook? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$upsertMyBook? onCompleted,
+    graphql.OnMutationUpdate<Mutation$upsertMyBook>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$upsertMyBook(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationupsertMyBook,
+          parserFn: _parserFn$Mutation$upsertMyBook,
+        );
+
+  final OnMutationCompleted$Mutation$upsertMyBook? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$upsertMyBook
+    extends graphql.WatchQueryOptions<Mutation$upsertMyBook> {
+  WatchOptions$Mutation$upsertMyBook({
+    String? operationName,
+    required Variables$Mutation$upsertMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$upsertMyBook? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationupsertMyBook,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$upsertMyBook,
+        );
+}
+
+extension ClientExtension$Mutation$upsertMyBook on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$upsertMyBook>> mutate$upsertMyBook(
+          Options$Mutation$upsertMyBook options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$upsertMyBook> watchMutation$upsertMyBook(
+          WatchOptions$Mutation$upsertMyBook options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$upsertMyBook$addMyBook {
+  Mutation$upsertMyBook$addMyBook({
     this.myBook,
     this.$__typename = 'AddMyBookPayload',
   });
 
-  factory Mutation$addMyBook$addMyBook.fromJson(Map<String, dynamic> json) {
+  factory Mutation$upsertMyBook$addMyBook.fromJson(Map<String, dynamic> json) {
     final l$myBook = json['myBook'];
     final l$$__typename = json['__typename'];
-    return Mutation$addMyBook$addMyBook(
+    return Mutation$upsertMyBook$addMyBook(
       myBook: (l$myBook as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Mutation$addMyBook$addMyBook$myBook.fromJson(
+              : Mutation$upsertMyBook$addMyBook$myBook.fromJson(
                   (e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final List<Mutation$addMyBook$addMyBook$myBook?>? myBook;
+  final List<Mutation$upsertMyBook$addMyBook$myBook?>? myBook;
 
   final String $__typename;
 
@@ -397,7 +497,7 @@ class Mutation$addMyBook$addMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$addMyBook$addMyBook) ||
+    if (!(other is Mutation$upsertMyBook$addMyBook) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -426,46 +526,46 @@ class Mutation$addMyBook$addMyBook {
   }
 }
 
-extension UtilityExtension$Mutation$addMyBook$addMyBook
-    on Mutation$addMyBook$addMyBook {
-  CopyWith$Mutation$addMyBook$addMyBook<Mutation$addMyBook$addMyBook>
-      get copyWith => CopyWith$Mutation$addMyBook$addMyBook(
+extension UtilityExtension$Mutation$upsertMyBook$addMyBook
+    on Mutation$upsertMyBook$addMyBook {
+  CopyWith$Mutation$upsertMyBook$addMyBook<Mutation$upsertMyBook$addMyBook>
+      get copyWith => CopyWith$Mutation$upsertMyBook$addMyBook(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$addMyBook$addMyBook<TRes> {
-  factory CopyWith$Mutation$addMyBook$addMyBook(
-    Mutation$addMyBook$addMyBook instance,
-    TRes Function(Mutation$addMyBook$addMyBook) then,
-  ) = _CopyWithImpl$Mutation$addMyBook$addMyBook;
+abstract class CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
+  factory CopyWith$Mutation$upsertMyBook$addMyBook(
+    Mutation$upsertMyBook$addMyBook instance,
+    TRes Function(Mutation$upsertMyBook$addMyBook) then,
+  ) = _CopyWithImpl$Mutation$upsertMyBook$addMyBook;
 
-  factory CopyWith$Mutation$addMyBook$addMyBook.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$addMyBook$addMyBook;
+  factory CopyWith$Mutation$upsertMyBook$addMyBook.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook;
 
   TRes call({
-    List<Mutation$addMyBook$addMyBook$myBook?>? myBook,
+    List<Mutation$upsertMyBook$addMyBook$myBook?>? myBook,
     String? $__typename,
   });
   TRes myBook(
-      Iterable<Mutation$addMyBook$addMyBook$myBook?>? Function(
+      Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
               Iterable<
-                  CopyWith$Mutation$addMyBook$addMyBook$myBook<
-                      Mutation$addMyBook$addMyBook$myBook>?>?)
+                  CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
+                      Mutation$upsertMyBook$addMyBook$myBook>?>?)
           _fn);
 }
 
-class _CopyWithImpl$Mutation$addMyBook$addMyBook<TRes>
-    implements CopyWith$Mutation$addMyBook$addMyBook<TRes> {
-  _CopyWithImpl$Mutation$addMyBook$addMyBook(
+class _CopyWithImpl$Mutation$upsertMyBook$addMyBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
+  _CopyWithImpl$Mutation$upsertMyBook$addMyBook(
     this._instance,
     this._then,
   );
 
-  final Mutation$addMyBook$addMyBook _instance;
+  final Mutation$upsertMyBook$addMyBook _instance;
 
-  final TRes Function(Mutation$addMyBook$addMyBook) _then;
+  final TRes Function(Mutation$upsertMyBook$addMyBook) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -473,38 +573,38 @@ class _CopyWithImpl$Mutation$addMyBook$addMyBook<TRes>
     Object? myBook = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$addMyBook$addMyBook(
+      _then(Mutation$upsertMyBook$addMyBook(
         myBook: myBook == _undefined
             ? _instance.myBook
-            : (myBook as List<Mutation$addMyBook$addMyBook$myBook?>?),
+            : (myBook as List<Mutation$upsertMyBook$addMyBook$myBook?>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes myBook(
-          Iterable<Mutation$addMyBook$addMyBook$myBook?>? Function(
+          Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
                   Iterable<
-                      CopyWith$Mutation$addMyBook$addMyBook$myBook<
-                          Mutation$addMyBook$addMyBook$myBook>?>?)
+                      CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
+                          Mutation$upsertMyBook$addMyBook$myBook>?>?)
               _fn) =>
       call(
           myBook: _fn(_instance.myBook?.map((e) => e == null
               ? null
-              : CopyWith$Mutation$addMyBook$addMyBook$myBook(
+              : CopyWith$Mutation$upsertMyBook$addMyBook$myBook(
                   e,
                   (i) => i,
                 )))?.toList());
 }
 
-class _CopyWithStubImpl$Mutation$addMyBook$addMyBook<TRes>
-    implements CopyWith$Mutation$addMyBook$addMyBook<TRes> {
-  _CopyWithStubImpl$Mutation$addMyBook$addMyBook(this._res);
+class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
+  _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook(this._res);
 
   TRes _res;
 
   call({
-    List<Mutation$addMyBook$addMyBook$myBook?>? myBook,
+    List<Mutation$upsertMyBook$addMyBook$myBook?>? myBook,
     String? $__typename,
   }) =>
       _res;
@@ -512,8 +612,8 @@ class _CopyWithStubImpl$Mutation$addMyBook$addMyBook<TRes>
   myBook(_fn) => _res;
 }
 
-class Mutation$addMyBook$addMyBook$myBook {
-  Mutation$addMyBook$addMyBook$myBook({
+class Mutation$upsertMyBook$addMyBook$myBook {
+  Mutation$upsertMyBook$addMyBook$myBook({
     required this.id,
     required this.bookNumber,
     required this.title,
@@ -522,7 +622,7 @@ class Mutation$addMyBook$addMyBook$myBook {
     this.$__typename = 'MyBook',
   });
 
-  factory Mutation$addMyBook$addMyBook$myBook.fromJson(
+  factory Mutation$upsertMyBook$addMyBook$myBook.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$bookNumber = json['bookNumber'];
@@ -530,7 +630,7 @@ class Mutation$addMyBook$addMyBook$myBook {
     final l$readOn = json['readOn'];
     final l$favorite = json['favorite'];
     final l$$__typename = json['__typename'];
-    return Mutation$addMyBook$addMyBook$myBook(
+    return Mutation$upsertMyBook$addMyBook$myBook(
       id: (l$id as String),
       bookNumber: (l$bookNumber as int),
       title: (l$title as String),
@@ -592,7 +692,7 @@ class Mutation$addMyBook$addMyBook$myBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$addMyBook$addMyBook$myBook) ||
+    if (!(other is Mutation$upsertMyBook$addMyBook$myBook) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -630,24 +730,24 @@ class Mutation$addMyBook$addMyBook$myBook {
   }
 }
 
-extension UtilityExtension$Mutation$addMyBook$addMyBook$myBook
-    on Mutation$addMyBook$addMyBook$myBook {
-  CopyWith$Mutation$addMyBook$addMyBook$myBook<
-          Mutation$addMyBook$addMyBook$myBook>
-      get copyWith => CopyWith$Mutation$addMyBook$addMyBook$myBook(
+extension UtilityExtension$Mutation$upsertMyBook$addMyBook$myBook
+    on Mutation$upsertMyBook$addMyBook$myBook {
+  CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
+          Mutation$upsertMyBook$addMyBook$myBook>
+      get copyWith => CopyWith$Mutation$upsertMyBook$addMyBook$myBook(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$addMyBook$addMyBook$myBook<TRes> {
-  factory CopyWith$Mutation$addMyBook$addMyBook$myBook(
-    Mutation$addMyBook$addMyBook$myBook instance,
-    TRes Function(Mutation$addMyBook$addMyBook$myBook) then,
-  ) = _CopyWithImpl$Mutation$addMyBook$addMyBook$myBook;
+abstract class CopyWith$Mutation$upsertMyBook$addMyBook$myBook<TRes> {
+  factory CopyWith$Mutation$upsertMyBook$addMyBook$myBook(
+    Mutation$upsertMyBook$addMyBook$myBook instance,
+    TRes Function(Mutation$upsertMyBook$addMyBook$myBook) then,
+  ) = _CopyWithImpl$Mutation$upsertMyBook$addMyBook$myBook;
 
-  factory CopyWith$Mutation$addMyBook$addMyBook$myBook.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$addMyBook$addMyBook$myBook;
+  factory CopyWith$Mutation$upsertMyBook$addMyBook$myBook.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook$myBook;
 
   TRes call({
     String? id,
@@ -659,16 +759,16 @@ abstract class CopyWith$Mutation$addMyBook$addMyBook$myBook<TRes> {
   });
 }
 
-class _CopyWithImpl$Mutation$addMyBook$addMyBook$myBook<TRes>
-    implements CopyWith$Mutation$addMyBook$addMyBook$myBook<TRes> {
-  _CopyWithImpl$Mutation$addMyBook$addMyBook$myBook(
+class _CopyWithImpl$Mutation$upsertMyBook$addMyBook$myBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook$addMyBook$myBook<TRes> {
+  _CopyWithImpl$Mutation$upsertMyBook$addMyBook$myBook(
     this._instance,
     this._then,
   );
 
-  final Mutation$addMyBook$addMyBook$myBook _instance;
+  final Mutation$upsertMyBook$addMyBook$myBook _instance;
 
-  final TRes Function(Mutation$addMyBook$addMyBook$myBook) _then;
+  final TRes Function(Mutation$upsertMyBook$addMyBook$myBook) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -680,7 +780,7 @@ class _CopyWithImpl$Mutation$addMyBook$addMyBook$myBook<TRes>
     Object? favorite = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$addMyBook$addMyBook$myBook(
+      _then(Mutation$upsertMyBook$addMyBook$myBook(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         bookNumber: bookNumber == _undefined || bookNumber == null
             ? _instance.bookNumber
@@ -699,9 +799,9 @@ class _CopyWithImpl$Mutation$addMyBook$addMyBook$myBook<TRes>
       ));
 }
 
-class _CopyWithStubImpl$Mutation$addMyBook$addMyBook$myBook<TRes>
-    implements CopyWith$Mutation$addMyBook$addMyBook$myBook<TRes> {
-  _CopyWithStubImpl$Mutation$addMyBook$addMyBook$myBook(this._res);
+class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook$myBook<TRes>
+    implements CopyWith$Mutation$upsertMyBook$addMyBook$myBook<TRes> {
+  _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook$myBook(this._res);
 
   TRes _res;
 

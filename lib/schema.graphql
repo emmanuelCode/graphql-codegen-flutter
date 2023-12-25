@@ -1,12 +1,24 @@
 directive @hasInverse(field: String!) on FIELD_DEFINITION
 
+directive @custom(http: CustomHTTP, dql: String) on FIELD_DEFINITION
+
+directive @cascade(fields: [String]) on FIELD
+
+directive @generate(query: GenerateQueryParams, mutation: GenerateMutationParams, subscription: Boolean) on OBJECT | INTERFACE
+
 directive @secret(field: String!, pred: String) on OBJECT | INTERFACE
+
+directive @lambdaOnMutate(add: Boolean, update: Boolean, delete: Boolean) on OBJECT | INTERFACE
+
+directive @search(by: [DgraphIndex!]) on FIELD_DEFINITION
+
+directive @dgraph(type: String, pred: String) on OBJECT | INTERFACE | FIELD_DEFINITION
 
 directive @remoteResponse(name: String) on FIELD_DEFINITION
 
 directive @lambda on FIELD_DEFINITION
 
-directive @dgraph(type: String, pred: String) on OBJECT | INTERFACE | FIELD_DEFINITION
+directive @cacheControl(maxAge: Int!) on QUERY
 
 directive @id on FIELD_DEFINITION
 
@@ -16,19 +28,8 @@ directive @auth(password: AuthRule, query: AuthRule, add: AuthRule, update: Auth
 
 directive @remote on OBJECT | INTERFACE | UNION | INPUT_OBJECT | ENUM
 
-directive @cascade(fields: [String]) on FIELD
-
-directive @custom(http: CustomHTTP, dql: String) on FIELD_DEFINITION
-
-directive @lambdaOnMutate(add: Boolean, update: Boolean, delete: Boolean) on OBJECT | INTERFACE
-
-directive @cacheControl(maxAge: Int!) on QUERY
-
-directive @generate(query: GenerateQueryParams, mutation: GenerateMutationParams, subscription: Boolean) on OBJECT | INTERFACE
-
-directive @search(by: [DgraphIndex!]) on FIELD_DEFINITION
-
 input AddMyBookInput {
+  id: String!
   bookNumber: Int!
   title: String!
   readOn: DateTime!
@@ -200,13 +201,13 @@ input MultiPolygonRef {
 }
 
 type Mutation {
-  addMyBook(input: [AddMyBookInput!]!): AddMyBookPayload
+  addMyBook(input: [AddMyBookInput!]!, upsert: Boolean): AddMyBookPayload
   updateMyBook(input: UpdateMyBookInput!): UpdateMyBookPayload
   deleteMyBook(filter: MyBookFilter!): DeleteMyBookPayload
 }
 
 type MyBook {
-  id: ID!
+  id: String!
   bookNumber: Int!
   title: String!
   readOn: DateTime!
@@ -215,6 +216,8 @@ type MyBook {
 
 type MyBookAggregateResult {
   count: Int
+  idMin: String
+  idMax: String
   bookNumberMin: Int
   bookNumberMax: Int
   bookNumberSum: Int
@@ -226,7 +229,7 @@ type MyBookAggregateResult {
 }
 
 input MyBookFilter {
-  id: [ID!]
+  id: StringHashFilter
   has: [MyBookHasFilter]
   and: [MyBookFilter]
   or: [MyBookFilter]
@@ -234,6 +237,7 @@ input MyBookFilter {
 }
 
 enum MyBookHasFilter {
+  id
   bookNumber
   title
   readOn
@@ -247,6 +251,7 @@ input MyBookOrder {
 }
 
 enum MyBookOrderable {
+  id
   bookNumber
   title
   readOn
@@ -260,7 +265,7 @@ input MyBookPatch {
 }
 
 input MyBookRef {
-  id: ID
+  id: String
   bookNumber: Int
   title: String
   readOn: DateTime
@@ -311,7 +316,7 @@ input PolygonRef {
 }
 
 type Query {
-  getMyBook(id: ID!): MyBook
+  getMyBook(id: String!): MyBook
   queryMyBook(filter: MyBookFilter, order: MyBookOrder, first: Int, offset: Int): [MyBook]
   aggregateMyBook(filter: MyBookFilter): MyBookAggregateResult
 }

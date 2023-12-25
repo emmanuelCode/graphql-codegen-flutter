@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:gql/ast.dart';
+import 'package:graphql/client.dart' as graphql;
 
 class Variables$Query$getMyBook {
   factory Variables$Query$getMyBook({required String getBook}) =>
@@ -318,6 +320,135 @@ const documentNodeQuerygetMyBook = DocumentNode(definitions: [
     ]),
   ),
 ]);
+Query$getMyBook _parserFn$Query$getMyBook(Map<String, dynamic> data) =>
+    Query$getMyBook.fromJson(data);
+typedef OnQueryComplete$Query$getMyBook = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$getMyBook?,
+);
+
+class Options$Query$getMyBook extends graphql.QueryOptions<Query$getMyBook> {
+  Options$Query$getMyBook({
+    String? operationName,
+    required Variables$Query$getMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$getMyBook? typedOptimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+    OnQueryComplete$Query$getMyBook? onComplete,
+    graphql.OnQueryError? onError,
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$getMyBook(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerygetMyBook,
+          parserFn: _parserFn$Query$getMyBook,
+        );
+
+  final OnQueryComplete$Query$getMyBook? onCompleteWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
+}
+
+class WatchOptions$Query$getMyBook
+    extends graphql.WatchQueryOptions<Query$getMyBook> {
+  WatchOptions$Query$getMyBook({
+    String? operationName,
+    required Variables$Query$getMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Query$getMyBook? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerygetMyBook,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$getMyBook,
+        );
+}
+
+class FetchMoreOptions$Query$getMyBook extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$getMyBook({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$getMyBook variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQuerygetMyBook,
+        );
+}
+
+extension ClientExtension$Query$getMyBook on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$getMyBook>> query$getMyBook(
+          Options$Query$getMyBook options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$getMyBook> watchQuery$getMyBook(
+          WatchOptions$Query$getMyBook options) =>
+      this.watchQuery(options);
+  void writeQuery$getMyBook({
+    required Query$getMyBook data,
+    required Variables$Query$getMyBook variables,
+    bool broadcast = true,
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(document: documentNodeQuerygetMyBook),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$getMyBook? readQuery$getMyBook({
+    required Variables$Query$getMyBook variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(document: documentNodeQuerygetMyBook),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
+    return result == null ? null : Query$getMyBook.fromJson(result);
+  }
+}
 
 class Query$getMyBook$getMyBook {
   Query$getMyBook$getMyBook({

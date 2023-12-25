@@ -1,5 +1,5 @@
 type MyBook {
-    id:ID!
+    id:String! @id
     bookNumber:Int!
     title:String!
     readOn:DateTime!

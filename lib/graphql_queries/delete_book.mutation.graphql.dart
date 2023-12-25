@@ -1,5 +1,7 @@
 import '../schema.graphql.dart';
+import 'dart:async';
 import 'package:gql/ast.dart';
+import 'package:graphql/client.dart' as graphql;
 
 class Variables$Mutation$deleteMyBook {
   factory Variables$Mutation$deleteMyBook(
@@ -344,6 +346,100 @@ const documentNodeMutationdeleteMyBook = DocumentNode(definitions: [
     ]),
   ),
 ]);
+Mutation$deleteMyBook _parserFn$Mutation$deleteMyBook(
+        Map<String, dynamic> data) =>
+    Mutation$deleteMyBook.fromJson(data);
+typedef OnMutationCompleted$Mutation$deleteMyBook = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$deleteMyBook?,
+);
+
+class Options$Mutation$deleteMyBook
+    extends graphql.MutationOptions<Mutation$deleteMyBook> {
+  Options$Mutation$deleteMyBook({
+    String? operationName,
+    required Variables$Mutation$deleteMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$deleteMyBook? typedOptimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$deleteMyBook? onCompleted,
+    graphql.OnMutationUpdate<Mutation$deleteMyBook>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$deleteMyBook(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationdeleteMyBook,
+          parserFn: _parserFn$Mutation$deleteMyBook,
+        );
+
+  final OnMutationCompleted$Mutation$deleteMyBook? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
+}
+
+class WatchOptions$Mutation$deleteMyBook
+    extends graphql.WatchQueryOptions<Mutation$deleteMyBook> {
+  WatchOptions$Mutation$deleteMyBook({
+    String? operationName,
+    required Variables$Mutation$deleteMyBook variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Mutation$deleteMyBook? typedOptimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationdeleteMyBook,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$deleteMyBook,
+        );
+}
+
+extension ClientExtension$Mutation$deleteMyBook on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$deleteMyBook>> mutate$deleteMyBook(
+          Options$Mutation$deleteMyBook options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$deleteMyBook> watchMutation$deleteMyBook(
+          WatchOptions$Mutation$deleteMyBook options) =>
+      this.watchMutation(options);
+}
 
 class Mutation$deleteMyBook$deleteMyBook {
   Mutation$deleteMyBook$deleteMyBook({
