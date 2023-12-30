@@ -52,7 +52,10 @@ class MyBookQueries extends _$MyBookQueries {
         variables: Variables$Mutation$upsertMyBook(
           upsertBook: [
             Input$AddMyBookInput(
-              id: uuid.v4(),
+              // if no id is given or doesn't match
+              // in the database then we want to
+              // add a book otherwise we update
+              id: id ?? uuid.v4(),
               bookNumber: bookNumber,
               title: title,
               readOn: readOn,
