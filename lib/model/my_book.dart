@@ -28,6 +28,7 @@ class MyBook with _$MyBook {
 @riverpod
 class MyBookQueries extends _$MyBookQueries {
   final Uuid uuid = Uuid(options: {'grnd': UuidUtil.cryptoRNG()});
+  final List<MyBook> myBookListActivity = [];
 
   @override
   MyBook build(GraphQLClient client) {
@@ -49,6 +50,7 @@ class MyBookQueries extends _$MyBookQueries {
   }) async {
     final result = await client.mutate$upsertMyBook(
       Options$Mutation$upsertMyBook(
+        fetchPolicy: FetchPolicy.noCache,
         variables: Variables$Mutation$upsertMyBook(
           upsertBook: [
             Input$AddMyBookInput(
@@ -70,14 +72,19 @@ class MyBookQueries extends _$MyBookQueries {
     debugPrint('$parsedData');
 
     final myBook = parsedData?.addMyBook?.myBook?[0];
+    debugPrint('$myBook');
 
-    state = state.copyWith(
+    final MyBook book = MyBook(
       id: myBook!.id,
       bookNumber: myBook.bookNumber,
       title: myBook.title,
       readOn: myBook.readOn,
       favorite: myBook.favorite,
     );
+
+    myBookListActivity.add(book);
+
+    state = book;
 
     debugPrint('${uuid.options} $parsedData');
   }
