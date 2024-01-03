@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 // hide the JsonSerializable as there is a library conflict with json_annotation
 import 'package:graphql/client.dart' hide JsonSerializable;
+import 'package:graphql_codegen_flutter/graphql_queries/delete_book.mutation.graphql.dart';
+import 'package:graphql_codegen_flutter/graphql_queries/get_book.query.graphql.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
@@ -32,6 +34,7 @@ class MyBookQueries extends _$MyBookQueries {
 
   @override
   MyBook build(GraphQLClient client) {
+    debugPrint('${uuid.options}');
     return MyBook(
       id: '',
       bookNumber: 0,
@@ -69,23 +72,57 @@ class MyBookQueries extends _$MyBookQueries {
     );
 
     final parsedData = result.parsedData;
-    debugPrint('$parsedData');
+    final myBook =
+        parsedData?.addMyBook?.myBook?[0]?.toJson() as Map<String, Object?>;
 
-    final myBook = parsedData?.addMyBook?.myBook?[0];
-    debugPrint('$myBook');
-
-    final MyBook book = MyBook(
-      id: myBook!.id,
-      bookNumber: myBook.bookNumber,
-      title: myBook.title,
-      readOn: myBook.readOn,
-      favorite: myBook.favorite,
-    );
+    final MyBook book = MyBook.fromJson(myBook);
 
     myBookListActivity.add(book);
 
     state = book;
 
-    debugPrint('${uuid.options} $parsedData');
+    debugPrint('Upsert: ${result.data}');
+  }
+
+  Future<void> getBook({required String id}) async {
+    final result = await client.query$getMyBook(
+      Options$Query$getMyBook(
+        fetchPolicy: FetchPolicy.noCache,
+        variables: Variables$Query$getMyBook(getBook: id),
+      ),
+    );
+
+    final parsedData = result.parsedData;
+    final myBook = parsedData?.getMyBook?.toJson() as Map<String, Object?>;
+
+    final MyBook book = MyBook.fromJson(myBook);
+
+    myBookListActivity.add(book);
+
+    state = book;
+
+    debugPrint('GET: ${result.data}');
+  }
+
+  Future<void> deleteBook({required String id}) async {
+    final result = await client.mutate$deleteMyBook(
+      Options$Mutation$deleteMyBook(
+        fetchPolicy: FetchPolicy.noCache,
+        variables: Variables$Mutation$deleteMyBook(
+          deleteBook: Input$MyBookFilter(id: Input$StringHashFilter(eq: id)),
+        ),
+      ),
+    );
+
+    final parsedData = result.parsedData;
+    final myBook = parsedData?.deleteMyBook?.toJson() as Map<String, Object?>;
+
+    final MyBook book = MyBook.fromJson(myBook);
+
+    myBookListActivity.add(book);
+
+    state = book;
+
+    debugPrint('Delete: ${result.data}');
   }
 }

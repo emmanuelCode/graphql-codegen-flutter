@@ -78,12 +78,23 @@ class MyBookFormField extends ConsumerStatefulWidget {
 }
 
 class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
-  InputDecoration _decoration(String value) => InputDecoration(
-        border: const OutlineInputBorder(),
-        label: Text(value),
-        hintText: value,
-      );
+  final idField = 'id (optional, required to update)';
+  final activityField = 'GraphQL Activity (Tap to copy id)';
+  late bool enabled;
+  InputDecoration _decoration(String value) {
+    // check which category where in and disable fields
+    enabled = (idField == value || activityField == value)
+        ? true
+        : widget.querySelected == Queries.upsertBook;
+    return InputDecoration(
+      border: const OutlineInputBorder(),
+      label: Text(value),
+      hintText: value,
+      enabled: enabled,
+    );
+  }
 
+  // variables for date picker field
   late DateTime? currentDate;
   late String _selectedDate = _dateFormat(DateTime.now());
 
@@ -94,6 +105,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
         : '${date.year}/${date.month}/${date.day}';
   }
 
+  // variables for dropdown favorite field
   final List<String> _favoriteValues = ['yes', 'no', 'don\'t know'];
   late String _selectedFavorite = _favoriteValues.last;
 
@@ -115,157 +127,182 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
       case false:
         return 'no';
       default:
-        return null;
+        return 'don\'t know';
     }
   }
 
+  // variables for the id/bookNumber/title fields
   final TextEditingController _textEditId = TextEditingController();
   final TextEditingController _textEditBookNumber = TextEditingController();
   final TextEditingController _textEditTitle = TextEditingController();
 
-  late final graphQLClient = ref.watch(graphQLClientProvider);
-  late final MyBookQueries _myBookQueries =
-      ref.watch(MyBookQueriesProvider(graphQLClient).notifier);
+  // riverpod variables for queries and activity list
+  late final _graphQLClient = ref.watch(graphQLClientProvider);
+  late final _myBookQueries =
+      ref.watch(MyBookQueriesProvider(_graphQLClient).notifier);
   late List<MyBook> _myBookList = _myBookQueries.myBookListActivity;
+  void _updateList() =>
+      setState(() => _myBookList = _myBookQueries.myBookListActivity);
+
+  // empty field checker for title/bookNumber TODO verify isEmpty
+  String? _emptyFieldValidator(String? value) {
+    if (value!.isEmpty) {
+      return 'Please enter a value';
+    }
+    return null;
+  }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  decoration: _decoration('id (optional, required to update)'),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    decoration:
+                        _decoration('id (optional, required to update)'),
+                    controller: _textEditId,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  decoration: _decoration('book number'),
-                  keyboardType: TextInputType.number,
-                  controller: _textEditBookNumber,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: _decoration('title'),
-                  controller: _textEditTitle,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  decoration: _decoration('read on:\n$_selectedDate'),
-                  canRequestFocus: false,
-                  onTap: () async {
-                    DateTime? selectedDate = await showDatePicker(
-                      context: context,
-                      firstDate:
-                          DateTime.now().subtract(const Duration(days: 365)),
-                      lastDate: DateTime.now().add(const Duration(days: 365)),
-                    );
-                    setState(() {
-                      _selectedDate = _dateFormat(selectedDate);
-                    });
-                  },
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: DropdownButtonFormField<String>(
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  decoration: _decoration('favorite'),
-                  value: _selectedFavorite,
-                  items: _favoriteValues.map((String favorite) {
-                    return DropdownMenuItem<String>(
-                      value: favorite,
-                      child: Text(favorite),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _selectedFavorite = newValue!;
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          OutlinedButton(
-            onPressed: () async {
-              FocusScope.of(context).unfocus(); // disable keyboard
-              switch (widget.querySelected) {
-                case Queries.upsertBook:
-                  await _myBookQueries.upsertBook(
-                    id: _textEditId.text.isEmpty ? null : _textEditId.text,
-                    bookNumber: int.parse(_textEditBookNumber.text),
-                    title: _textEditTitle.text,
-                    readOn: currentDate!,
-                    favorite: _favoriteCase(_selectedFavorite),
-                  );
-                  setState(() {
-                    _myBookList = _myBookQueries.myBookListActivity;
-                  });
-                case Queries.getBook:
-                case Queries.deleteBook:
-              }
-            },
-            child: const Text('Submit'),
-          ),
-          const SizedBox(height: 8),
-          const Divider(thickness: 2),
-          const SizedBox(height: 16),
-          AspectRatio(
-            aspectRatio: 3 / 2,
-            child: InputDecorator(
-              decoration: _decoration('GraphQL Activity (Tap to copy id)'),
-              child: _myBookList.isEmpty
-                  ? const Center(child: Text('NO DATA'))
-                  : ListView.separated(
-                      separatorBuilder: (context, index) => const Divider(),
-                      itemCount: _myBookList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) =>
-                          ListTile(
-                        leading: Text('Nº:${_myBookList[index].bookNumber}'),
-                        isThreeLine: true,
-                        title: Text(_myBookList[index].title),
-                        subtitle: Text(
-                            '${_myBookList[index].id}\n${_dateFormat(_myBookList[index].readOn)}'),
-                        trailing: Text(
-                            '${_favoriteFormat(_myBookList[index].favorite)}'),
-                        onTap: () async {
-                          // copy id
-                          await Clipboard.setData(
-                                  ClipboardData(text: _myBookList[index].id))
-                              .then(
-                            (value) =>
-                                ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('copied id to clipboard'),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+              ],
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    decoration: _decoration('book number'),
+                    keyboardType: TextInputType.number,
+                    controller: _textEditBookNumber,
+                    validator: _emptyFieldValidator,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextFormField(
+                    decoration: _decoration('title'),
+                    controller: _textEditTitle,
+                    validator: _emptyFieldValidator,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    decoration: _decoration('read on:\n$_selectedDate'),
+                    canRequestFocus: false,
+                    onTap: () async {
+                      DateTime? selectedDate = await showDatePicker(
+                        context: context,
+                        firstDate:
+                            DateTime.now().subtract(const Duration(days: 365)),
+                        lastDate: DateTime.now().add(const Duration(days: 365)),
+                      );
+                      setState(() => _selectedDate = _dateFormat(selectedDate));
+                    },
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: DropdownButtonFormField<String>(
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    decoration: _decoration('favorite'),
+                    value: _selectedFavorite,
+                    items: _favoriteValues.map((String favorite) {
+                      return DropdownMenuItem<String>(
+                        value: favorite,
+                        child: Text(favorite),
+                      );
+                    }).toList(),
+                    onChanged: enabled
+                        ? (String? newValue) {
+                            setState(() => _selectedFavorite = newValue!);
+                          }
+                        : null,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton(
+              onPressed: () async {
+                FocusScope.of(context).unfocus(); // disable keyboard
+                if (_formKey.currentState!.validate()) {
+                  switch (widget.querySelected) {
+                    case Queries.upsertBook:
+                      await _myBookQueries.upsertBook(
+                        id: _textEditId.text.isEmpty ? null : _textEditId.text,
+                        bookNumber: int.parse(_textEditBookNumber.text),
+                        title: _textEditTitle.text,
+                        readOn: currentDate!,
+                        favorite: _favoriteCase(_selectedFavorite),
+                      );
+                      _updateList();
+                    case Queries.getBook:
+                      await _myBookQueries.getBook(id: _textEditId.text);
+                      _updateList();
+                    case Queries.deleteBook:
+                      await _myBookQueries.deleteBook(id: _textEditId.text);
+                      _updateList();
+                  }
+                }
+              },
+              child: const Text('Submit'),
+            ),
+            const SizedBox(height: 8),
+            const Divider(thickness: 2),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 3 / 2,
+              child: InputDecorator(
+                decoration: _decoration('GraphQL Activity (Tap to copy id)'),
+                child: _myBookList.isEmpty
+                    ? const Center(child: Text('NO DATA'))
+                    : ListView.separated(
+                        separatorBuilder: (context, index) => const Divider(),
+                        itemCount: _myBookList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) =>
+                            ListTile(
+                                leading:
+                                    Text('Nº:${_myBookList[index].bookNumber}'),
+                                isThreeLine: true,
+                                title: Text(_myBookList[index].title),
+                                subtitle: Text(
+                                  'ID:${_myBookList[index].id}\n${_dateFormat(_myBookList[index].readOn)}',
+                                  //overflow: TextOverflow.ellipsis,
+                                ),
+                                trailing: Text(
+                                    'Fav:${_favoriteFormat(_myBookList[index].favorite)}'),
+                                onTap: () async {
+                                  // copy id
+                                  await Clipboard.setData(
+                                    ClipboardData(text: _myBookList[index].id),
+                                  ).then(
+                                    (value) => ScaffoldMessenger.of(context)
+                                        .showSnackBar(
+                                      const SnackBar(
+                                        content: Text('copied id to clipboard'),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                      ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
