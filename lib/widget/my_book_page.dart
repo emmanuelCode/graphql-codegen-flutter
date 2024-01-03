@@ -78,7 +78,7 @@ class MyBookFormField extends ConsumerStatefulWidget {
 }
 
 class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
-  final idField = 'id (optional, required to update)';
+  final idField = 'id (optional to add data)';
   final activityField = 'GraphQL Activity (Tap to copy id)';
   late bool enabled;
   InputDecoration _decoration(String value) {
@@ -136,7 +136,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   final TextEditingController _textEditBookNumber = TextEditingController();
   final TextEditingController _textEditTitle = TextEditingController();
 
-  // riverpod variables for queries and activity list
+  // riverpod variables for queries, activity list and requestTypeList
   late final _graphQLClient = ref.watch(graphQLClientProvider);
   late final _myBookQueries =
       ref.watch(MyBookQueriesProvider(_graphQLClient).notifier);
@@ -146,7 +146,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   void _updateList() =>
       setState(() => _myBookList = _myBookQueries.myBookListActivity);
 
-  // empty field checker for title/bookNumber TODO verify isEmpty
+  // empty field checker for title/bookNumber
   String? _emptyFieldValidator(String? value) {
     if (value!.isEmpty) {
       return 'Please enter a value';
@@ -169,9 +169,14 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
               children: [
                 Expanded(
                   child: TextFormField(
-                    decoration:
-                        _decoration('id (optional, required to update)'),
+                    decoration: _decoration('id (optional to add data)'),
                     controller: _textEditId,
+                    //TODO FIX VALIDATOR
+                    validator: enabled
+                        ?
+                         (value) => value!.isEmpty && !enabled
+                            ? 'Please enter an id for \'Get\' or \'Delete\''
+                            : null:null,
                   ),
                 ),
               ],
@@ -184,7 +189,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                     decoration: _decoration('book number'),
                     keyboardType: TextInputType.number,
                     controller: _textEditBookNumber,
-                    validator: _emptyFieldValidator,
+                    validator: enabled ? _emptyFieldValidator : null,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -192,7 +197,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                   child: TextFormField(
                     decoration: _decoration('title'),
                     controller: _textEditTitle,
-                    validator: _emptyFieldValidator,
+                    validator: enabled ? _emptyFieldValidator : null,
                   ),
                 ),
               ],
@@ -287,7 +292,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                                   'ID:${_myBookList[index].id}\n${_dateFormat(_myBookList[index].readOn)}',
                                 ),
                                 trailing: Text(
-                                    'Fav:${_favoriteFormat(_myBookList[index].favorite)}'),
+                                    'Fav:\n${_favoriteFormat(_myBookList[index].favorite)}'),
                                 onTap: () async {
                                   // copy id
                                   await Clipboard.setData(
