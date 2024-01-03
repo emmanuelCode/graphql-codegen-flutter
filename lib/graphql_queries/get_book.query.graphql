@@ -1,4 +1,4 @@
-query getMyBook($getBook: ID!){
+query getMyBook($getBook: String!){
     getMyBook(id: $getBook){
             id
             bookNumber

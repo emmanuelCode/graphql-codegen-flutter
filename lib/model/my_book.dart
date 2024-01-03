@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 // hide the JsonSerializable as there is a library conflict with json_annotation
 import 'package:graphql/client.dart' hide JsonSerializable;
-import 'package:graphql_codegen_flutter/graphql_queries/delete_book.mutation.graphql.dart';
-import 'package:graphql_codegen_flutter/graphql_queries/get_book.query.graphql.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 import '../graphql_queries/upsert_book.mutation.graphql.dart';
+import '../graphql_queries/get_book.query.graphql.dart';
+import '../graphql_queries/delete_book.mutation.graphql.dart';
 import '../schema.graphql.dart';
 
 part 'my_book.freezed.dart';
@@ -31,6 +31,7 @@ class MyBook with _$MyBook {
 class MyBookQueries extends _$MyBookQueries {
   final Uuid uuid = Uuid(options: {'grnd': UuidUtil.cryptoRNG()});
   final List<MyBook> myBookListActivity = [];
+  final List<String> graphQLActivityListType = [];
 
   @override
   MyBook build(GraphQLClient client) {
@@ -78,6 +79,7 @@ class MyBookQueries extends _$MyBookQueries {
     final MyBook book = MyBook.fromJson(myBook);
 
     myBookListActivity.add(book);
+    graphQLActivityListType.add('UPSERT');
 
     state = book;
 
@@ -98,10 +100,11 @@ class MyBookQueries extends _$MyBookQueries {
     final MyBook book = MyBook.fromJson(myBook);
 
     myBookListActivity.add(book);
+    graphQLActivityListType.add('GET');
 
     state = book;
 
-    debugPrint('GET: ${result.data}');
+    debugPrint('Get: ${result.data}');
   }
 
   Future<void> deleteBook({required String id}) async {
@@ -115,11 +118,13 @@ class MyBookQueries extends _$MyBookQueries {
     );
 
     final parsedData = result.parsedData;
-    final myBook = parsedData?.deleteMyBook?.toJson() as Map<String, Object?>;
+    final myBook =
+        parsedData?.deleteMyBook?.myBook?[0]?.toJson() as Map<String, Object?>;
 
     final MyBook book = MyBook.fromJson(myBook);
 
     myBookListActivity.add(book);
+    graphQLActivityListType.add('DELETE');
 
     state = book;
 

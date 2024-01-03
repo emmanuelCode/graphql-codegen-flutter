@@ -106,7 +106,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   }
 
   // variables for dropdown favorite field
-  final List<String> _favoriteValues = ['yes', 'no', 'don\'t know'];
+  final List<String> _favoriteValues = ['yes', 'no', '???'];
   late String _selectedFavorite = _favoriteValues.last;
 
   bool? _favoriteCase(String testCase) {
@@ -127,7 +127,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
       case false:
         return 'no';
       default:
-        return 'don\'t know';
+        return '???';
     }
   }
 
@@ -141,6 +141,8 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   late final _myBookQueries =
       ref.watch(MyBookQueriesProvider(_graphQLClient).notifier);
   late List<MyBook> _myBookList = _myBookQueries.myBookListActivity;
+  late final List<String> _requestTypeList =
+      _myBookQueries.graphQLActivityListType;
   void _updateList() =>
       setState(() => _myBookList = _myBookQueries.myBookListActivity);
 
@@ -249,12 +251,15 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                         favorite: _favoriteCase(_selectedFavorite),
                       );
                       _updateList();
+                      break;
                     case Queries.getBook:
                       await _myBookQueries.getBook(id: _textEditId.text);
                       _updateList();
+                      break;
                     case Queries.deleteBook:
                       await _myBookQueries.deleteBook(id: _textEditId.text);
                       _updateList();
+                      break;
                   }
                 }
               },
@@ -275,13 +280,11 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) =>
                             ListTile(
-                                leading:
-                                    Text('Nº:${_myBookList[index].bookNumber}'),
-                                isThreeLine: true,
-                                title: Text(_myBookList[index].title),
+                                leading: Text(_requestTypeList[index]),
+                                title: Text(
+                                    'Nº:${_myBookList[index].bookNumber} ❘ ${_myBookList[index].title}'),
                                 subtitle: Text(
                                   'ID:${_myBookList[index].id}\n${_dateFormat(_myBookList[index].readOn)}',
-                                  //overflow: TextOverflow.ellipsis,
                                 ),
                                 trailing: Text(
                                     'Fav:${_favoriteFormat(_myBookList[index].favorite)}'),
