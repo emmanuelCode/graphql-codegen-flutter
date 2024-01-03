@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -171,12 +173,11 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                   child: TextFormField(
                     decoration: _decoration('id (optional to add data)'),
                     controller: _textEditId,
-                    //TODO FIX VALIDATOR
-                    validator: enabled
-                        ?
-                         (value) => value!.isEmpty && !enabled
+                    validator: (value) =>
+                        (widget.querySelected != Queries.upsertBook &&
+                                value!.isEmpty)
                             ? 'Please enter an id for \'Get\' or \'Delete\''
-                            : null:null,
+                            : null,
                   ),
                 ),
               ],
