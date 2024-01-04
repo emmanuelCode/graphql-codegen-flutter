@@ -3,8 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // hide the JsonSerializable as there is a library conflict with json_annotation
 import 'package:graphql/client.dart' hide JsonSerializable;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:uuid/data.dart';
+import 'package:uuid/rng.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/uuid_util.dart';
 import '../graphql_queries/upsert_book.mutation.graphql.dart';
 import '../graphql_queries/get_book.query.graphql.dart';
 import '../graphql_queries/delete_book.mutation.graphql.dart';
@@ -29,13 +30,13 @@ class MyBook with _$MyBook {
 
 @riverpod
 class MyBookQueries extends _$MyBookQueries {
-  final Uuid uuid = Uuid(options: {'grnd': UuidUtil.cryptoRNG()});
+  final Uuid uuid = Uuid(goptions:  GlobalOptions(CryptoRNG()));
   final List<MyBook> myBookListActivity = [];
   final List<String> graphQLActivityListType = [];
 
   @override
   MyBook build(GraphQLClient client) {
-    debugPrint('${uuid.options}');
+    debugPrint('${uuid.goptions!.rng}');
     return MyBook(
       id: '',
       bookNumber: 0,
