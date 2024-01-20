@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter/GraphQL/Codegen Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
       ),
       home: const MyBookPage(),
     );
