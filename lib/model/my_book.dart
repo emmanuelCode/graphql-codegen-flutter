@@ -16,7 +16,7 @@ part 'my_book.freezed.dart';
 part 'my_book.g.dart';
 
 @freezed
-class MyBook with _$MyBook {
+abstract class MyBook with _$MyBook {
   const factory MyBook({
     required String id,
     required int bookNumber,

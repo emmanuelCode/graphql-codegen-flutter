@@ -4,11 +4,9 @@ import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 
 class Variables$Mutation$upsertMyBook {
-  factory Variables$Mutation$upsertMyBook(
-          {required List<Input$AddMyBookInput> upsertBook}) =>
-      Variables$Mutation$upsertMyBook._({
-        r'upsertBook': upsertBook,
-      });
+  factory Variables$Mutation$upsertMyBook({
+    required List<Input$AddMyBookInput> upsertBook,
+  }) => Variables$Mutation$upsertMyBook._({r'upsertBook': upsertBook});
 
   Variables$Mutation$upsertMyBook._(this._$data);
 
@@ -34,17 +32,14 @@ class Variables$Mutation$upsertMyBook {
   }
 
   CopyWith$Variables$Mutation$upsertMyBook<Variables$Mutation$upsertMyBook>
-      get copyWith => CopyWith$Variables$Mutation$upsertMyBook(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Variables$Mutation$upsertMyBook(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$upsertMyBook) ||
+    if (other is! Variables$Mutation$upsertMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -84,10 +79,7 @@ abstract class CopyWith$Variables$Mutation$upsertMyBook<TRes> {
 
 class _CopyWithImpl$Variables$Mutation$upsertMyBook<TRes>
     implements CopyWith$Variables$Mutation$upsertMyBook<TRes> {
-  _CopyWithImpl$Variables$Mutation$upsertMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Variables$Mutation$upsertMyBook(this._instance, this._then);
 
   final Variables$Mutation$upsertMyBook _instance;
 
@@ -95,12 +87,13 @@ class _CopyWithImpl$Variables$Mutation$upsertMyBook<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? upsertBook = _undefined}) =>
-      _then(Variables$Mutation$upsertMyBook._({
-        ..._instance._$data,
-        if (upsertBook != _undefined && upsertBook != null)
-          'upsertBook': (upsertBook as List<Input$AddMyBookInput>),
-      }));
+  TRes call({Object? upsertBook = _undefined}) => _then(
+    Variables$Mutation$upsertMyBook._({
+      ..._instance._$data,
+      if (upsertBook != _undefined && upsertBook != null)
+        'upsertBook': (upsertBook as List<Input$AddMyBookInput>),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Variables$Mutation$upsertMyBook<TRes>
@@ -113,10 +106,7 @@ class _CopyWithStubImpl$Variables$Mutation$upsertMyBook<TRes>
 }
 
 class Mutation$upsertMyBook {
-  Mutation$upsertMyBook({
-    this.addMyBook,
-    this.$__typename = 'Mutation',
-  });
+  Mutation$upsertMyBook({this.addMyBook, this.$__typename = 'Mutation'});
 
   factory Mutation$upsertMyBook.fromJson(Map<String, dynamic> json) {
     final l$addMyBook = json['addMyBook'];
@@ -125,7 +115,8 @@ class Mutation$upsertMyBook {
       addMyBook: l$addMyBook == null
           ? null
           : Mutation$upsertMyBook$addMyBook.fromJson(
-              (l$addMyBook as Map<String, dynamic>)),
+              (l$addMyBook as Map<String, dynamic>),
+            ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -147,10 +138,7 @@ class Mutation$upsertMyBook {
   int get hashCode {
     final l$addMyBook = addMyBook;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$addMyBook,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$addMyBook, l$$__typename]);
   }
 
   @override
@@ -158,7 +146,7 @@ class Mutation$upsertMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$upsertMyBook) || runtimeType != other.runtimeType) {
+    if (other is! Mutation$upsertMyBook || runtimeType != other.runtimeType) {
       return false;
     }
     final l$addMyBook = addMyBook;
@@ -177,10 +165,7 @@ class Mutation$upsertMyBook {
 
 extension UtilityExtension$Mutation$upsertMyBook on Mutation$upsertMyBook {
   CopyWith$Mutation$upsertMyBook<Mutation$upsertMyBook> get copyWith =>
-      CopyWith$Mutation$upsertMyBook(
-        this,
-        (i) => i,
-      );
+      CopyWith$Mutation$upsertMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$upsertMyBook<TRes> {
@@ -192,19 +177,13 @@ abstract class CopyWith$Mutation$upsertMyBook<TRes> {
   factory CopyWith$Mutation$upsertMyBook.stub(TRes res) =
       _CopyWithStubImpl$Mutation$upsertMyBook;
 
-  TRes call({
-    Mutation$upsertMyBook$addMyBook? addMyBook,
-    String? $__typename,
-  });
+  TRes call({Mutation$upsertMyBook$addMyBook? addMyBook, String? $__typename});
   CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook;
 }
 
 class _CopyWithImpl$Mutation$upsertMyBook<TRes>
     implements CopyWith$Mutation$upsertMyBook<TRes> {
-  _CopyWithImpl$Mutation$upsertMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Mutation$upsertMyBook(this._instance, this._then);
 
   final Mutation$upsertMyBook _instance;
 
@@ -215,22 +194,25 @@ class _CopyWithImpl$Mutation$upsertMyBook<TRes>
   TRes call({
     Object? addMyBook = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$upsertMyBook(
-        addMyBook: addMyBook == _undefined
-            ? _instance.addMyBook
-            : (addMyBook as Mutation$upsertMyBook$addMyBook?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Mutation$upsertMyBook(
+      addMyBook: addMyBook == _undefined
+          ? _instance.addMyBook
+          : (addMyBook as Mutation$upsertMyBook$addMyBook?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 
   CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook {
     final local$addMyBook = _instance.addMyBook;
     return local$addMyBook == null
         ? CopyWith$Mutation$upsertMyBook$addMyBook.stub(_then(_instance))
         : CopyWith$Mutation$upsertMyBook$addMyBook(
-            local$addMyBook, (e) => call(addMyBook: e));
+            local$addMyBook,
+            (e) => call(addMyBook: e),
+          );
   }
 }
 
@@ -240,100 +222,112 @@ class _CopyWithStubImpl$Mutation$upsertMyBook<TRes>
 
   TRes _res;
 
-  call({
-    Mutation$upsertMyBook$addMyBook? addMyBook,
-    String? $__typename,
-  }) =>
+  call({Mutation$upsertMyBook$addMyBook? addMyBook, String? $__typename}) =>
       _res;
 
   CopyWith$Mutation$upsertMyBook$addMyBook<TRes> get addMyBook =>
       CopyWith$Mutation$upsertMyBook$addMyBook.stub(_res);
 }
 
-const documentNodeMutationupsertMyBook = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.mutation,
-    name: NameNode(value: 'upsertMyBook'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'upsertBook')),
-        type: ListTypeNode(
-          type: NamedTypeNode(
-            name: NameNode(value: 'AddMyBookInput'),
+const documentNodeMutationupsertMyBook = DocumentNode(
+  definitions: [
+    OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'upsertMyBook'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+          variable: VariableNode(name: NameNode(value: 'upsertBook')),
+          type: ListTypeNode(
+            type: NamedTypeNode(
+              name: NameNode(value: 'AddMyBookInput'),
+              isNonNull: true,
+            ),
             isNonNull: true,
           ),
-          isNonNull: true,
+          defaultValue: DefaultValueNode(value: null),
+          directives: [],
         ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'addMyBook'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'input'),
-            value: VariableNode(name: NameNode(value: 'upsertBook')),
-          ),
-          ArgumentNode(
-            name: NameNode(value: 'upsert'),
-            value: BooleanValueNode(value: true),
-          ),
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(
+        selections: [
           FieldNode(
-            name: NameNode(value: 'myBook'),
+            name: NameNode(value: 'addMyBook'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'input'),
+                value: VariableNode(name: NameNode(value: 'upsertBook')),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'upsert'),
+                value: BooleanValueNode(value: true),
+              ),
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'bookNumber'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'title'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'readOn'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'favorite'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: '__typename'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-            ]),
+            selectionSet: SelectionSetNode(
+              selections: [
+                FieldNode(
+                  name: NameNode(value: 'myBook'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(
+                    selections: [
+                      FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'bookNumber'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'title'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'readOn'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'favorite'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ],
+                  ),
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ],
+            ),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -342,25 +336,16 @@ const documentNodeMutationupsertMyBook = DocumentNode(definitions: [
             directives: [],
             selectionSet: null,
           ),
-        ]),
+        ],
       ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ]),
-  ),
-]);
-Mutation$upsertMyBook _parserFn$Mutation$upsertMyBook(
-        Map<String, dynamic> data) =>
-    Mutation$upsertMyBook.fromJson(data);
-typedef OnMutationCompleted$Mutation$upsertMyBook = FutureOr<void> Function(
-  Map<String, dynamic>?,
-  Mutation$upsertMyBook?,
+    ),
+  ],
 );
+Mutation$upsertMyBook _parserFn$Mutation$upsertMyBook(
+  Map<String, dynamic> data,
+) => Mutation$upsertMyBook.fromJson(data);
+typedef OnMutationCompleted$Mutation$upsertMyBook =
+    FutureOr<void> Function(Map<String, dynamic>?, Mutation$upsertMyBook?);
 
 class Options$Mutation$upsertMyBook
     extends graphql.MutationOptions<Mutation$upsertMyBook> {
@@ -376,36 +361,36 @@ class Options$Mutation$upsertMyBook
     OnMutationCompleted$Mutation$upsertMyBook? onCompleted,
     graphql.OnMutationUpdate<Mutation$upsertMyBook>? update,
     graphql.OnError? onError,
-  })  : onCompletedWithParsed = onCompleted,
-        super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          onCompleted: onCompleted == null
-              ? null
-              : (data) => onCompleted(
-                    data,
-                    data == null ? null : _parserFn$Mutation$upsertMyBook(data),
-                  ),
-          update: update,
-          onError: onError,
-          document: documentNodeMutationupsertMyBook,
-          parserFn: _parserFn$Mutation$upsertMyBook,
-        );
+  }) : onCompletedWithParsed = onCompleted,
+       super(
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         onCompleted: onCompleted == null
+             ? null
+             : (data) => onCompleted(
+                 data,
+                 data == null ? null : _parserFn$Mutation$upsertMyBook(data),
+               ),
+         update: update,
+         onError: onError,
+         document: documentNodeMutationupsertMyBook,
+         parserFn: _parserFn$Mutation$upsertMyBook,
+       );
 
   final OnMutationCompleted$Mutation$upsertMyBook? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
-        ...super.onCompleted == null
-            ? super.properties
-            : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed,
-      ];
+    ...super.onCompleted == null
+        ? super.properties
+        : super.properties.where((property) => property != onCompleted),
+    onCompletedWithParsed,
+  ];
 }
 
 class WatchOptions$Mutation$upsertMyBook
@@ -424,29 +409,30 @@ class WatchOptions$Mutation$upsertMyBook
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          document: documentNodeMutationupsertMyBook,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
-          parserFn: _parserFn$Mutation$upsertMyBook,
-        );
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         document: documentNodeMutationupsertMyBook,
+         pollInterval: pollInterval,
+         eagerlyFetchResults: eagerlyFetchResults,
+         carryForwardDataOnException: carryForwardDataOnException,
+         fetchResults: fetchResults,
+         parserFn: _parserFn$Mutation$upsertMyBook,
+       );
 }
 
 extension ClientExtension$Mutation$upsertMyBook on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$upsertMyBook>> mutate$upsertMyBook(
-          Options$Mutation$upsertMyBook options) async =>
-      await this.mutate(options);
+    Options$Mutation$upsertMyBook options,
+  ) async => await this.mutate(options);
+
   graphql.ObservableQuery<Mutation$upsertMyBook> watchMutation$upsertMyBook(
-          WatchOptions$Mutation$upsertMyBook options) =>
-      this.watchMutation(options);
+    WatchOptions$Mutation$upsertMyBook options,
+  ) => this.watchMutation(options);
 }
 
 class Mutation$upsertMyBook$addMyBook {
@@ -460,10 +446,13 @@ class Mutation$upsertMyBook$addMyBook {
     final l$$__typename = json['__typename'];
     return Mutation$upsertMyBook$addMyBook(
       myBook: (l$myBook as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Mutation$upsertMyBook$addMyBook$myBook.fromJson(
-                  (e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Mutation$upsertMyBook$addMyBook$myBook.fromJson(
+                    (e as Map<String, dynamic>),
+                  ),
+          )
           .toList(),
       $__typename: (l$$__typename as String),
     );
@@ -497,7 +486,7 @@ class Mutation$upsertMyBook$addMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$upsertMyBook$addMyBook) ||
+    if (other is! Mutation$upsertMyBook$addMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -529,10 +518,7 @@ class Mutation$upsertMyBook$addMyBook {
 extension UtilityExtension$Mutation$upsertMyBook$addMyBook
     on Mutation$upsertMyBook$addMyBook {
   CopyWith$Mutation$upsertMyBook$addMyBook<Mutation$upsertMyBook$addMyBook>
-      get copyWith => CopyWith$Mutation$upsertMyBook$addMyBook(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Mutation$upsertMyBook$addMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
@@ -549,19 +535,20 @@ abstract class CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
     String? $__typename,
   });
   TRes myBook(
-      Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
-              Iterable<
-                  CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
-                      Mutation$upsertMyBook$addMyBook$myBook>?>?)
-          _fn);
+    Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
+      Iterable<
+        CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
+          Mutation$upsertMyBook$addMyBook$myBook
+        >?
+      >?,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Mutation$upsertMyBook$addMyBook<TRes>
     implements CopyWith$Mutation$upsertMyBook$addMyBook<TRes> {
-  _CopyWithImpl$Mutation$upsertMyBook$addMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Mutation$upsertMyBook$addMyBook(this._instance, this._then);
 
   final Mutation$upsertMyBook$addMyBook _instance;
 
@@ -569,32 +556,36 @@ class _CopyWithImpl$Mutation$upsertMyBook$addMyBook<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? myBook = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$upsertMyBook$addMyBook(
-        myBook: myBook == _undefined
-            ? _instance.myBook
-            : (myBook as List<Mutation$upsertMyBook$addMyBook$myBook?>?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  TRes call({Object? myBook = _undefined, Object? $__typename = _undefined}) =>
+      _then(
+        Mutation$upsertMyBook$addMyBook(
+          myBook: myBook == _undefined
+              ? _instance.myBook
+              : (myBook as List<Mutation$upsertMyBook$addMyBook$myBook?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String),
+        ),
+      );
 
   TRes myBook(
-          Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
-                  Iterable<
-                      CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
-                          Mutation$upsertMyBook$addMyBook$myBook>?>?)
-              _fn) =>
-      call(
-          myBook: _fn(_instance.myBook?.map((e) => e == null
-              ? null
-              : CopyWith$Mutation$upsertMyBook$addMyBook$myBook(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Mutation$upsertMyBook$addMyBook$myBook?>? Function(
+      Iterable<
+        CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
+          Mutation$upsertMyBook$addMyBook$myBook
+        >?
+      >?,
+    )
+    _fn,
+  ) => call(
+    myBook: _fn(
+      _instance.myBook?.map(
+        (e) => e == null
+            ? null
+            : CopyWith$Mutation$upsertMyBook$addMyBook$myBook(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 }
 
 class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook<TRes>
@@ -606,8 +597,7 @@ class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook<TRes>
   call({
     List<Mutation$upsertMyBook$addMyBook$myBook?>? myBook,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 
   myBook(_fn) => _res;
 }
@@ -623,7 +613,8 @@ class Mutation$upsertMyBook$addMyBook$myBook {
   });
 
   factory Mutation$upsertMyBook$addMyBook$myBook.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$bookNumber = json['bookNumber'];
     final l$title = json['title'];
@@ -692,7 +683,7 @@ class Mutation$upsertMyBook$addMyBook$myBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$upsertMyBook$addMyBook$myBook) ||
+    if (other is! Mutation$upsertMyBook$addMyBook$myBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -733,11 +724,10 @@ class Mutation$upsertMyBook$addMyBook$myBook {
 extension UtilityExtension$Mutation$upsertMyBook$addMyBook$myBook
     on Mutation$upsertMyBook$addMyBook$myBook {
   CopyWith$Mutation$upsertMyBook$addMyBook$myBook<
-          Mutation$upsertMyBook$addMyBook$myBook>
-      get copyWith => CopyWith$Mutation$upsertMyBook$addMyBook$myBook(
-            this,
-            (i) => i,
-          );
+    Mutation$upsertMyBook$addMyBook$myBook
+  >
+  get copyWith =>
+      CopyWith$Mutation$upsertMyBook$addMyBook$myBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$upsertMyBook$addMyBook$myBook<TRes> {
@@ -779,24 +769,26 @@ class _CopyWithImpl$Mutation$upsertMyBook$addMyBook$myBook<TRes>
     Object? readOn = _undefined,
     Object? favorite = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$upsertMyBook$addMyBook$myBook(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        bookNumber: bookNumber == _undefined || bookNumber == null
-            ? _instance.bookNumber
-            : (bookNumber as int),
-        title: title == _undefined || title == null
-            ? _instance.title
-            : (title as String),
-        readOn: readOn == _undefined || readOn == null
-            ? _instance.readOn
-            : (readOn as DateTime),
-        favorite:
-            favorite == _undefined ? _instance.favorite : (favorite as bool?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Mutation$upsertMyBook$addMyBook$myBook(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      bookNumber: bookNumber == _undefined || bookNumber == null
+          ? _instance.bookNumber
+          : (bookNumber as int),
+      title: title == _undefined || title == null
+          ? _instance.title
+          : (title as String),
+      readOn: readOn == _undefined || readOn == null
+          ? _instance.readOn
+          : (readOn as DateTime),
+      favorite: favorite == _undefined
+          ? _instance.favorite
+          : (favorite as bool?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook$myBook<TRes>
@@ -812,6 +804,5 @@ class _CopyWithStubImpl$Mutation$upsertMyBook$addMyBook$myBook<TRes>
     DateTime? readOn,
     bool? favorite,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }

@@ -24,6 +24,6 @@ return GraphQLClient(
 
 
 @riverpod
-GraphQLClient graphQLClient(GraphQLClientRef ref) {
+GraphQLClient graphQLClient(Ref ref) {
   return graphQLClientInit();
 }

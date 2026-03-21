@@ -4,9 +4,7 @@ import 'package:graphql/client.dart' as graphql;
 
 class Variables$Query$getMyBook {
   factory Variables$Query$getMyBook({required String getBook}) =>
-      Variables$Query$getMyBook._({
-        r'getBook': getBook,
-      });
+      Variables$Query$getMyBook._({r'getBook': getBook});
 
   Variables$Query$getMyBook._(this._$data);
 
@@ -29,17 +27,14 @@ class Variables$Query$getMyBook {
   }
 
   CopyWith$Variables$Query$getMyBook<Variables$Query$getMyBook> get copyWith =>
-      CopyWith$Variables$Query$getMyBook(
-        this,
-        (i) => i,
-      );
+      CopyWith$Variables$Query$getMyBook(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Query$getMyBook) ||
+    if (other is! Variables$Query$getMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -72,10 +67,7 @@ abstract class CopyWith$Variables$Query$getMyBook<TRes> {
 
 class _CopyWithImpl$Variables$Query$getMyBook<TRes>
     implements CopyWith$Variables$Query$getMyBook<TRes> {
-  _CopyWithImpl$Variables$Query$getMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Variables$Query$getMyBook(this._instance, this._then);
 
   final Variables$Query$getMyBook _instance;
 
@@ -83,12 +75,13 @@ class _CopyWithImpl$Variables$Query$getMyBook<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? getBook = _undefined}) =>
-      _then(Variables$Query$getMyBook._({
-        ..._instance._$data,
-        if (getBook != _undefined && getBook != null)
-          'getBook': (getBook as String),
-      }));
+  TRes call({Object? getBook = _undefined}) => _then(
+    Variables$Query$getMyBook._({
+      ..._instance._$data,
+      if (getBook != _undefined && getBook != null)
+        'getBook': (getBook as String),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Variables$Query$getMyBook<TRes>
@@ -101,10 +94,7 @@ class _CopyWithStubImpl$Variables$Query$getMyBook<TRes>
 }
 
 class Query$getMyBook {
-  Query$getMyBook({
-    this.getMyBook,
-    this.$__typename = 'Query',
-  });
+  Query$getMyBook({this.getMyBook, this.$__typename = 'Query'});
 
   factory Query$getMyBook.fromJson(Map<String, dynamic> json) {
     final l$getMyBook = json['getMyBook'];
@@ -113,7 +103,8 @@ class Query$getMyBook {
       getMyBook: l$getMyBook == null
           ? null
           : Query$getMyBook$getMyBook.fromJson(
-              (l$getMyBook as Map<String, dynamic>)),
+              (l$getMyBook as Map<String, dynamic>),
+            ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -135,10 +126,7 @@ class Query$getMyBook {
   int get hashCode {
     final l$getMyBook = getMyBook;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$getMyBook,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$getMyBook, l$$__typename]);
   }
 
   @override
@@ -146,7 +134,7 @@ class Query$getMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$getMyBook) || runtimeType != other.runtimeType) {
+    if (other is! Query$getMyBook || runtimeType != other.runtimeType) {
       return false;
     }
     final l$getMyBook = getMyBook;
@@ -165,10 +153,7 @@ class Query$getMyBook {
 
 extension UtilityExtension$Query$getMyBook on Query$getMyBook {
   CopyWith$Query$getMyBook<Query$getMyBook> get copyWith =>
-      CopyWith$Query$getMyBook(
-        this,
-        (i) => i,
-      );
+      CopyWith$Query$getMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Query$getMyBook<TRes> {
@@ -180,19 +165,13 @@ abstract class CopyWith$Query$getMyBook<TRes> {
   factory CopyWith$Query$getMyBook.stub(TRes res) =
       _CopyWithStubImpl$Query$getMyBook;
 
-  TRes call({
-    Query$getMyBook$getMyBook? getMyBook,
-    String? $__typename,
-  });
+  TRes call({Query$getMyBook$getMyBook? getMyBook, String? $__typename});
   CopyWith$Query$getMyBook$getMyBook<TRes> get getMyBook;
 }
 
 class _CopyWithImpl$Query$getMyBook<TRes>
     implements CopyWith$Query$getMyBook<TRes> {
-  _CopyWithImpl$Query$getMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Query$getMyBook(this._instance, this._then);
 
   final Query$getMyBook _instance;
 
@@ -203,22 +182,25 @@ class _CopyWithImpl$Query$getMyBook<TRes>
   TRes call({
     Object? getMyBook = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Query$getMyBook(
-        getMyBook: getMyBook == _undefined
-            ? _instance.getMyBook
-            : (getMyBook as Query$getMyBook$getMyBook?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Query$getMyBook(
+      getMyBook: getMyBook == _undefined
+          ? _instance.getMyBook
+          : (getMyBook as Query$getMyBook$getMyBook?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 
   CopyWith$Query$getMyBook$getMyBook<TRes> get getMyBook {
     final local$getMyBook = _instance.getMyBook;
     return local$getMyBook == null
         ? CopyWith$Query$getMyBook$getMyBook.stub(_then(_instance))
         : CopyWith$Query$getMyBook$getMyBook(
-            local$getMyBook, (e) => call(getMyBook: e));
+            local$getMyBook,
+            (e) => call(getMyBook: e),
+          );
   }
 }
 
@@ -228,78 +210,84 @@ class _CopyWithStubImpl$Query$getMyBook<TRes>
 
   TRes _res;
 
-  call({
-    Query$getMyBook$getMyBook? getMyBook,
-    String? $__typename,
-  }) =>
-      _res;
+  call({Query$getMyBook$getMyBook? getMyBook, String? $__typename}) => _res;
 
   CopyWith$Query$getMyBook$getMyBook<TRes> get getMyBook =>
       CopyWith$Query$getMyBook$getMyBook.stub(_res);
 }
 
-const documentNodeQuerygetMyBook = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'getMyBook'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'getBook')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'String'),
-          isNonNull: true,
+const documentNodeQuerygetMyBook = DocumentNode(
+  definitions: [
+    OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'getMyBook'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+          variable: VariableNode(name: NameNode(value: 'getBook')),
+          type: NamedTypeNode(name: NameNode(value: 'String'), isNonNull: true),
+          defaultValue: DefaultValueNode(value: null),
+          directives: [],
         ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'getMyBook'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'id'),
-            value: VariableNode(name: NameNode(value: 'getBook')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(
+        selections: [
           FieldNode(
-            name: NameNode(value: 'id'),
+            name: NameNode(value: 'getMyBook'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'id'),
+                value: VariableNode(name: NameNode(value: 'getBook')),
+              ),
+            ],
             directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'bookNumber'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'title'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'readOn'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'favorite'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
+            selectionSet: SelectionSetNode(
+              selections: [
+                FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: 'bookNumber'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: 'title'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: 'readOn'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: 'favorite'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ],
+            ),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -308,24 +296,15 @@ const documentNodeQuerygetMyBook = DocumentNode(definitions: [
             directives: [],
             selectionSet: null,
           ),
-        ]),
+        ],
       ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ]),
-  ),
-]);
+    ),
+  ],
+);
 Query$getMyBook _parserFn$Query$getMyBook(Map<String, dynamic> data) =>
     Query$getMyBook.fromJson(data);
-typedef OnQueryComplete$Query$getMyBook = FutureOr<void> Function(
-  Map<String, dynamic>?,
-  Query$getMyBook?,
-);
+typedef OnQueryComplete$Query$getMyBook =
+    FutureOr<void> Function(Map<String, dynamic>?, Query$getMyBook?);
 
 class Options$Query$getMyBook extends graphql.QueryOptions<Query$getMyBook> {
   Options$Query$getMyBook({
@@ -340,36 +319,36 @@ class Options$Query$getMyBook extends graphql.QueryOptions<Query$getMyBook> {
     graphql.Context? context,
     OnQueryComplete$Query$getMyBook? onComplete,
     graphql.OnQueryError? onError,
-  })  : onCompleteWithParsed = onComplete,
-        super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
-          onComplete: onComplete == null
-              ? null
-              : (data) => onComplete(
-                    data,
-                    data == null ? null : _parserFn$Query$getMyBook(data),
-                  ),
-          onError: onError,
-          document: documentNodeQuerygetMyBook,
-          parserFn: _parserFn$Query$getMyBook,
-        );
+  }) : onCompleteWithParsed = onComplete,
+       super(
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         pollInterval: pollInterval,
+         context: context,
+         onComplete: onComplete == null
+             ? null
+             : (data) => onComplete(
+                 data,
+                 data == null ? null : _parserFn$Query$getMyBook(data),
+               ),
+         onError: onError,
+         document: documentNodeQuerygetMyBook,
+         parserFn: _parserFn$Query$getMyBook,
+       );
 
   final OnQueryComplete$Query$getMyBook? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-        ...super.onComplete == null
-            ? super.properties
-            : super.properties.where((property) => property != onComplete),
-        onCompleteWithParsed,
-      ];
+    ...super.onComplete == null
+        ? super.properties
+        : super.properties.where((property) => property != onComplete),
+    onCompleteWithParsed,
+  ];
 }
 
 class WatchOptions$Query$getMyBook
@@ -388,20 +367,20 @@ class WatchOptions$Query$getMyBook
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          document: documentNodeQuerygetMyBook,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
-          parserFn: _parserFn$Query$getMyBook,
-        );
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         document: documentNodeQuerygetMyBook,
+         pollInterval: pollInterval,
+         eagerlyFetchResults: eagerlyFetchResults,
+         carryForwardDataOnException: carryForwardDataOnException,
+         fetchResults: fetchResults,
+         parserFn: _parserFn$Query$getMyBook,
+       );
 }
 
 class FetchMoreOptions$Query$getMyBook extends graphql.FetchMoreOptions {
@@ -409,32 +388,34 @@ class FetchMoreOptions$Query$getMyBook extends graphql.FetchMoreOptions {
     required graphql.UpdateQuery updateQuery,
     required Variables$Query$getMyBook variables,
   }) : super(
-          updateQuery: updateQuery,
-          variables: variables.toJson(),
-          document: documentNodeQuerygetMyBook,
-        );
+         updateQuery: updateQuery,
+         variables: variables.toJson(),
+         document: documentNodeQuerygetMyBook,
+       );
 }
 
 extension ClientExtension$Query$getMyBook on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$getMyBook>> query$getMyBook(
-          Options$Query$getMyBook options) async =>
-      await this.query(options);
+    Options$Query$getMyBook options,
+  ) async => await this.query(options);
+
   graphql.ObservableQuery<Query$getMyBook> watchQuery$getMyBook(
-          WatchOptions$Query$getMyBook options) =>
-      this.watchQuery(options);
+    WatchOptions$Query$getMyBook options,
+  ) => this.watchQuery(options);
+
   void writeQuery$getMyBook({
     required Query$getMyBook data,
     required Variables$Query$getMyBook variables,
     bool broadcast = true,
-  }) =>
-      this.writeQuery(
-        graphql.Request(
-          operation: graphql.Operation(document: documentNodeQuerygetMyBook),
-          variables: variables.toJson(),
-        ),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
+  }) => this.writeQuery(
+    graphql.Request(
+      operation: graphql.Operation(document: documentNodeQuerygetMyBook),
+      variables: variables.toJson(),
+    ),
+    data: data.toJson(),
+    broadcast: broadcast,
+  );
+
   Query$getMyBook? readQuery$getMyBook({
     required Variables$Query$getMyBook variables,
     bool optimistic = true,
@@ -529,7 +510,7 @@ class Query$getMyBook$getMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$getMyBook$getMyBook) ||
+    if (other is! Query$getMyBook$getMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -570,10 +551,7 @@ class Query$getMyBook$getMyBook {
 extension UtilityExtension$Query$getMyBook$getMyBook
     on Query$getMyBook$getMyBook {
   CopyWith$Query$getMyBook$getMyBook<Query$getMyBook$getMyBook> get copyWith =>
-      CopyWith$Query$getMyBook$getMyBook(
-        this,
-        (i) => i,
-      );
+      CopyWith$Query$getMyBook$getMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Query$getMyBook$getMyBook<TRes> {
@@ -597,10 +575,7 @@ abstract class CopyWith$Query$getMyBook$getMyBook<TRes> {
 
 class _CopyWithImpl$Query$getMyBook$getMyBook<TRes>
     implements CopyWith$Query$getMyBook$getMyBook<TRes> {
-  _CopyWithImpl$Query$getMyBook$getMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Query$getMyBook$getMyBook(this._instance, this._then);
 
   final Query$getMyBook$getMyBook _instance;
 
@@ -615,24 +590,26 @@ class _CopyWithImpl$Query$getMyBook$getMyBook<TRes>
     Object? readOn = _undefined,
     Object? favorite = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Query$getMyBook$getMyBook(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        bookNumber: bookNumber == _undefined || bookNumber == null
-            ? _instance.bookNumber
-            : (bookNumber as int),
-        title: title == _undefined || title == null
-            ? _instance.title
-            : (title as String),
-        readOn: readOn == _undefined || readOn == null
-            ? _instance.readOn
-            : (readOn as DateTime),
-        favorite:
-            favorite == _undefined ? _instance.favorite : (favorite as bool?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Query$getMyBook$getMyBook(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      bookNumber: bookNumber == _undefined || bookNumber == null
+          ? _instance.bookNumber
+          : (bookNumber as int),
+      title: title == _undefined || title == null
+          ? _instance.title
+          : (title as String),
+      readOn: readOn == _undefined || readOn == null
+          ? _instance.readOn
+          : (readOn as DateTime),
+      favorite: favorite == _undefined
+          ? _instance.favorite
+          : (favorite as bool?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Query$getMyBook$getMyBook<TRes>
@@ -648,6 +625,5 @@ class _CopyWithStubImpl$Query$getMyBook$getMyBook<TRes>
     DateTime? readOn,
     bool? favorite,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }

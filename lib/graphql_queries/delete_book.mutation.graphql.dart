@@ -4,19 +4,18 @@ import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 
 class Variables$Mutation$deleteMyBook {
-  factory Variables$Mutation$deleteMyBook(
-          {required Input$MyBookFilter deleteBook}) =>
-      Variables$Mutation$deleteMyBook._({
-        r'deleteBook': deleteBook,
-      });
+  factory Variables$Mutation$deleteMyBook({
+    required Input$MyBookFilter deleteBook,
+  }) => Variables$Mutation$deleteMyBook._({r'deleteBook': deleteBook});
 
   Variables$Mutation$deleteMyBook._(this._$data);
 
   factory Variables$Mutation$deleteMyBook.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$deleteBook = data['deleteBook'];
-    result$data['deleteBook'] =
-        Input$MyBookFilter.fromJson((l$deleteBook as Map<String, dynamic>));
+    result$data['deleteBook'] = Input$MyBookFilter.fromJson(
+      (l$deleteBook as Map<String, dynamic>),
+    );
     return Variables$Mutation$deleteMyBook._(result$data);
   }
 
@@ -33,17 +32,14 @@ class Variables$Mutation$deleteMyBook {
   }
 
   CopyWith$Variables$Mutation$deleteMyBook<Variables$Mutation$deleteMyBook>
-      get copyWith => CopyWith$Variables$Mutation$deleteMyBook(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Variables$Mutation$deleteMyBook(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$deleteMyBook) ||
+    if (other is! Variables$Mutation$deleteMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -76,10 +72,7 @@ abstract class CopyWith$Variables$Mutation$deleteMyBook<TRes> {
 
 class _CopyWithImpl$Variables$Mutation$deleteMyBook<TRes>
     implements CopyWith$Variables$Mutation$deleteMyBook<TRes> {
-  _CopyWithImpl$Variables$Mutation$deleteMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Variables$Mutation$deleteMyBook(this._instance, this._then);
 
   final Variables$Mutation$deleteMyBook _instance;
 
@@ -87,12 +80,13 @@ class _CopyWithImpl$Variables$Mutation$deleteMyBook<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? deleteBook = _undefined}) =>
-      _then(Variables$Mutation$deleteMyBook._({
-        ..._instance._$data,
-        if (deleteBook != _undefined && deleteBook != null)
-          'deleteBook': (deleteBook as Input$MyBookFilter),
-      }));
+  TRes call({Object? deleteBook = _undefined}) => _then(
+    Variables$Mutation$deleteMyBook._({
+      ..._instance._$data,
+      if (deleteBook != _undefined && deleteBook != null)
+        'deleteBook': (deleteBook as Input$MyBookFilter),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Variables$Mutation$deleteMyBook<TRes>
@@ -105,10 +99,7 @@ class _CopyWithStubImpl$Variables$Mutation$deleteMyBook<TRes>
 }
 
 class Mutation$deleteMyBook {
-  Mutation$deleteMyBook({
-    this.deleteMyBook,
-    this.$__typename = 'Mutation',
-  });
+  Mutation$deleteMyBook({this.deleteMyBook, this.$__typename = 'Mutation'});
 
   factory Mutation$deleteMyBook.fromJson(Map<String, dynamic> json) {
     final l$deleteMyBook = json['deleteMyBook'];
@@ -117,7 +108,8 @@ class Mutation$deleteMyBook {
       deleteMyBook: l$deleteMyBook == null
           ? null
           : Mutation$deleteMyBook$deleteMyBook.fromJson(
-              (l$deleteMyBook as Map<String, dynamic>)),
+              (l$deleteMyBook as Map<String, dynamic>),
+            ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -139,10 +131,7 @@ class Mutation$deleteMyBook {
   int get hashCode {
     final l$deleteMyBook = deleteMyBook;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$deleteMyBook,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$deleteMyBook, l$$__typename]);
   }
 
   @override
@@ -150,7 +139,7 @@ class Mutation$deleteMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$deleteMyBook) || runtimeType != other.runtimeType) {
+    if (other is! Mutation$deleteMyBook || runtimeType != other.runtimeType) {
       return false;
     }
     final l$deleteMyBook = deleteMyBook;
@@ -169,10 +158,7 @@ class Mutation$deleteMyBook {
 
 extension UtilityExtension$Mutation$deleteMyBook on Mutation$deleteMyBook {
   CopyWith$Mutation$deleteMyBook<Mutation$deleteMyBook> get copyWith =>
-      CopyWith$Mutation$deleteMyBook(
-        this,
-        (i) => i,
-      );
+      CopyWith$Mutation$deleteMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$deleteMyBook<TRes> {
@@ -193,10 +179,7 @@ abstract class CopyWith$Mutation$deleteMyBook<TRes> {
 
 class _CopyWithImpl$Mutation$deleteMyBook<TRes>
     implements CopyWith$Mutation$deleteMyBook<TRes> {
-  _CopyWithImpl$Mutation$deleteMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Mutation$deleteMyBook(this._instance, this._then);
 
   final Mutation$deleteMyBook _instance;
 
@@ -207,22 +190,25 @@ class _CopyWithImpl$Mutation$deleteMyBook<TRes>
   TRes call({
     Object? deleteMyBook = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$deleteMyBook(
-        deleteMyBook: deleteMyBook == _undefined
-            ? _instance.deleteMyBook
-            : (deleteMyBook as Mutation$deleteMyBook$deleteMyBook?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Mutation$deleteMyBook(
+      deleteMyBook: deleteMyBook == _undefined
+          ? _instance.deleteMyBook
+          : (deleteMyBook as Mutation$deleteMyBook$deleteMyBook?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 
   CopyWith$Mutation$deleteMyBook$deleteMyBook<TRes> get deleteMyBook {
     final local$deleteMyBook = _instance.deleteMyBook;
     return local$deleteMyBook == null
         ? CopyWith$Mutation$deleteMyBook$deleteMyBook.stub(_then(_instance))
         : CopyWith$Mutation$deleteMyBook$deleteMyBook(
-            local$deleteMyBook, (e) => call(deleteMyBook: e));
+            local$deleteMyBook,
+            (e) => call(deleteMyBook: e),
+          );
   }
 }
 
@@ -235,97 +221,111 @@ class _CopyWithStubImpl$Mutation$deleteMyBook<TRes>
   call({
     Mutation$deleteMyBook$deleteMyBook? deleteMyBook,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Mutation$deleteMyBook$deleteMyBook<TRes> get deleteMyBook =>
       CopyWith$Mutation$deleteMyBook$deleteMyBook.stub(_res);
 }
 
-const documentNodeMutationdeleteMyBook = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.mutation,
-    name: NameNode(value: 'deleteMyBook'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'deleteBook')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'MyBookFilter'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'deleteMyBook'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'filter'),
-            value: VariableNode(name: NameNode(value: 'deleteBook')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'msg'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
+const documentNodeMutationdeleteMyBook = DocumentNode(
+  definitions: [
+    OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'deleteMyBook'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+          variable: VariableNode(name: NameNode(value: 'deleteBook')),
+          type: NamedTypeNode(
+            name: NameNode(value: 'MyBookFilter'),
+            isNonNull: true,
           ),
+          defaultValue: DefaultValueNode(value: null),
+          directives: [],
+        ),
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(
+        selections: [
           FieldNode(
-            name: NameNode(value: 'myBook'),
+            name: NameNode(value: 'deleteMyBook'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'filter'),
+                value: VariableNode(name: NameNode(value: 'deleteBook')),
+              ),
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'bookNumber'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'title'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'readOn'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'favorite'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: '__typename'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-            ]),
+            selectionSet: SelectionSetNode(
+              selections: [
+                FieldNode(
+                  name: NameNode(value: 'msg'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                FieldNode(
+                  name: NameNode(value: 'myBook'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(
+                    selections: [
+                      FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'bookNumber'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'title'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'readOn'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'favorite'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ],
+                  ),
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ],
+            ),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -334,25 +334,16 @@ const documentNodeMutationdeleteMyBook = DocumentNode(definitions: [
             directives: [],
             selectionSet: null,
           ),
-        ]),
+        ],
       ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ]),
-  ),
-]);
-Mutation$deleteMyBook _parserFn$Mutation$deleteMyBook(
-        Map<String, dynamic> data) =>
-    Mutation$deleteMyBook.fromJson(data);
-typedef OnMutationCompleted$Mutation$deleteMyBook = FutureOr<void> Function(
-  Map<String, dynamic>?,
-  Mutation$deleteMyBook?,
+    ),
+  ],
 );
+Mutation$deleteMyBook _parserFn$Mutation$deleteMyBook(
+  Map<String, dynamic> data,
+) => Mutation$deleteMyBook.fromJson(data);
+typedef OnMutationCompleted$Mutation$deleteMyBook =
+    FutureOr<void> Function(Map<String, dynamic>?, Mutation$deleteMyBook?);
 
 class Options$Mutation$deleteMyBook
     extends graphql.MutationOptions<Mutation$deleteMyBook> {
@@ -368,36 +359,36 @@ class Options$Mutation$deleteMyBook
     OnMutationCompleted$Mutation$deleteMyBook? onCompleted,
     graphql.OnMutationUpdate<Mutation$deleteMyBook>? update,
     graphql.OnError? onError,
-  })  : onCompletedWithParsed = onCompleted,
-        super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          onCompleted: onCompleted == null
-              ? null
-              : (data) => onCompleted(
-                    data,
-                    data == null ? null : _parserFn$Mutation$deleteMyBook(data),
-                  ),
-          update: update,
-          onError: onError,
-          document: documentNodeMutationdeleteMyBook,
-          parserFn: _parserFn$Mutation$deleteMyBook,
-        );
+  }) : onCompletedWithParsed = onCompleted,
+       super(
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         onCompleted: onCompleted == null
+             ? null
+             : (data) => onCompleted(
+                 data,
+                 data == null ? null : _parserFn$Mutation$deleteMyBook(data),
+               ),
+         update: update,
+         onError: onError,
+         document: documentNodeMutationdeleteMyBook,
+         parserFn: _parserFn$Mutation$deleteMyBook,
+       );
 
   final OnMutationCompleted$Mutation$deleteMyBook? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
-        ...super.onCompleted == null
-            ? super.properties
-            : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed,
-      ];
+    ...super.onCompleted == null
+        ? super.properties
+        : super.properties.where((property) => property != onCompleted),
+    onCompletedWithParsed,
+  ];
 }
 
 class WatchOptions$Mutation$deleteMyBook
@@ -416,29 +407,30 @@ class WatchOptions$Mutation$deleteMyBook
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          variables: variables.toJson(),
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          document: documentNodeMutationdeleteMyBook,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
-          parserFn: _parserFn$Mutation$deleteMyBook,
-        );
+         variables: variables.toJson(),
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         document: documentNodeMutationdeleteMyBook,
+         pollInterval: pollInterval,
+         eagerlyFetchResults: eagerlyFetchResults,
+         carryForwardDataOnException: carryForwardDataOnException,
+         fetchResults: fetchResults,
+         parserFn: _parserFn$Mutation$deleteMyBook,
+       );
 }
 
 extension ClientExtension$Mutation$deleteMyBook on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$deleteMyBook>> mutate$deleteMyBook(
-          Options$Mutation$deleteMyBook options) async =>
-      await this.mutate(options);
+    Options$Mutation$deleteMyBook options,
+  ) async => await this.mutate(options);
+
   graphql.ObservableQuery<Mutation$deleteMyBook> watchMutation$deleteMyBook(
-          WatchOptions$Mutation$deleteMyBook options) =>
-      this.watchMutation(options);
+    WatchOptions$Mutation$deleteMyBook options,
+  ) => this.watchMutation(options);
 }
 
 class Mutation$deleteMyBook$deleteMyBook {
@@ -449,17 +441,21 @@ class Mutation$deleteMyBook$deleteMyBook {
   });
 
   factory Mutation$deleteMyBook$deleteMyBook.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$msg = json['msg'];
     final l$myBook = json['myBook'];
     final l$$__typename = json['__typename'];
     return Mutation$deleteMyBook$deleteMyBook(
       msg: (l$msg as String?),
       myBook: (l$myBook as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Mutation$deleteMyBook$deleteMyBook$myBook.fromJson(
-                  (e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Mutation$deleteMyBook$deleteMyBook$myBook.fromJson(
+                    (e as Map<String, dynamic>),
+                  ),
+          )
           .toList(),
       $__typename: (l$$__typename as String),
     );
@@ -499,7 +495,7 @@ class Mutation$deleteMyBook$deleteMyBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$deleteMyBook$deleteMyBook) ||
+    if (other is! Mutation$deleteMyBook$deleteMyBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -536,11 +532,9 @@ class Mutation$deleteMyBook$deleteMyBook {
 extension UtilityExtension$Mutation$deleteMyBook$deleteMyBook
     on Mutation$deleteMyBook$deleteMyBook {
   CopyWith$Mutation$deleteMyBook$deleteMyBook<
-          Mutation$deleteMyBook$deleteMyBook>
-      get copyWith => CopyWith$Mutation$deleteMyBook$deleteMyBook(
-            this,
-            (i) => i,
-          );
+    Mutation$deleteMyBook$deleteMyBook
+  >
+  get copyWith => CopyWith$Mutation$deleteMyBook$deleteMyBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$deleteMyBook$deleteMyBook<TRes> {
@@ -558,19 +552,20 @@ abstract class CopyWith$Mutation$deleteMyBook$deleteMyBook<TRes> {
     String? $__typename,
   });
   TRes myBook(
-      Iterable<Mutation$deleteMyBook$deleteMyBook$myBook?>? Function(
-              Iterable<
-                  CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<
-                      Mutation$deleteMyBook$deleteMyBook$myBook>?>?)
-          _fn);
+    Iterable<Mutation$deleteMyBook$deleteMyBook$myBook?>? Function(
+      Iterable<
+        CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<
+          Mutation$deleteMyBook$deleteMyBook$myBook
+        >?
+      >?,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Mutation$deleteMyBook$deleteMyBook<TRes>
     implements CopyWith$Mutation$deleteMyBook$deleteMyBook<TRes> {
-  _CopyWithImpl$Mutation$deleteMyBook$deleteMyBook(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Mutation$deleteMyBook$deleteMyBook(this._instance, this._then);
 
   final Mutation$deleteMyBook$deleteMyBook _instance;
 
@@ -582,30 +577,36 @@ class _CopyWithImpl$Mutation$deleteMyBook$deleteMyBook<TRes>
     Object? msg = _undefined,
     Object? myBook = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$deleteMyBook$deleteMyBook(
-        msg: msg == _undefined ? _instance.msg : (msg as String?),
-        myBook: myBook == _undefined
-            ? _instance.myBook
-            : (myBook as List<Mutation$deleteMyBook$deleteMyBook$myBook?>?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Mutation$deleteMyBook$deleteMyBook(
+      msg: msg == _undefined ? _instance.msg : (msg as String?),
+      myBook: myBook == _undefined
+          ? _instance.myBook
+          : (myBook as List<Mutation$deleteMyBook$deleteMyBook$myBook?>?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 
   TRes myBook(
-          Iterable<Mutation$deleteMyBook$deleteMyBook$myBook?>? Function(
-                  Iterable<
-                      CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<
-                          Mutation$deleteMyBook$deleteMyBook$myBook>?>?)
-              _fn) =>
-      call(
-          myBook: _fn(_instance.myBook?.map((e) => e == null
-              ? null
-              : CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Mutation$deleteMyBook$deleteMyBook$myBook?>? Function(
+      Iterable<
+        CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<
+          Mutation$deleteMyBook$deleteMyBook$myBook
+        >?
+      >?,
+    )
+    _fn,
+  ) => call(
+    myBook: _fn(
+      _instance.myBook?.map(
+        (e) => e == null
+            ? null
+            : CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 }
 
 class _CopyWithStubImpl$Mutation$deleteMyBook$deleteMyBook<TRes>
@@ -618,8 +619,7 @@ class _CopyWithStubImpl$Mutation$deleteMyBook$deleteMyBook<TRes>
     String? msg,
     List<Mutation$deleteMyBook$deleteMyBook$myBook?>? myBook,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 
   myBook(_fn) => _res;
 }
@@ -635,7 +635,8 @@ class Mutation$deleteMyBook$deleteMyBook$myBook {
   });
 
   factory Mutation$deleteMyBook$deleteMyBook$myBook.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$bookNumber = json['bookNumber'];
     final l$title = json['title'];
@@ -704,7 +705,7 @@ class Mutation$deleteMyBook$deleteMyBook$myBook {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$deleteMyBook$deleteMyBook$myBook) ||
+    if (other is! Mutation$deleteMyBook$deleteMyBook$myBook ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -745,11 +746,10 @@ class Mutation$deleteMyBook$deleteMyBook$myBook {
 extension UtilityExtension$Mutation$deleteMyBook$deleteMyBook$myBook
     on Mutation$deleteMyBook$deleteMyBook$myBook {
   CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<
-          Mutation$deleteMyBook$deleteMyBook$myBook>
-      get copyWith => CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook(
-            this,
-            (i) => i,
-          );
+    Mutation$deleteMyBook$deleteMyBook$myBook
+  >
+  get copyWith =>
+      CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook(this, (i) => i);
 }
 
 abstract class CopyWith$Mutation$deleteMyBook$deleteMyBook$myBook<TRes> {
@@ -791,24 +791,26 @@ class _CopyWithImpl$Mutation$deleteMyBook$deleteMyBook$myBook<TRes>
     Object? readOn = _undefined,
     Object? favorite = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$deleteMyBook$deleteMyBook$myBook(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        bookNumber: bookNumber == _undefined || bookNumber == null
-            ? _instance.bookNumber
-            : (bookNumber as int),
-        title: title == _undefined || title == null
-            ? _instance.title
-            : (title as String),
-        readOn: readOn == _undefined || readOn == null
-            ? _instance.readOn
-            : (readOn as DateTime),
-        favorite:
-            favorite == _undefined ? _instance.favorite : (favorite as bool?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Mutation$deleteMyBook$deleteMyBook$myBook(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      bookNumber: bookNumber == _undefined || bookNumber == null
+          ? _instance.bookNumber
+          : (bookNumber as int),
+      title: title == _undefined || title == null
+          ? _instance.title
+          : (title as String),
+      readOn: readOn == _undefined || readOn == null
+          ? _instance.readOn
+          : (readOn as DateTime),
+      favorite: favorite == _undefined
+          ? _instance.favorite
+          : (favorite as bool?),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Mutation$deleteMyBook$deleteMyBook$myBook<TRes>
@@ -824,6 +826,5 @@ class _CopyWithStubImpl$Mutation$deleteMyBook$deleteMyBook$myBook<TRes>
     DateTime? readOn,
     bool? favorite,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }

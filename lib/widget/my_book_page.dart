@@ -139,7 +139,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   // riverpod variables for queries, activity list and requestTypeList
   late final _graphQLClient = ref.watch(graphQLClientProvider);
   late final _myBookQueries =
-      ref.watch(MyBookQueriesProvider(_graphQLClient).notifier);
+      ref.watch(myBookQueriesProvider(_graphQLClient).notifier);
   late List<MyBook> _myBookList = _myBookQueries.myBookListActivity;
   late final List<String> _requestTypeList =
       _myBookQueries.graphQLActivityListType;

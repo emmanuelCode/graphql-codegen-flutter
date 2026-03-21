@@ -5,14 +5,13 @@ class Input$AddMyBookInput {
     required String title,
     required DateTime readOn,
     bool? favorite,
-  }) =>
-      Input$AddMyBookInput._({
-        r'id': id,
-        r'bookNumber': bookNumber,
-        r'title': title,
-        r'readOn': readOn,
-        if (favorite != null) r'favorite': favorite,
-      });
+  }) => Input$AddMyBookInput._({
+    r'id': id,
+    r'bookNumber': bookNumber,
+    r'title': title,
+    r'readOn': readOn,
+    if (favorite != null) r'favorite': favorite,
+  });
 
   Input$AddMyBookInput._(this._$data);
 
@@ -63,17 +62,14 @@ class Input$AddMyBookInput {
   }
 
   CopyWith$Input$AddMyBookInput<Input$AddMyBookInput> get copyWith =>
-      CopyWith$Input$AddMyBookInput(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$AddMyBookInput(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$AddMyBookInput) || runtimeType != other.runtimeType) {
+    if (other is! Input$AddMyBookInput || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -145,10 +141,7 @@ abstract class CopyWith$Input$AddMyBookInput<TRes> {
 
 class _CopyWithImpl$Input$AddMyBookInput<TRes>
     implements CopyWith$Input$AddMyBookInput<TRes> {
-  _CopyWithImpl$Input$AddMyBookInput(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$AddMyBookInput(this._instance, this._then);
 
   final Input$AddMyBookInput _instance;
 
@@ -162,17 +155,18 @@ class _CopyWithImpl$Input$AddMyBookInput<TRes>
     Object? title = _undefined,
     Object? readOn = _undefined,
     Object? favorite = _undefined,
-  }) =>
-      _then(Input$AddMyBookInput._({
-        ..._instance._$data,
-        if (id != _undefined && id != null) 'id': (id as String),
-        if (bookNumber != _undefined && bookNumber != null)
-          'bookNumber': (bookNumber as int),
-        if (title != _undefined && title != null) 'title': (title as String),
-        if (readOn != _undefined && readOn != null)
-          'readOn': (readOn as DateTime),
-        if (favorite != _undefined) 'favorite': (favorite as bool?),
-      }));
+  }) => _then(
+    Input$AddMyBookInput._({
+      ..._instance._$data,
+      if (id != _undefined && id != null) 'id': (id as String),
+      if (bookNumber != _undefined && bookNumber != null)
+        'bookNumber': (bookNumber as int),
+      if (title != _undefined && title != null) 'title': (title as String),
+      if (readOn != _undefined && readOn != null)
+        'readOn': (readOn as DateTime),
+      if (favorite != _undefined) 'favorite': (favorite as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$AddMyBookInput<TRes>
@@ -187,8 +181,7 @@ class _CopyWithStubImpl$Input$AddMyBookInput<TRes>
     String? title,
     DateTime? readOn,
     bool? favorite,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Input$AuthRule {
@@ -197,13 +190,12 @@ class Input$AuthRule {
     List<Input$AuthRule?>? or,
     Input$AuthRule? not,
     String? rule,
-  }) =>
-      Input$AuthRule._({
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-        if (rule != null) r'rule': rule,
-      });
+  }) => Input$AuthRule._({
+    if (and != null) r'and': and,
+    if (or != null) r'or': or,
+    if (not != null) r'not': not,
+    if (rule != null) r'rule': rule,
+  });
 
   Input$AuthRule._(this._$data);
 
@@ -212,17 +204,21 @@ class Input$AuthRule {
     if (data.containsKey('and')) {
       final l$and = data['and'];
       result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Input$AuthRule.fromJson((e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Input$AuthRule.fromJson((e as Map<String, dynamic>)),
+          )
           .toList();
     }
     if (data.containsKey('or')) {
       final l$or = data['or'];
       result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Input$AuthRule.fromJson((e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Input$AuthRule.fromJson((e as Map<String, dynamic>)),
+          )
           .toList();
     }
     if (data.containsKey('not')) {
@@ -270,17 +266,14 @@ class Input$AuthRule {
   }
 
   CopyWith$Input$AuthRule<Input$AuthRule> get copyWith =>
-      CopyWith$Input$AuthRule(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$AuthRule(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$AuthRule) || runtimeType != other.runtimeType) {
+    if (other is! Input$AuthRule || runtimeType != other.runtimeType) {
       return false;
     }
     final l$and = and;
@@ -349,13 +342,13 @@ class Input$AuthRule {
     return Object.hashAll([
       _$data.containsKey('and')
           ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
+                ? null
+                : Object.hashAll(l$and.map((v) => v))
           : const {},
       _$data.containsKey('or')
           ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
+                ? null
+                : Object.hashAll(l$or.map((v) => v))
           : const {},
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('rule') ? l$rule : const {},
@@ -379,22 +372,23 @@ abstract class CopyWith$Input$AuthRule<TRes> {
     String? rule,
   });
   TRes and(
-      Iterable<Input$AuthRule?>? Function(
-              Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?)
-          _fn);
+    Iterable<Input$AuthRule?>? Function(
+      Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?,
+    )
+    _fn,
+  );
   TRes or(
-      Iterable<Input$AuthRule?>? Function(
-              Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?)
-          _fn);
+    Iterable<Input$AuthRule?>? Function(
+      Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?,
+    )
+    _fn,
+  );
   CopyWith$Input$AuthRule<TRes> get not;
 }
 
 class _CopyWithImpl$Input$AuthRule<TRes>
     implements CopyWith$Input$AuthRule<TRes> {
-  _CopyWithImpl$Input$AuthRule(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$AuthRule(this._instance, this._then);
 
   final Input$AuthRule _instance;
 
@@ -407,38 +401,41 @@ class _CopyWithImpl$Input$AuthRule<TRes>
     Object? or = _undefined,
     Object? not = _undefined,
     Object? rule = _undefined,
-  }) =>
-      _then(Input$AuthRule._({
-        ..._instance._$data,
-        if (and != _undefined) 'and': (and as List<Input$AuthRule?>?),
-        if (or != _undefined) 'or': (or as List<Input$AuthRule?>?),
-        if (not != _undefined) 'not': (not as Input$AuthRule?),
-        if (rule != _undefined) 'rule': (rule as String?),
-      }));
+  }) => _then(
+    Input$AuthRule._({
+      ..._instance._$data,
+      if (and != _undefined) 'and': (and as List<Input$AuthRule?>?),
+      if (or != _undefined) 'or': (or as List<Input$AuthRule?>?),
+      if (not != _undefined) 'not': (not as Input$AuthRule?),
+      if (rule != _undefined) 'rule': (rule as String?),
+    }),
+  );
 
   TRes and(
-          Iterable<Input$AuthRule?>? Function(
-                  Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?)
-              _fn) =>
-      call(
-          and: _fn(_instance.and?.map((e) => e == null
-              ? null
-              : CopyWith$Input$AuthRule(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Input$AuthRule?>? Function(
+      Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?,
+    )
+    _fn,
+  ) => call(
+    and: _fn(
+      _instance.and?.map(
+        (e) => e == null ? null : CopyWith$Input$AuthRule(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 
   TRes or(
-          Iterable<Input$AuthRule?>? Function(
-                  Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or?.map((e) => e == null
-              ? null
-              : CopyWith$Input$AuthRule(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Input$AuthRule?>? Function(
+      Iterable<CopyWith$Input$AuthRule<Input$AuthRule>?>?,
+    )
+    _fn,
+  ) => call(
+    or: _fn(
+      _instance.or?.map(
+        (e) => e == null ? null : CopyWith$Input$AuthRule(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 
   CopyWith$Input$AuthRule<TRes> get not {
     final local$not = _instance.not;
@@ -459,8 +456,7 @@ class _CopyWithStubImpl$Input$AuthRule<TRes>
     List<Input$AuthRule?>? or,
     Input$AuthRule? not,
     String? rule,
-  }) =>
-      _res;
+  }) => _res;
 
   and(_fn) => _res;
 
@@ -473,11 +469,10 @@ class Input$ContainsFilter {
   factory Input$ContainsFilter({
     Input$PointRef? point,
     Input$PolygonRef? polygon,
-  }) =>
-      Input$ContainsFilter._({
-        if (point != null) r'point': point,
-        if (polygon != null) r'polygon': polygon,
-      });
+  }) => Input$ContainsFilter._({
+    if (point != null) r'point': point,
+    if (polygon != null) r'polygon': polygon,
+  });
 
   Input$ContainsFilter._(this._$data);
 
@@ -518,17 +513,14 @@ class Input$ContainsFilter {
   }
 
   CopyWith$Input$ContainsFilter<Input$ContainsFilter> get copyWith =>
-      CopyWith$Input$ContainsFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$ContainsFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$ContainsFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$ContainsFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$point = point;
@@ -570,20 +562,14 @@ abstract class CopyWith$Input$ContainsFilter<TRes> {
   factory CopyWith$Input$ContainsFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$ContainsFilter;
 
-  TRes call({
-    Input$PointRef? point,
-    Input$PolygonRef? polygon,
-  });
+  TRes call({Input$PointRef? point, Input$PolygonRef? polygon});
   CopyWith$Input$PointRef<TRes> get point;
   CopyWith$Input$PolygonRef<TRes> get polygon;
 }
 
 class _CopyWithImpl$Input$ContainsFilter<TRes>
     implements CopyWith$Input$ContainsFilter<TRes> {
-  _CopyWithImpl$Input$ContainsFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$ContainsFilter(this._instance, this._then);
 
   final Input$ContainsFilter _instance;
 
@@ -591,15 +577,14 @@ class _CopyWithImpl$Input$ContainsFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? point = _undefined,
-    Object? polygon = _undefined,
-  }) =>
-      _then(Input$ContainsFilter._({
-        ..._instance._$data,
-        if (point != _undefined) 'point': (point as Input$PointRef?),
-        if (polygon != _undefined) 'polygon': (polygon as Input$PolygonRef?),
-      }));
+  TRes call({Object? point = _undefined, Object? polygon = _undefined}) =>
+      _then(
+        Input$ContainsFilter._({
+          ..._instance._$data,
+          if (point != _undefined) 'point': (point as Input$PointRef?),
+          if (polygon != _undefined) 'polygon': (polygon as Input$PolygonRef?),
+        }),
+      );
 
   CopyWith$Input$PointRef<TRes> get point {
     final local$point = _instance.point;
@@ -622,11 +607,7 @@ class _CopyWithStubImpl$Input$ContainsFilter<TRes>
 
   TRes _res;
 
-  call({
-    Input$PointRef? point,
-    Input$PolygonRef? polygon,
-  }) =>
-      _res;
+  call({Input$PointRef? point, Input$PolygonRef? polygon}) => _res;
 
   CopyWith$Input$PointRef<TRes> get point => CopyWith$Input$PointRef.stub(_res);
 
@@ -645,19 +626,18 @@ class Input$CustomHTTP {
     List<String>? secretHeaders,
     List<String>? introspectionHeaders,
     bool? skipIntrospection,
-  }) =>
-      Input$CustomHTTP._({
-        r'url': url,
-        r'method': method,
-        if (body != null) r'body': body,
-        if (graphql != null) r'graphql': graphql,
-        if (mode != null) r'mode': mode,
-        if (forwardHeaders != null) r'forwardHeaders': forwardHeaders,
-        if (secretHeaders != null) r'secretHeaders': secretHeaders,
-        if (introspectionHeaders != null)
-          r'introspectionHeaders': introspectionHeaders,
-        if (skipIntrospection != null) r'skipIntrospection': skipIntrospection,
-      });
+  }) => Input$CustomHTTP._({
+    r'url': url,
+    r'method': method,
+    if (body != null) r'body': body,
+    if (graphql != null) r'graphql': graphql,
+    if (mode != null) r'mode': mode,
+    if (forwardHeaders != null) r'forwardHeaders': forwardHeaders,
+    if (secretHeaders != null) r'secretHeaders': secretHeaders,
+    if (introspectionHeaders != null)
+      r'introspectionHeaders': introspectionHeaders,
+    if (skipIntrospection != null) r'skipIntrospection': skipIntrospection,
+  });
 
   Input$CustomHTTP._(this._$data);
 
@@ -677,8 +657,9 @@ class Input$CustomHTTP {
     }
     if (data.containsKey('mode')) {
       final l$mode = data['mode'];
-      result$data['mode'] =
-          l$mode == null ? null : fromJson$Enum$Mode((l$mode as String));
+      result$data['mode'] = l$mode == null
+          ? null
+          : fromJson$Enum$Mode((l$mode as String));
     }
     if (data.containsKey('forwardHeaders')) {
       final l$forwardHeaders = data['forwardHeaders'];
@@ -756,8 +737,9 @@ class Input$CustomHTTP {
     }
     if (_$data.containsKey('introspectionHeaders')) {
       final l$introspectionHeaders = introspectionHeaders;
-      result$data['introspectionHeaders'] =
-          l$introspectionHeaders?.map((e) => e).toList();
+      result$data['introspectionHeaders'] = l$introspectionHeaders
+          ?.map((e) => e)
+          .toList();
     }
     if (_$data.containsKey('skipIntrospection')) {
       final l$skipIntrospection = skipIntrospection;
@@ -767,17 +749,14 @@ class Input$CustomHTTP {
   }
 
   CopyWith$Input$CustomHTTP<Input$CustomHTTP> get copyWith =>
-      CopyWith$Input$CustomHTTP(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$CustomHTTP(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$CustomHTTP) || runtimeType != other.runtimeType) {
+    if (other is! Input$CustomHTTP || runtimeType != other.runtimeType) {
       return false;
     }
     final l$url = url;
@@ -906,18 +885,18 @@ class Input$CustomHTTP {
       _$data.containsKey('mode') ? l$mode : const {},
       _$data.containsKey('forwardHeaders')
           ? l$forwardHeaders == null
-              ? null
-              : Object.hashAll(l$forwardHeaders.map((v) => v))
+                ? null
+                : Object.hashAll(l$forwardHeaders.map((v) => v))
           : const {},
       _$data.containsKey('secretHeaders')
           ? l$secretHeaders == null
-              ? null
-              : Object.hashAll(l$secretHeaders.map((v) => v))
+                ? null
+                : Object.hashAll(l$secretHeaders.map((v) => v))
           : const {},
       _$data.containsKey('introspectionHeaders')
           ? l$introspectionHeaders == null
-              ? null
-              : Object.hashAll(l$introspectionHeaders.map((v) => v))
+                ? null
+                : Object.hashAll(l$introspectionHeaders.map((v) => v))
           : const {},
       _$data.containsKey('skipIntrospection') ? l$skipIntrospection : const {},
     ]);
@@ -948,10 +927,7 @@ abstract class CopyWith$Input$CustomHTTP<TRes> {
 
 class _CopyWithImpl$Input$CustomHTTP<TRes>
     implements CopyWith$Input$CustomHTTP<TRes> {
-  _CopyWithImpl$Input$CustomHTTP(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$CustomHTTP(this._instance, this._then);
 
   final Input$CustomHTTP _instance;
 
@@ -969,24 +945,25 @@ class _CopyWithImpl$Input$CustomHTTP<TRes>
     Object? secretHeaders = _undefined,
     Object? introspectionHeaders = _undefined,
     Object? skipIntrospection = _undefined,
-  }) =>
-      _then(Input$CustomHTTP._({
-        ..._instance._$data,
-        if (url != _undefined && url != null) 'url': (url as String),
-        if (method != _undefined && method != null)
-          'method': (method as Enum$HTTPMethod),
-        if (body != _undefined) 'body': (body as String?),
-        if (graphql != _undefined) 'graphql': (graphql as String?),
-        if (mode != _undefined) 'mode': (mode as Enum$Mode?),
-        if (forwardHeaders != _undefined)
-          'forwardHeaders': (forwardHeaders as List<String>?),
-        if (secretHeaders != _undefined)
-          'secretHeaders': (secretHeaders as List<String>?),
-        if (introspectionHeaders != _undefined)
-          'introspectionHeaders': (introspectionHeaders as List<String>?),
-        if (skipIntrospection != _undefined)
-          'skipIntrospection': (skipIntrospection as bool?),
-      }));
+  }) => _then(
+    Input$CustomHTTP._({
+      ..._instance._$data,
+      if (url != _undefined && url != null) 'url': (url as String),
+      if (method != _undefined && method != null)
+        'method': (method as Enum$HTTPMethod),
+      if (body != _undefined) 'body': (body as String?),
+      if (graphql != _undefined) 'graphql': (graphql as String?),
+      if (mode != _undefined) 'mode': (mode as Enum$Mode?),
+      if (forwardHeaders != _undefined)
+        'forwardHeaders': (forwardHeaders as List<String>?),
+      if (secretHeaders != _undefined)
+        'secretHeaders': (secretHeaders as List<String>?),
+      if (introspectionHeaders != _undefined)
+        'introspectionHeaders': (introspectionHeaders as List<String>?),
+      if (skipIntrospection != _undefined)
+        'skipIntrospection': (skipIntrospection as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$CustomHTTP<TRes>
@@ -1005,8 +982,7 @@ class _CopyWithStubImpl$Input$CustomHTTP<TRes>
     List<String>? secretHeaders,
     List<String>? introspectionHeaders,
     bool? skipIntrospection,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Input$DateTimeFilter {
@@ -1018,16 +994,15 @@ class Input$DateTimeFilter {
     DateTime? ge,
     DateTime? gt,
     Input$DateTimeRange? between,
-  }) =>
-      Input$DateTimeFilter._({
-        if (eq != null) r'eq': eq,
-        if ($in != null) r'in': $in,
-        if (le != null) r'le': le,
-        if (lt != null) r'lt': lt,
-        if (ge != null) r'ge': ge,
-        if (gt != null) r'gt': gt,
-        if (between != null) r'between': between,
-      });
+  }) => Input$DateTimeFilter._({
+    if (eq != null) r'eq': eq,
+    if ($in != null) r'in': $in,
+    if (le != null) r'le': le,
+    if (lt != null) r'lt': lt,
+    if (ge != null) r'ge': ge,
+    if (gt != null) r'gt': gt,
+    if (between != null) r'between': between,
+  });
 
   Input$DateTimeFilter._(this._$data);
 
@@ -1035,8 +1010,9 @@ class Input$DateTimeFilter {
     final result$data = <String, dynamic>{};
     if (data.containsKey('eq')) {
       final l$eq = data['eq'];
-      result$data['eq'] =
-          l$eq == null ? null : DateTime.parse((l$eq as String));
+      result$data['eq'] = l$eq == null
+          ? null
+          : DateTime.parse((l$eq as String));
     }
     if (data.containsKey('in')) {
       final l$$in = data['in'];
@@ -1046,23 +1022,27 @@ class Input$DateTimeFilter {
     }
     if (data.containsKey('le')) {
       final l$le = data['le'];
-      result$data['le'] =
-          l$le == null ? null : DateTime.parse((l$le as String));
+      result$data['le'] = l$le == null
+          ? null
+          : DateTime.parse((l$le as String));
     }
     if (data.containsKey('lt')) {
       final l$lt = data['lt'];
-      result$data['lt'] =
-          l$lt == null ? null : DateTime.parse((l$lt as String));
+      result$data['lt'] = l$lt == null
+          ? null
+          : DateTime.parse((l$lt as String));
     }
     if (data.containsKey('ge')) {
       final l$ge = data['ge'];
-      result$data['ge'] =
-          l$ge == null ? null : DateTime.parse((l$ge as String));
+      result$data['ge'] = l$ge == null
+          ? null
+          : DateTime.parse((l$ge as String));
     }
     if (data.containsKey('gt')) {
       final l$gt = data['gt'];
-      result$data['gt'] =
-          l$gt == null ? null : DateTime.parse((l$gt as String));
+      result$data['gt'] = l$gt == null
+          ? null
+          : DateTime.parse((l$gt as String));
     }
     if (data.containsKey('between')) {
       final l$between = data['between'];
@@ -1124,17 +1104,14 @@ class Input$DateTimeFilter {
   }
 
   CopyWith$Input$DateTimeFilter<Input$DateTimeFilter> get copyWith =>
-      CopyWith$Input$DateTimeFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$DateTimeFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$DateTimeFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$DateTimeFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -1220,8 +1197,8 @@ class Input$DateTimeFilter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
       _$data.containsKey('le') ? l$le : const {},
       _$data.containsKey('lt') ? l$lt : const {},
@@ -1255,10 +1232,7 @@ abstract class CopyWith$Input$DateTimeFilter<TRes> {
 
 class _CopyWithImpl$Input$DateTimeFilter<TRes>
     implements CopyWith$Input$DateTimeFilter<TRes> {
-  _CopyWithImpl$Input$DateTimeFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$DateTimeFilter(this._instance, this._then);
 
   final Input$DateTimeFilter _instance;
 
@@ -1274,17 +1248,18 @@ class _CopyWithImpl$Input$DateTimeFilter<TRes>
     Object? ge = _undefined,
     Object? gt = _undefined,
     Object? between = _undefined,
-  }) =>
-      _then(Input$DateTimeFilter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as DateTime?),
-        if ($in != _undefined) 'in': ($in as List<DateTime?>?),
-        if (le != _undefined) 'le': (le as DateTime?),
-        if (lt != _undefined) 'lt': (lt as DateTime?),
-        if (ge != _undefined) 'ge': (ge as DateTime?),
-        if (gt != _undefined) 'gt': (gt as DateTime?),
-        if (between != _undefined) 'between': (between as Input$DateTimeRange?),
-      }));
+  }) => _then(
+    Input$DateTimeFilter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as DateTime?),
+      if ($in != _undefined) 'in': ($in as List<DateTime?>?),
+      if (le != _undefined) 'le': (le as DateTime?),
+      if (lt != _undefined) 'lt': (lt as DateTime?),
+      if (ge != _undefined) 'ge': (ge as DateTime?),
+      if (gt != _undefined) 'gt': (gt as DateTime?),
+      if (between != _undefined) 'between': (between as Input$DateTimeRange?),
+    }),
+  );
 
   CopyWith$Input$DateTimeRange<TRes> get between {
     final local$between = _instance.between;
@@ -1308,22 +1283,15 @@ class _CopyWithStubImpl$Input$DateTimeFilter<TRes>
     DateTime? ge,
     DateTime? gt,
     Input$DateTimeRange? between,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$DateTimeRange<TRes> get between =>
       CopyWith$Input$DateTimeRange.stub(_res);
 }
 
 class Input$DateTimeRange {
-  factory Input$DateTimeRange({
-    required DateTime min,
-    required DateTime max,
-  }) =>
-      Input$DateTimeRange._({
-        r'min': min,
-        r'max': max,
-      });
+  factory Input$DateTimeRange({required DateTime min, required DateTime max}) =>
+      Input$DateTimeRange._({r'min': min, r'max': max});
 
   Input$DateTimeRange._(this._$data);
 
@@ -1352,17 +1320,14 @@ class Input$DateTimeRange {
   }
 
   CopyWith$Input$DateTimeRange<Input$DateTimeRange> get copyWith =>
-      CopyWith$Input$DateTimeRange(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$DateTimeRange(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$DateTimeRange) || runtimeType != other.runtimeType) {
+    if (other is! Input$DateTimeRange || runtimeType != other.runtimeType) {
       return false;
     }
     final l$min = min;
@@ -1382,10 +1347,7 @@ class Input$DateTimeRange {
   int get hashCode {
     final l$min = min;
     final l$max = max;
-    return Object.hashAll([
-      l$min,
-      l$max,
-    ]);
+    return Object.hashAll([l$min, l$max]);
   }
 }
 
@@ -1398,18 +1360,12 @@ abstract class CopyWith$Input$DateTimeRange<TRes> {
   factory CopyWith$Input$DateTimeRange.stub(TRes res) =
       _CopyWithStubImpl$Input$DateTimeRange;
 
-  TRes call({
-    DateTime? min,
-    DateTime? max,
-  });
+  TRes call({DateTime? min, DateTime? max});
 }
 
 class _CopyWithImpl$Input$DateTimeRange<TRes>
     implements CopyWith$Input$DateTimeRange<TRes> {
-  _CopyWithImpl$Input$DateTimeRange(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$DateTimeRange(this._instance, this._then);
 
   final Input$DateTimeRange _instance;
 
@@ -1417,15 +1373,13 @@ class _CopyWithImpl$Input$DateTimeRange<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? min = _undefined,
-    Object? max = _undefined,
-  }) =>
-      _then(Input$DateTimeRange._({
-        ..._instance._$data,
-        if (min != _undefined && min != null) 'min': (min as DateTime),
-        if (max != _undefined && max != null) 'max': (max as DateTime),
-      }));
+  TRes call({Object? min = _undefined, Object? max = _undefined}) => _then(
+    Input$DateTimeRange._({
+      ..._instance._$data,
+      if (min != _undefined && min != null) 'min': (min as DateTime),
+      if (max != _undefined && max != null) 'max': (max as DateTime),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$DateTimeRange<TRes>
@@ -1434,11 +1388,7 @@ class _CopyWithStubImpl$Input$DateTimeRange<TRes>
 
   TRes _res;
 
-  call({
-    DateTime? min,
-    DateTime? max,
-  }) =>
-      _res;
+  call({DateTime? min, DateTime? max}) => _res;
 }
 
 class Input$FloatFilter {
@@ -1450,16 +1400,15 @@ class Input$FloatFilter {
     double? ge,
     double? gt,
     Input$FloatRange? between,
-  }) =>
-      Input$FloatFilter._({
-        if (eq != null) r'eq': eq,
-        if ($in != null) r'in': $in,
-        if (le != null) r'le': le,
-        if (lt != null) r'lt': lt,
-        if (ge != null) r'ge': ge,
-        if (gt != null) r'gt': gt,
-        if (between != null) r'between': between,
-      });
+  }) => Input$FloatFilter._({
+    if (eq != null) r'eq': eq,
+    if ($in != null) r'in': $in,
+    if (le != null) r'le': le,
+    if (lt != null) r'lt': lt,
+    if (ge != null) r'ge': ge,
+    if (gt != null) r'gt': gt,
+    if (between != null) r'between': between,
+  });
 
   Input$FloatFilter._(this._$data);
 
@@ -1550,17 +1499,14 @@ class Input$FloatFilter {
   }
 
   CopyWith$Input$FloatFilter<Input$FloatFilter> get copyWith =>
-      CopyWith$Input$FloatFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$FloatFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$FloatFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$FloatFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -1646,8 +1592,8 @@ class Input$FloatFilter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
       _$data.containsKey('le') ? l$le : const {},
       _$data.containsKey('lt') ? l$lt : const {},
@@ -1681,10 +1627,7 @@ abstract class CopyWith$Input$FloatFilter<TRes> {
 
 class _CopyWithImpl$Input$FloatFilter<TRes>
     implements CopyWith$Input$FloatFilter<TRes> {
-  _CopyWithImpl$Input$FloatFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$FloatFilter(this._instance, this._then);
 
   final Input$FloatFilter _instance;
 
@@ -1700,17 +1643,18 @@ class _CopyWithImpl$Input$FloatFilter<TRes>
     Object? ge = _undefined,
     Object? gt = _undefined,
     Object? between = _undefined,
-  }) =>
-      _then(Input$FloatFilter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as double?),
-        if ($in != _undefined) 'in': ($in as List<double?>?),
-        if (le != _undefined) 'le': (le as double?),
-        if (lt != _undefined) 'lt': (lt as double?),
-        if (ge != _undefined) 'ge': (ge as double?),
-        if (gt != _undefined) 'gt': (gt as double?),
-        if (between != _undefined) 'between': (between as Input$FloatRange?),
-      }));
+  }) => _then(
+    Input$FloatFilter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as double?),
+      if ($in != _undefined) 'in': ($in as List<double?>?),
+      if (le != _undefined) 'le': (le as double?),
+      if (lt != _undefined) 'lt': (lt as double?),
+      if (ge != _undefined) 'ge': (ge as double?),
+      if (gt != _undefined) 'gt': (gt as double?),
+      if (between != _undefined) 'between': (between as Input$FloatRange?),
+    }),
+  );
 
   CopyWith$Input$FloatRange<TRes> get between {
     final local$between = _instance.between;
@@ -1734,22 +1678,15 @@ class _CopyWithStubImpl$Input$FloatFilter<TRes>
     double? ge,
     double? gt,
     Input$FloatRange? between,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$FloatRange<TRes> get between =>
       CopyWith$Input$FloatRange.stub(_res);
 }
 
 class Input$FloatRange {
-  factory Input$FloatRange({
-    required double min,
-    required double max,
-  }) =>
-      Input$FloatRange._({
-        r'min': min,
-        r'max': max,
-      });
+  factory Input$FloatRange({required double min, required double max}) =>
+      Input$FloatRange._({r'min': min, r'max': max});
 
   Input$FloatRange._(this._$data);
 
@@ -1778,17 +1715,14 @@ class Input$FloatRange {
   }
 
   CopyWith$Input$FloatRange<Input$FloatRange> get copyWith =>
-      CopyWith$Input$FloatRange(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$FloatRange(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$FloatRange) || runtimeType != other.runtimeType) {
+    if (other is! Input$FloatRange || runtimeType != other.runtimeType) {
       return false;
     }
     final l$min = min;
@@ -1808,10 +1742,7 @@ class Input$FloatRange {
   int get hashCode {
     final l$min = min;
     final l$max = max;
-    return Object.hashAll([
-      l$min,
-      l$max,
-    ]);
+    return Object.hashAll([l$min, l$max]);
   }
 }
 
@@ -1824,18 +1755,12 @@ abstract class CopyWith$Input$FloatRange<TRes> {
   factory CopyWith$Input$FloatRange.stub(TRes res) =
       _CopyWithStubImpl$Input$FloatRange;
 
-  TRes call({
-    double? min,
-    double? max,
-  });
+  TRes call({double? min, double? max});
 }
 
 class _CopyWithImpl$Input$FloatRange<TRes>
     implements CopyWith$Input$FloatRange<TRes> {
-  _CopyWithImpl$Input$FloatRange(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$FloatRange(this._instance, this._then);
 
   final Input$FloatRange _instance;
 
@@ -1843,15 +1768,13 @@ class _CopyWithImpl$Input$FloatRange<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? min = _undefined,
-    Object? max = _undefined,
-  }) =>
-      _then(Input$FloatRange._({
-        ..._instance._$data,
-        if (min != _undefined && min != null) 'min': (min as double),
-        if (max != _undefined && max != null) 'max': (max as double),
-      }));
+  TRes call({Object? min = _undefined, Object? max = _undefined}) => _then(
+    Input$FloatRange._({
+      ..._instance._$data,
+      if (min != _undefined && min != null) 'min': (min as double),
+      if (max != _undefined && max != null) 'max': (max as double),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$FloatRange<TRes>
@@ -1860,11 +1783,7 @@ class _CopyWithStubImpl$Input$FloatRange<TRes>
 
   TRes _res;
 
-  call({
-    double? min,
-    double? max,
-  }) =>
-      _res;
+  call({double? min, double? max}) => _res;
 }
 
 class Input$GenerateMutationParams {
@@ -1872,12 +1791,11 @@ class Input$GenerateMutationParams {
     bool? add,
     bool? update,
     bool? delete,
-  }) =>
-      Input$GenerateMutationParams._({
-        if (add != null) r'add': add,
-        if (update != null) r'update': update,
-        if (delete != null) r'delete': delete,
-      });
+  }) => Input$GenerateMutationParams._({
+    if (add != null) r'add': add,
+    if (update != null) r'update': update,
+    if (delete != null) r'delete': delete,
+  });
 
   Input$GenerateMutationParams._(this._$data);
 
@@ -1924,17 +1842,14 @@ class Input$GenerateMutationParams {
   }
 
   CopyWith$Input$GenerateMutationParams<Input$GenerateMutationParams>
-      get copyWith => CopyWith$Input$GenerateMutationParams(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Input$GenerateMutationParams(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$GenerateMutationParams) ||
+    if (other is! Input$GenerateMutationParams ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1987,19 +1902,12 @@ abstract class CopyWith$Input$GenerateMutationParams<TRes> {
   factory CopyWith$Input$GenerateMutationParams.stub(TRes res) =
       _CopyWithStubImpl$Input$GenerateMutationParams;
 
-  TRes call({
-    bool? add,
-    bool? update,
-    bool? delete,
-  });
+  TRes call({bool? add, bool? update, bool? delete});
 }
 
 class _CopyWithImpl$Input$GenerateMutationParams<TRes>
     implements CopyWith$Input$GenerateMutationParams<TRes> {
-  _CopyWithImpl$Input$GenerateMutationParams(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$GenerateMutationParams(this._instance, this._then);
 
   final Input$GenerateMutationParams _instance;
 
@@ -2011,13 +1919,14 @@ class _CopyWithImpl$Input$GenerateMutationParams<TRes>
     Object? add = _undefined,
     Object? update = _undefined,
     Object? delete = _undefined,
-  }) =>
-      _then(Input$GenerateMutationParams._({
-        ..._instance._$data,
-        if (add != _undefined) 'add': (add as bool?),
-        if (update != _undefined) 'update': (update as bool?),
-        if (delete != _undefined) 'delete': (delete as bool?),
-      }));
+  }) => _then(
+    Input$GenerateMutationParams._({
+      ..._instance._$data,
+      if (add != _undefined) 'add': (add as bool?),
+      if (update != _undefined) 'update': (update as bool?),
+      if (delete != _undefined) 'delete': (delete as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$GenerateMutationParams<TRes>
@@ -2026,12 +1935,7 @@ class _CopyWithStubImpl$Input$GenerateMutationParams<TRes>
 
   TRes _res;
 
-  call({
-    bool? add,
-    bool? update,
-    bool? delete,
-  }) =>
-      _res;
+  call({bool? add, bool? update, bool? delete}) => _res;
 }
 
 class Input$GenerateQueryParams {
@@ -2040,13 +1944,12 @@ class Input$GenerateQueryParams {
     bool? query,
     bool? password,
     bool? aggregate,
-  }) =>
-      Input$GenerateQueryParams._({
-        if ($get != null) r'get': $get,
-        if (query != null) r'query': query,
-        if (password != null) r'password': password,
-        if (aggregate != null) r'aggregate': aggregate,
-      });
+  }) => Input$GenerateQueryParams._({
+    if ($get != null) r'get': $get,
+    if (query != null) r'query': query,
+    if (password != null) r'password': password,
+    if (aggregate != null) r'aggregate': aggregate,
+  });
 
   Input$GenerateQueryParams._(this._$data);
 
@@ -2103,17 +2006,14 @@ class Input$GenerateQueryParams {
   }
 
   CopyWith$Input$GenerateQueryParams<Input$GenerateQueryParams> get copyWith =>
-      CopyWith$Input$GenerateQueryParams(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$GenerateQueryParams(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$GenerateQueryParams) ||
+    if (other is! Input$GenerateQueryParams ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2178,20 +2078,12 @@ abstract class CopyWith$Input$GenerateQueryParams<TRes> {
   factory CopyWith$Input$GenerateQueryParams.stub(TRes res) =
       _CopyWithStubImpl$Input$GenerateQueryParams;
 
-  TRes call({
-    bool? $get,
-    bool? query,
-    bool? password,
-    bool? aggregate,
-  });
+  TRes call({bool? $get, bool? query, bool? password, bool? aggregate});
 }
 
 class _CopyWithImpl$Input$GenerateQueryParams<TRes>
     implements CopyWith$Input$GenerateQueryParams<TRes> {
-  _CopyWithImpl$Input$GenerateQueryParams(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$GenerateQueryParams(this._instance, this._then);
 
   final Input$GenerateQueryParams _instance;
 
@@ -2204,14 +2096,15 @@ class _CopyWithImpl$Input$GenerateQueryParams<TRes>
     Object? query = _undefined,
     Object? password = _undefined,
     Object? aggregate = _undefined,
-  }) =>
-      _then(Input$GenerateQueryParams._({
-        ..._instance._$data,
-        if ($get != _undefined) 'get': ($get as bool?),
-        if (query != _undefined) 'query': (query as bool?),
-        if (password != _undefined) 'password': (password as bool?),
-        if (aggregate != _undefined) 'aggregate': (aggregate as bool?),
-      }));
+  }) => _then(
+    Input$GenerateQueryParams._({
+      ..._instance._$data,
+      if ($get != _undefined) 'get': ($get as bool?),
+      if (query != _undefined) 'query': (query as bool?),
+      if (password != _undefined) 'password': (password as bool?),
+      if (aggregate != _undefined) 'aggregate': (aggregate as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$GenerateQueryParams<TRes>
@@ -2220,13 +2113,7 @@ class _CopyWithStubImpl$Input$GenerateQueryParams<TRes>
 
   TRes _res;
 
-  call({
-    bool? $get,
-    bool? query,
-    bool? password,
-    bool? aggregate,
-  }) =>
-      _res;
+  call({bool? $get, bool? query, bool? password, bool? aggregate}) => _res;
 }
 
 class Input$Int64Filter {
@@ -2238,16 +2125,15 @@ class Input$Int64Filter {
     int? ge,
     int? gt,
     Input$Int64Range? between,
-  }) =>
-      Input$Int64Filter._({
-        if (eq != null) r'eq': eq,
-        if ($in != null) r'in': $in,
-        if (le != null) r'le': le,
-        if (lt != null) r'lt': lt,
-        if (ge != null) r'ge': ge,
-        if (gt != null) r'gt': gt,
-        if (between != null) r'between': between,
-      });
+  }) => Input$Int64Filter._({
+    if (eq != null) r'eq': eq,
+    if ($in != null) r'in': $in,
+    if (le != null) r'le': le,
+    if (lt != null) r'lt': lt,
+    if (ge != null) r'ge': ge,
+    if (gt != null) r'gt': gt,
+    if (between != null) r'between': between,
+  });
 
   Input$Int64Filter._(this._$data);
 
@@ -2259,8 +2145,9 @@ class Input$Int64Filter {
     }
     if (data.containsKey('in')) {
       final l$$in = data['in'];
-      result$data['in'] =
-          (l$$in as List<dynamic>?)?.map((e) => (e as int?)).toList();
+      result$data['in'] = (l$$in as List<dynamic>?)
+          ?.map((e) => (e as int?))
+          .toList();
     }
     if (data.containsKey('le')) {
       final l$le = data['le'];
@@ -2337,17 +2224,14 @@ class Input$Int64Filter {
   }
 
   CopyWith$Input$Int64Filter<Input$Int64Filter> get copyWith =>
-      CopyWith$Input$Int64Filter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$Int64Filter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$Int64Filter) || runtimeType != other.runtimeType) {
+    if (other is! Input$Int64Filter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -2433,8 +2317,8 @@ class Input$Int64Filter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
       _$data.containsKey('le') ? l$le : const {},
       _$data.containsKey('lt') ? l$lt : const {},
@@ -2468,10 +2352,7 @@ abstract class CopyWith$Input$Int64Filter<TRes> {
 
 class _CopyWithImpl$Input$Int64Filter<TRes>
     implements CopyWith$Input$Int64Filter<TRes> {
-  _CopyWithImpl$Input$Int64Filter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$Int64Filter(this._instance, this._then);
 
   final Input$Int64Filter _instance;
 
@@ -2487,17 +2368,18 @@ class _CopyWithImpl$Input$Int64Filter<TRes>
     Object? ge = _undefined,
     Object? gt = _undefined,
     Object? between = _undefined,
-  }) =>
-      _then(Input$Int64Filter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as int?),
-        if ($in != _undefined) 'in': ($in as List<int?>?),
-        if (le != _undefined) 'le': (le as int?),
-        if (lt != _undefined) 'lt': (lt as int?),
-        if (ge != _undefined) 'ge': (ge as int?),
-        if (gt != _undefined) 'gt': (gt as int?),
-        if (between != _undefined) 'between': (between as Input$Int64Range?),
-      }));
+  }) => _then(
+    Input$Int64Filter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if ($in != _undefined) 'in': ($in as List<int?>?),
+      if (le != _undefined) 'le': (le as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (ge != _undefined) 'ge': (ge as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (between != _undefined) 'between': (between as Input$Int64Range?),
+    }),
+  );
 
   CopyWith$Input$Int64Range<TRes> get between {
     final local$between = _instance.between;
@@ -2521,22 +2403,15 @@ class _CopyWithStubImpl$Input$Int64Filter<TRes>
     int? ge,
     int? gt,
     Input$Int64Range? between,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$Int64Range<TRes> get between =>
       CopyWith$Input$Int64Range.stub(_res);
 }
 
 class Input$Int64Range {
-  factory Input$Int64Range({
-    required int min,
-    required int max,
-  }) =>
-      Input$Int64Range._({
-        r'min': min,
-        r'max': max,
-      });
+  factory Input$Int64Range({required int min, required int max}) =>
+      Input$Int64Range._({r'min': min, r'max': max});
 
   Input$Int64Range._(this._$data);
 
@@ -2565,17 +2440,14 @@ class Input$Int64Range {
   }
 
   CopyWith$Input$Int64Range<Input$Int64Range> get copyWith =>
-      CopyWith$Input$Int64Range(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$Int64Range(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$Int64Range) || runtimeType != other.runtimeType) {
+    if (other is! Input$Int64Range || runtimeType != other.runtimeType) {
       return false;
     }
     final l$min = min;
@@ -2595,10 +2467,7 @@ class Input$Int64Range {
   int get hashCode {
     final l$min = min;
     final l$max = max;
-    return Object.hashAll([
-      l$min,
-      l$max,
-    ]);
+    return Object.hashAll([l$min, l$max]);
   }
 }
 
@@ -2611,18 +2480,12 @@ abstract class CopyWith$Input$Int64Range<TRes> {
   factory CopyWith$Input$Int64Range.stub(TRes res) =
       _CopyWithStubImpl$Input$Int64Range;
 
-  TRes call({
-    int? min,
-    int? max,
-  });
+  TRes call({int? min, int? max});
 }
 
 class _CopyWithImpl$Input$Int64Range<TRes>
     implements CopyWith$Input$Int64Range<TRes> {
-  _CopyWithImpl$Input$Int64Range(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$Int64Range(this._instance, this._then);
 
   final Input$Int64Range _instance;
 
@@ -2630,15 +2493,13 @@ class _CopyWithImpl$Input$Int64Range<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? min = _undefined,
-    Object? max = _undefined,
-  }) =>
-      _then(Input$Int64Range._({
-        ..._instance._$data,
-        if (min != _undefined && min != null) 'min': (min as int),
-        if (max != _undefined && max != null) 'max': (max as int),
-      }));
+  TRes call({Object? min = _undefined, Object? max = _undefined}) => _then(
+    Input$Int64Range._({
+      ..._instance._$data,
+      if (min != _undefined && min != null) 'min': (min as int),
+      if (max != _undefined && max != null) 'max': (max as int),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$Int64Range<TRes>
@@ -2647,22 +2508,17 @@ class _CopyWithStubImpl$Input$Int64Range<TRes>
 
   TRes _res;
 
-  call({
-    int? min,
-    int? max,
-  }) =>
-      _res;
+  call({int? min, int? max}) => _res;
 }
 
 class Input$IntersectsFilter {
   factory Input$IntersectsFilter({
     Input$PolygonRef? polygon,
     Input$MultiPolygonRef? multiPolygon,
-  }) =>
-      Input$IntersectsFilter._({
-        if (polygon != null) r'polygon': polygon,
-        if (multiPolygon != null) r'multiPolygon': multiPolygon,
-      });
+  }) => Input$IntersectsFilter._({
+    if (polygon != null) r'polygon': polygon,
+    if (multiPolygon != null) r'multiPolygon': multiPolygon,
+  });
 
   Input$IntersectsFilter._(this._$data);
 
@@ -2679,7 +2535,8 @@ class Input$IntersectsFilter {
       result$data['multiPolygon'] = l$multiPolygon == null
           ? null
           : Input$MultiPolygonRef.fromJson(
-              (l$multiPolygon as Map<String, dynamic>));
+              (l$multiPolygon as Map<String, dynamic>),
+            );
     }
     return Input$IntersectsFilter._(result$data);
   }
@@ -2705,18 +2562,14 @@ class Input$IntersectsFilter {
   }
 
   CopyWith$Input$IntersectsFilter<Input$IntersectsFilter> get copyWith =>
-      CopyWith$Input$IntersectsFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$IntersectsFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$IntersectsFilter) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$IntersectsFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$polygon = polygon;
@@ -2759,20 +2612,14 @@ abstract class CopyWith$Input$IntersectsFilter<TRes> {
   factory CopyWith$Input$IntersectsFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$IntersectsFilter;
 
-  TRes call({
-    Input$PolygonRef? polygon,
-    Input$MultiPolygonRef? multiPolygon,
-  });
+  TRes call({Input$PolygonRef? polygon, Input$MultiPolygonRef? multiPolygon});
   CopyWith$Input$PolygonRef<TRes> get polygon;
   CopyWith$Input$MultiPolygonRef<TRes> get multiPolygon;
 }
 
 class _CopyWithImpl$Input$IntersectsFilter<TRes>
     implements CopyWith$Input$IntersectsFilter<TRes> {
-  _CopyWithImpl$Input$IntersectsFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$IntersectsFilter(this._instance, this._then);
 
   final Input$IntersectsFilter _instance;
 
@@ -2783,13 +2630,14 @@ class _CopyWithImpl$Input$IntersectsFilter<TRes>
   TRes call({
     Object? polygon = _undefined,
     Object? multiPolygon = _undefined,
-  }) =>
-      _then(Input$IntersectsFilter._({
-        ..._instance._$data,
-        if (polygon != _undefined) 'polygon': (polygon as Input$PolygonRef?),
-        if (multiPolygon != _undefined)
-          'multiPolygon': (multiPolygon as Input$MultiPolygonRef?),
-      }));
+  }) => _then(
+    Input$IntersectsFilter._({
+      ..._instance._$data,
+      if (polygon != _undefined) 'polygon': (polygon as Input$PolygonRef?),
+      if (multiPolygon != _undefined)
+        'multiPolygon': (multiPolygon as Input$MultiPolygonRef?),
+    }),
+  );
 
   CopyWith$Input$PolygonRef<TRes> get polygon {
     final local$polygon = _instance.polygon;
@@ -2803,7 +2651,9 @@ class _CopyWithImpl$Input$IntersectsFilter<TRes>
     return local$multiPolygon == null
         ? CopyWith$Input$MultiPolygonRef.stub(_then(_instance))
         : CopyWith$Input$MultiPolygonRef(
-            local$multiPolygon, (e) => call(multiPolygon: e));
+            local$multiPolygon,
+            (e) => call(multiPolygon: e),
+          );
   }
 }
 
@@ -2813,10 +2663,7 @@ class _CopyWithStubImpl$Input$IntersectsFilter<TRes>
 
   TRes _res;
 
-  call({
-    Input$PolygonRef? polygon,
-    Input$MultiPolygonRef? multiPolygon,
-  }) =>
+  call({Input$PolygonRef? polygon, Input$MultiPolygonRef? multiPolygon}) =>
       _res;
 
   CopyWith$Input$PolygonRef<TRes> get polygon =>
@@ -2835,16 +2682,15 @@ class Input$IntFilter {
     int? ge,
     int? gt,
     Input$IntRange? between,
-  }) =>
-      Input$IntFilter._({
-        if (eq != null) r'eq': eq,
-        if ($in != null) r'in': $in,
-        if (le != null) r'le': le,
-        if (lt != null) r'lt': lt,
-        if (ge != null) r'ge': ge,
-        if (gt != null) r'gt': gt,
-        if (between != null) r'between': between,
-      });
+  }) => Input$IntFilter._({
+    if (eq != null) r'eq': eq,
+    if ($in != null) r'in': $in,
+    if (le != null) r'le': le,
+    if (lt != null) r'lt': lt,
+    if (ge != null) r'ge': ge,
+    if (gt != null) r'gt': gt,
+    if (between != null) r'between': between,
+  });
 
   Input$IntFilter._(this._$data);
 
@@ -2856,8 +2702,9 @@ class Input$IntFilter {
     }
     if (data.containsKey('in')) {
       final l$$in = data['in'];
-      result$data['in'] =
-          (l$$in as List<dynamic>?)?.map((e) => (e as int?)).toList();
+      result$data['in'] = (l$$in as List<dynamic>?)
+          ?.map((e) => (e as int?))
+          .toList();
     }
     if (data.containsKey('le')) {
       final l$le = data['le'];
@@ -2934,17 +2781,14 @@ class Input$IntFilter {
   }
 
   CopyWith$Input$IntFilter<Input$IntFilter> get copyWith =>
-      CopyWith$Input$IntFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$IntFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$IntFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$IntFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -3030,8 +2874,8 @@ class Input$IntFilter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
       _$data.containsKey('le') ? l$le : const {},
       _$data.containsKey('lt') ? l$lt : const {},
@@ -3065,10 +2909,7 @@ abstract class CopyWith$Input$IntFilter<TRes> {
 
 class _CopyWithImpl$Input$IntFilter<TRes>
     implements CopyWith$Input$IntFilter<TRes> {
-  _CopyWithImpl$Input$IntFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$IntFilter(this._instance, this._then);
 
   final Input$IntFilter _instance;
 
@@ -3084,17 +2925,18 @@ class _CopyWithImpl$Input$IntFilter<TRes>
     Object? ge = _undefined,
     Object? gt = _undefined,
     Object? between = _undefined,
-  }) =>
-      _then(Input$IntFilter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as int?),
-        if ($in != _undefined) 'in': ($in as List<int?>?),
-        if (le != _undefined) 'le': (le as int?),
-        if (lt != _undefined) 'lt': (lt as int?),
-        if (ge != _undefined) 'ge': (ge as int?),
-        if (gt != _undefined) 'gt': (gt as int?),
-        if (between != _undefined) 'between': (between as Input$IntRange?),
-      }));
+  }) => _then(
+    Input$IntFilter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if ($in != _undefined) 'in': ($in as List<int?>?),
+      if (le != _undefined) 'le': (le as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (ge != _undefined) 'ge': (ge as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (between != _undefined) 'between': (between as Input$IntRange?),
+    }),
+  );
 
   CopyWith$Input$IntRange<TRes> get between {
     final local$between = _instance.between;
@@ -3118,22 +2960,15 @@ class _CopyWithStubImpl$Input$IntFilter<TRes>
     int? ge,
     int? gt,
     Input$IntRange? between,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$IntRange<TRes> get between =>
       CopyWith$Input$IntRange.stub(_res);
 }
 
 class Input$IntRange {
-  factory Input$IntRange({
-    required int min,
-    required int max,
-  }) =>
-      Input$IntRange._({
-        r'min': min,
-        r'max': max,
-      });
+  factory Input$IntRange({required int min, required int max}) =>
+      Input$IntRange._({r'min': min, r'max': max});
 
   Input$IntRange._(this._$data);
 
@@ -3162,17 +2997,14 @@ class Input$IntRange {
   }
 
   CopyWith$Input$IntRange<Input$IntRange> get copyWith =>
-      CopyWith$Input$IntRange(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$IntRange(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$IntRange) || runtimeType != other.runtimeType) {
+    if (other is! Input$IntRange || runtimeType != other.runtimeType) {
       return false;
     }
     final l$min = min;
@@ -3192,10 +3024,7 @@ class Input$IntRange {
   int get hashCode {
     final l$min = min;
     final l$max = max;
-    return Object.hashAll([
-      l$min,
-      l$max,
-    ]);
+    return Object.hashAll([l$min, l$max]);
   }
 }
 
@@ -3208,18 +3037,12 @@ abstract class CopyWith$Input$IntRange<TRes> {
   factory CopyWith$Input$IntRange.stub(TRes res) =
       _CopyWithStubImpl$Input$IntRange;
 
-  TRes call({
-    int? min,
-    int? max,
-  });
+  TRes call({int? min, int? max});
 }
 
 class _CopyWithImpl$Input$IntRange<TRes>
     implements CopyWith$Input$IntRange<TRes> {
-  _CopyWithImpl$Input$IntRange(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$IntRange(this._instance, this._then);
 
   final Input$IntRange _instance;
 
@@ -3227,15 +3050,13 @@ class _CopyWithImpl$Input$IntRange<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? min = _undefined,
-    Object? max = _undefined,
-  }) =>
-      _then(Input$IntRange._({
-        ..._instance._$data,
-        if (min != _undefined && min != null) 'min': (min as int),
-        if (max != _undefined && max != null) 'max': (max as int),
-      }));
+  TRes call({Object? min = _undefined, Object? max = _undefined}) => _then(
+    Input$IntRange._({
+      ..._instance._$data,
+      if (min != _undefined && min != null) 'min': (min as int),
+      if (max != _undefined && max != null) 'max': (max as int),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$IntRange<TRes>
@@ -3244,18 +3065,12 @@ class _CopyWithStubImpl$Input$IntRange<TRes>
 
   TRes _res;
 
-  call({
-    int? min,
-    int? max,
-  }) =>
-      _res;
+  call({int? min, int? max}) => _res;
 }
 
 class Input$MultiPolygonRef {
   factory Input$MultiPolygonRef({required List<Input$PolygonRef> polygons}) =>
-      Input$MultiPolygonRef._({
-        r'polygons': polygons,
-      });
+      Input$MultiPolygonRef._({r'polygons': polygons});
 
   Input$MultiPolygonRef._(this._$data);
 
@@ -3281,17 +3096,14 @@ class Input$MultiPolygonRef {
   }
 
   CopyWith$Input$MultiPolygonRef<Input$MultiPolygonRef> get copyWith =>
-      CopyWith$Input$MultiPolygonRef(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$MultiPolygonRef(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$MultiPolygonRef) || runtimeType != other.runtimeType) {
+    if (other is! Input$MultiPolygonRef || runtimeType != other.runtimeType) {
       return false;
     }
     final l$polygons = polygons;
@@ -3327,17 +3139,16 @@ abstract class CopyWith$Input$MultiPolygonRef<TRes> {
 
   TRes call({List<Input$PolygonRef>? polygons});
   TRes polygons(
-      Iterable<Input$PolygonRef> Function(
-              Iterable<CopyWith$Input$PolygonRef<Input$PolygonRef>>)
-          _fn);
+    Iterable<Input$PolygonRef> Function(
+      Iterable<CopyWith$Input$PolygonRef<Input$PolygonRef>>,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Input$MultiPolygonRef<TRes>
     implements CopyWith$Input$MultiPolygonRef<TRes> {
-  _CopyWithImpl$Input$MultiPolygonRef(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$MultiPolygonRef(this._instance, this._then);
 
   final Input$MultiPolygonRef _instance;
 
@@ -3345,21 +3156,24 @@ class _CopyWithImpl$Input$MultiPolygonRef<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? polygons = _undefined}) => _then(Input$MultiPolygonRef._({
-        ..._instance._$data,
-        if (polygons != _undefined && polygons != null)
-          'polygons': (polygons as List<Input$PolygonRef>),
-      }));
+  TRes call({Object? polygons = _undefined}) => _then(
+    Input$MultiPolygonRef._({
+      ..._instance._$data,
+      if (polygons != _undefined && polygons != null)
+        'polygons': (polygons as List<Input$PolygonRef>),
+    }),
+  );
 
   TRes polygons(
-          Iterable<Input$PolygonRef> Function(
-                  Iterable<CopyWith$Input$PolygonRef<Input$PolygonRef>>)
-              _fn) =>
-      call(
-          polygons: _fn(_instance.polygons.map((e) => CopyWith$Input$PolygonRef(
-                e,
-                (i) => i,
-              ))).toList());
+    Iterable<Input$PolygonRef> Function(
+      Iterable<CopyWith$Input$PolygonRef<Input$PolygonRef>>,
+    )
+    _fn,
+  ) => call(
+    polygons: _fn(
+      _instance.polygons.map((e) => CopyWith$Input$PolygonRef(e, (i) => i)),
+    ).toList(),
+  );
 }
 
 class _CopyWithStubImpl$Input$MultiPolygonRef<TRes>
@@ -3380,14 +3194,13 @@ class Input$MyBookFilter {
     List<Input$MyBookFilter?>? and,
     List<Input$MyBookFilter?>? or,
     Input$MyBookFilter? not,
-  }) =>
-      Input$MyBookFilter._({
-        if (id != null) r'id': id,
-        if (has != null) r'has': has,
-        if (and != null) r'and': and,
-        if (or != null) r'or': or,
-        if (not != null) r'not': not,
-      });
+  }) => Input$MyBookFilter._({
+    if (id != null) r'id': id,
+    if (has != null) r'has': has,
+    if (and != null) r'and': and,
+    if (or != null) r'or': or,
+    if (not != null) r'not': not,
+  });
 
   Input$MyBookFilter._(this._$data);
 
@@ -3402,24 +3215,30 @@ class Input$MyBookFilter {
     if (data.containsKey('has')) {
       final l$has = data['has'];
       result$data['has'] = (l$has as List<dynamic>?)
-          ?.map((e) =>
-              e == null ? null : fromJson$Enum$MyBookHasFilter((e as String)))
+          ?.map(
+            (e) =>
+                e == null ? null : fromJson$Enum$MyBookHasFilter((e as String)),
+          )
           .toList();
     }
     if (data.containsKey('and')) {
       final l$and = data['and'];
       result$data['and'] = (l$and as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Input$MyBookFilter.fromJson((e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Input$MyBookFilter.fromJson((e as Map<String, dynamic>)),
+          )
           .toList();
     }
     if (data.containsKey('or')) {
       final l$or = data['or'];
       result$data['or'] = (l$or as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Input$MyBookFilter.fromJson((e as Map<String, dynamic>)))
+          ?.map(
+            (e) => e == null
+                ? null
+                : Input$MyBookFilter.fromJson((e as Map<String, dynamic>)),
+          )
           .toList();
     }
     if (data.containsKey('not')) {
@@ -3474,17 +3293,14 @@ class Input$MyBookFilter {
   }
 
   CopyWith$Input$MyBookFilter<Input$MyBookFilter> get copyWith =>
-      CopyWith$Input$MyBookFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$MyBookFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$MyBookFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$MyBookFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -3574,18 +3390,18 @@ class Input$MyBookFilter {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('has')
           ? l$has == null
-              ? null
-              : Object.hashAll(l$has.map((v) => v))
+                ? null
+                : Object.hashAll(l$has.map((v) => v))
           : const {},
       _$data.containsKey('and')
           ? l$and == null
-              ? null
-              : Object.hashAll(l$and.map((v) => v))
+                ? null
+                : Object.hashAll(l$and.map((v) => v))
           : const {},
       _$data.containsKey('or')
           ? l$or == null
-              ? null
-              : Object.hashAll(l$or.map((v) => v))
+                ? null
+                : Object.hashAll(l$or.map((v) => v))
           : const {},
       _$data.containsKey('not') ? l$not : const {},
     ]);
@@ -3610,22 +3426,23 @@ abstract class CopyWith$Input$MyBookFilter<TRes> {
   });
   CopyWith$Input$StringHashFilter<TRes> get id;
   TRes and(
-      Iterable<Input$MyBookFilter?>? Function(
-              Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?)
-          _fn);
+    Iterable<Input$MyBookFilter?>? Function(
+      Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?,
+    )
+    _fn,
+  );
   TRes or(
-      Iterable<Input$MyBookFilter?>? Function(
-              Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?)
-          _fn);
+    Iterable<Input$MyBookFilter?>? Function(
+      Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?,
+    )
+    _fn,
+  );
   CopyWith$Input$MyBookFilter<TRes> get not;
 }
 
 class _CopyWithImpl$Input$MyBookFilter<TRes>
     implements CopyWith$Input$MyBookFilter<TRes> {
-  _CopyWithImpl$Input$MyBookFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$MyBookFilter(this._instance, this._then);
 
   final Input$MyBookFilter _instance;
 
@@ -3639,15 +3456,16 @@ class _CopyWithImpl$Input$MyBookFilter<TRes>
     Object? and = _undefined,
     Object? or = _undefined,
     Object? not = _undefined,
-  }) =>
-      _then(Input$MyBookFilter._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as Input$StringHashFilter?),
-        if (has != _undefined) 'has': (has as List<Enum$MyBookHasFilter?>?),
-        if (and != _undefined) 'and': (and as List<Input$MyBookFilter?>?),
-        if (or != _undefined) 'or': (or as List<Input$MyBookFilter?>?),
-        if (not != _undefined) 'not': (not as Input$MyBookFilter?),
-      }));
+  }) => _then(
+    Input$MyBookFilter._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as Input$StringHashFilter?),
+      if (has != _undefined) 'has': (has as List<Enum$MyBookHasFilter?>?),
+      if (and != _undefined) 'and': (and as List<Input$MyBookFilter?>?),
+      if (or != _undefined) 'or': (or as List<Input$MyBookFilter?>?),
+      if (not != _undefined) 'not': (not as Input$MyBookFilter?),
+    }),
+  );
 
   CopyWith$Input$StringHashFilter<TRes> get id {
     final local$id = _instance.id;
@@ -3657,28 +3475,30 @@ class _CopyWithImpl$Input$MyBookFilter<TRes>
   }
 
   TRes and(
-          Iterable<Input$MyBookFilter?>? Function(
-                  Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?)
-              _fn) =>
-      call(
-          and: _fn(_instance.and?.map((e) => e == null
-              ? null
-              : CopyWith$Input$MyBookFilter(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Input$MyBookFilter?>? Function(
+      Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?,
+    )
+    _fn,
+  ) => call(
+    and: _fn(
+      _instance.and?.map(
+        (e) => e == null ? null : CopyWith$Input$MyBookFilter(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 
   TRes or(
-          Iterable<Input$MyBookFilter?>? Function(
-                  Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?)
-              _fn) =>
-      call(
-          or: _fn(_instance.or?.map((e) => e == null
-              ? null
-              : CopyWith$Input$MyBookFilter(
-                  e,
-                  (i) => i,
-                )))?.toList());
+    Iterable<Input$MyBookFilter?>? Function(
+      Iterable<CopyWith$Input$MyBookFilter<Input$MyBookFilter>?>?,
+    )
+    _fn,
+  ) => call(
+    or: _fn(
+      _instance.or?.map(
+        (e) => e == null ? null : CopyWith$Input$MyBookFilter(e, (i) => i),
+      ),
+    )?.toList(),
+  );
 
   CopyWith$Input$MyBookFilter<TRes> get not {
     final local$not = _instance.not;
@@ -3700,8 +3520,7 @@ class _CopyWithStubImpl$Input$MyBookFilter<TRes>
     List<Input$MyBookFilter?>? and,
     List<Input$MyBookFilter?>? or,
     Input$MyBookFilter? not,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$StringHashFilter<TRes> get id =>
       CopyWith$Input$StringHashFilter.stub(_res);
@@ -3719,12 +3538,11 @@ class Input$MyBookOrder {
     Enum$MyBookOrderable? asc,
     Enum$MyBookOrderable? desc,
     Input$MyBookOrder? then,
-  }) =>
-      Input$MyBookOrder._({
-        if (asc != null) r'asc': asc,
-        if (desc != null) r'desc': desc,
-        if (then != null) r'then': then,
-      });
+  }) => Input$MyBookOrder._({
+    if (asc != null) r'asc': asc,
+    if (desc != null) r'desc': desc,
+    if (then != null) r'then': then,
+  });
 
   Input$MyBookOrder._(this._$data);
 
@@ -3763,13 +3581,15 @@ class Input$MyBookOrder {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('asc')) {
       final l$asc = asc;
-      result$data['asc'] =
-          l$asc == null ? null : toJson$Enum$MyBookOrderable(l$asc);
+      result$data['asc'] = l$asc == null
+          ? null
+          : toJson$Enum$MyBookOrderable(l$asc);
     }
     if (_$data.containsKey('desc')) {
       final l$desc = desc;
-      result$data['desc'] =
-          l$desc == null ? null : toJson$Enum$MyBookOrderable(l$desc);
+      result$data['desc'] = l$desc == null
+          ? null
+          : toJson$Enum$MyBookOrderable(l$desc);
     }
     if (_$data.containsKey('then')) {
       final l$then = then;
@@ -3779,17 +3599,14 @@ class Input$MyBookOrder {
   }
 
   CopyWith$Input$MyBookOrder<Input$MyBookOrder> get copyWith =>
-      CopyWith$Input$MyBookOrder(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$MyBookOrder(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$MyBookOrder) || runtimeType != other.runtimeType) {
+    if (other is! Input$MyBookOrder || runtimeType != other.runtimeType) {
       return false;
     }
     final l$asc = asc;
@@ -3851,10 +3668,7 @@ abstract class CopyWith$Input$MyBookOrder<TRes> {
 
 class _CopyWithImpl$Input$MyBookOrder<TRes>
     implements CopyWith$Input$MyBookOrder<TRes> {
-  _CopyWithImpl$Input$MyBookOrder(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$MyBookOrder(this._instance, this._then);
 
   final Input$MyBookOrder _instance;
 
@@ -3866,13 +3680,14 @@ class _CopyWithImpl$Input$MyBookOrder<TRes>
     Object? asc = _undefined,
     Object? desc = _undefined,
     Object? then = _undefined,
-  }) =>
-      _then(Input$MyBookOrder._({
-        ..._instance._$data,
-        if (asc != _undefined) 'asc': (asc as Enum$MyBookOrderable?),
-        if (desc != _undefined) 'desc': (desc as Enum$MyBookOrderable?),
-        if (then != _undefined) 'then': (then as Input$MyBookOrder?),
-      }));
+  }) => _then(
+    Input$MyBookOrder._({
+      ..._instance._$data,
+      if (asc != _undefined) 'asc': (asc as Enum$MyBookOrderable?),
+      if (desc != _undefined) 'desc': (desc as Enum$MyBookOrderable?),
+      if (then != _undefined) 'then': (then as Input$MyBookOrder?),
+    }),
+  );
 
   CopyWith$Input$MyBookOrder<TRes> get then {
     final local$then = _instance.then;
@@ -3892,8 +3707,7 @@ class _CopyWithStubImpl$Input$MyBookOrder<TRes>
     Enum$MyBookOrderable? asc,
     Enum$MyBookOrderable? desc,
     Input$MyBookOrder? then,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$MyBookOrder<TRes> get then =>
       CopyWith$Input$MyBookOrder.stub(_res);
@@ -3905,13 +3719,12 @@ class Input$MyBookPatch {
     String? title,
     DateTime? readOn,
     bool? favorite,
-  }) =>
-      Input$MyBookPatch._({
-        if (bookNumber != null) r'bookNumber': bookNumber,
-        if (title != null) r'title': title,
-        if (readOn != null) r'readOn': readOn,
-        if (favorite != null) r'favorite': favorite,
-      });
+  }) => Input$MyBookPatch._({
+    if (bookNumber != null) r'bookNumber': bookNumber,
+    if (title != null) r'title': title,
+    if (readOn != null) r'readOn': readOn,
+    if (favorite != null) r'favorite': favorite,
+  });
 
   Input$MyBookPatch._(this._$data);
 
@@ -3927,8 +3740,9 @@ class Input$MyBookPatch {
     }
     if (data.containsKey('readOn')) {
       final l$readOn = data['readOn'];
-      result$data['readOn'] =
-          l$readOn == null ? null : DateTime.parse((l$readOn as String));
+      result$data['readOn'] = l$readOn == null
+          ? null
+          : DateTime.parse((l$readOn as String));
     }
     if (data.containsKey('favorite')) {
       final l$favorite = data['favorite'];
@@ -3969,17 +3783,14 @@ class Input$MyBookPatch {
   }
 
   CopyWith$Input$MyBookPatch<Input$MyBookPatch> get copyWith =>
-      CopyWith$Input$MyBookPatch(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$MyBookPatch(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$MyBookPatch) || runtimeType != other.runtimeType) {
+    if (other is! Input$MyBookPatch || runtimeType != other.runtimeType) {
       return false;
     }
     final l$bookNumber = bookNumber;
@@ -4043,20 +3854,12 @@ abstract class CopyWith$Input$MyBookPatch<TRes> {
   factory CopyWith$Input$MyBookPatch.stub(TRes res) =
       _CopyWithStubImpl$Input$MyBookPatch;
 
-  TRes call({
-    int? bookNumber,
-    String? title,
-    DateTime? readOn,
-    bool? favorite,
-  });
+  TRes call({int? bookNumber, String? title, DateTime? readOn, bool? favorite});
 }
 
 class _CopyWithImpl$Input$MyBookPatch<TRes>
     implements CopyWith$Input$MyBookPatch<TRes> {
-  _CopyWithImpl$Input$MyBookPatch(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$MyBookPatch(this._instance, this._then);
 
   final Input$MyBookPatch _instance;
 
@@ -4069,14 +3872,15 @@ class _CopyWithImpl$Input$MyBookPatch<TRes>
     Object? title = _undefined,
     Object? readOn = _undefined,
     Object? favorite = _undefined,
-  }) =>
-      _then(Input$MyBookPatch._({
-        ..._instance._$data,
-        if (bookNumber != _undefined) 'bookNumber': (bookNumber as int?),
-        if (title != _undefined) 'title': (title as String?),
-        if (readOn != _undefined) 'readOn': (readOn as DateTime?),
-        if (favorite != _undefined) 'favorite': (favorite as bool?),
-      }));
+  }) => _then(
+    Input$MyBookPatch._({
+      ..._instance._$data,
+      if (bookNumber != _undefined) 'bookNumber': (bookNumber as int?),
+      if (title != _undefined) 'title': (title as String?),
+      if (readOn != _undefined) 'readOn': (readOn as DateTime?),
+      if (favorite != _undefined) 'favorite': (favorite as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$MyBookPatch<TRes>
@@ -4085,12 +3889,7 @@ class _CopyWithStubImpl$Input$MyBookPatch<TRes>
 
   TRes _res;
 
-  call({
-    int? bookNumber,
-    String? title,
-    DateTime? readOn,
-    bool? favorite,
-  }) =>
+  call({int? bookNumber, String? title, DateTime? readOn, bool? favorite}) =>
       _res;
 }
 
@@ -4101,14 +3900,13 @@ class Input$MyBookRef {
     String? title,
     DateTime? readOn,
     bool? favorite,
-  }) =>
-      Input$MyBookRef._({
-        if (id != null) r'id': id,
-        if (bookNumber != null) r'bookNumber': bookNumber,
-        if (title != null) r'title': title,
-        if (readOn != null) r'readOn': readOn,
-        if (favorite != null) r'favorite': favorite,
-      });
+  }) => Input$MyBookRef._({
+    if (id != null) r'id': id,
+    if (bookNumber != null) r'bookNumber': bookNumber,
+    if (title != null) r'title': title,
+    if (readOn != null) r'readOn': readOn,
+    if (favorite != null) r'favorite': favorite,
+  });
 
   Input$MyBookRef._(this._$data);
 
@@ -4128,8 +3926,9 @@ class Input$MyBookRef {
     }
     if (data.containsKey('readOn')) {
       final l$readOn = data['readOn'];
-      result$data['readOn'] =
-          l$readOn == null ? null : DateTime.parse((l$readOn as String));
+      result$data['readOn'] = l$readOn == null
+          ? null
+          : DateTime.parse((l$readOn as String));
     }
     if (data.containsKey('favorite')) {
       final l$favorite = data['favorite'];
@@ -4176,17 +3975,14 @@ class Input$MyBookRef {
   }
 
   CopyWith$Input$MyBookRef<Input$MyBookRef> get copyWith =>
-      CopyWith$Input$MyBookRef(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$MyBookRef(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$MyBookRef) || runtimeType != other.runtimeType) {
+    if (other is! Input$MyBookRef || runtimeType != other.runtimeType) {
       return false;
     }
     final l$id = id;
@@ -4271,10 +4067,7 @@ abstract class CopyWith$Input$MyBookRef<TRes> {
 
 class _CopyWithImpl$Input$MyBookRef<TRes>
     implements CopyWith$Input$MyBookRef<TRes> {
-  _CopyWithImpl$Input$MyBookRef(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$MyBookRef(this._instance, this._then);
 
   final Input$MyBookRef _instance;
 
@@ -4288,15 +4081,16 @@ class _CopyWithImpl$Input$MyBookRef<TRes>
     Object? title = _undefined,
     Object? readOn = _undefined,
     Object? favorite = _undefined,
-  }) =>
-      _then(Input$MyBookRef._({
-        ..._instance._$data,
-        if (id != _undefined) 'id': (id as String?),
-        if (bookNumber != _undefined) 'bookNumber': (bookNumber as int?),
-        if (title != _undefined) 'title': (title as String?),
-        if (readOn != _undefined) 'readOn': (readOn as DateTime?),
-        if (favorite != _undefined) 'favorite': (favorite as bool?),
-      }));
+  }) => _then(
+    Input$MyBookRef._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as String?),
+      if (bookNumber != _undefined) 'bookNumber': (bookNumber as int?),
+      if (title != _undefined) 'title': (title as String?),
+      if (readOn != _undefined) 'readOn': (readOn as DateTime?),
+      if (favorite != _undefined) 'favorite': (favorite as bool?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$MyBookRef<TRes>
@@ -4311,19 +4105,14 @@ class _CopyWithStubImpl$Input$MyBookRef<TRes>
     String? title,
     DateTime? readOn,
     bool? favorite,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Input$NearFilter {
   factory Input$NearFilter({
     required double distance,
     required Input$PointRef coordinate,
-  }) =>
-      Input$NearFilter._({
-        r'distance': distance,
-        r'coordinate': coordinate,
-      });
+  }) => Input$NearFilter._({r'distance': distance, r'coordinate': coordinate});
 
   Input$NearFilter._(this._$data);
 
@@ -4332,8 +4121,9 @@ class Input$NearFilter {
     final l$distance = data['distance'];
     result$data['distance'] = (l$distance as num).toDouble();
     final l$coordinate = data['coordinate'];
-    result$data['coordinate'] =
-        Input$PointRef.fromJson((l$coordinate as Map<String, dynamic>));
+    result$data['coordinate'] = Input$PointRef.fromJson(
+      (l$coordinate as Map<String, dynamic>),
+    );
     return Input$NearFilter._(result$data);
   }
 
@@ -4353,17 +4143,14 @@ class Input$NearFilter {
   }
 
   CopyWith$Input$NearFilter<Input$NearFilter> get copyWith =>
-      CopyWith$Input$NearFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$NearFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$NearFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$NearFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$distance = distance;
@@ -4383,10 +4170,7 @@ class Input$NearFilter {
   int get hashCode {
     final l$distance = distance;
     final l$coordinate = coordinate;
-    return Object.hashAll([
-      l$distance,
-      l$coordinate,
-    ]);
+    return Object.hashAll([l$distance, l$coordinate]);
   }
 }
 
@@ -4399,19 +4183,13 @@ abstract class CopyWith$Input$NearFilter<TRes> {
   factory CopyWith$Input$NearFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$NearFilter;
 
-  TRes call({
-    double? distance,
-    Input$PointRef? coordinate,
-  });
+  TRes call({double? distance, Input$PointRef? coordinate});
   CopyWith$Input$PointRef<TRes> get coordinate;
 }
 
 class _CopyWithImpl$Input$NearFilter<TRes>
     implements CopyWith$Input$NearFilter<TRes> {
-  _CopyWithImpl$Input$NearFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$NearFilter(this._instance, this._then);
 
   final Input$NearFilter _instance;
 
@@ -4419,22 +4197,23 @@ class _CopyWithImpl$Input$NearFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? distance = _undefined,
-    Object? coordinate = _undefined,
-  }) =>
-      _then(Input$NearFilter._({
-        ..._instance._$data,
-        if (distance != _undefined && distance != null)
-          'distance': (distance as double),
-        if (coordinate != _undefined && coordinate != null)
-          'coordinate': (coordinate as Input$PointRef),
-      }));
+  TRes call({Object? distance = _undefined, Object? coordinate = _undefined}) =>
+      _then(
+        Input$NearFilter._({
+          ..._instance._$data,
+          if (distance != _undefined && distance != null)
+            'distance': (distance as double),
+          if (coordinate != _undefined && coordinate != null)
+            'coordinate': (coordinate as Input$PointRef),
+        }),
+      );
 
   CopyWith$Input$PointRef<TRes> get coordinate {
     final local$coordinate = _instance.coordinate;
     return CopyWith$Input$PointRef(
-        local$coordinate, (e) => call(coordinate: e));
+      local$coordinate,
+      (e) => call(coordinate: e),
+    );
   }
 }
 
@@ -4444,11 +4223,7 @@ class _CopyWithStubImpl$Input$NearFilter<TRes>
 
   TRes _res;
 
-  call({
-    double? distance,
-    Input$PointRef? coordinate,
-  }) =>
-      _res;
+  call({double? distance, Input$PointRef? coordinate}) => _res;
 
   CopyWith$Input$PointRef<TRes> get coordinate =>
       CopyWith$Input$PointRef.stub(_res);
@@ -4458,11 +4233,10 @@ class Input$PointGeoFilter {
   factory Input$PointGeoFilter({
     Input$NearFilter? near,
     Input$WithinFilter? within,
-  }) =>
-      Input$PointGeoFilter._({
-        if (near != null) r'near': near,
-        if (within != null) r'within': within,
-      });
+  }) => Input$PointGeoFilter._({
+    if (near != null) r'near': near,
+    if (within != null) r'within': within,
+  });
 
   Input$PointGeoFilter._(this._$data);
 
@@ -4503,17 +4277,14 @@ class Input$PointGeoFilter {
   }
 
   CopyWith$Input$PointGeoFilter<Input$PointGeoFilter> get copyWith =>
-      CopyWith$Input$PointGeoFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$PointGeoFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$PointGeoFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$PointGeoFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$near = near;
@@ -4555,20 +4326,14 @@ abstract class CopyWith$Input$PointGeoFilter<TRes> {
   factory CopyWith$Input$PointGeoFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$PointGeoFilter;
 
-  TRes call({
-    Input$NearFilter? near,
-    Input$WithinFilter? within,
-  });
+  TRes call({Input$NearFilter? near, Input$WithinFilter? within});
   CopyWith$Input$NearFilter<TRes> get near;
   CopyWith$Input$WithinFilter<TRes> get within;
 }
 
 class _CopyWithImpl$Input$PointGeoFilter<TRes>
     implements CopyWith$Input$PointGeoFilter<TRes> {
-  _CopyWithImpl$Input$PointGeoFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$PointGeoFilter(this._instance, this._then);
 
   final Input$PointGeoFilter _instance;
 
@@ -4576,15 +4341,13 @@ class _CopyWithImpl$Input$PointGeoFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? near = _undefined,
-    Object? within = _undefined,
-  }) =>
-      _then(Input$PointGeoFilter._({
-        ..._instance._$data,
-        if (near != _undefined) 'near': (near as Input$NearFilter?),
-        if (within != _undefined) 'within': (within as Input$WithinFilter?),
-      }));
+  TRes call({Object? near = _undefined, Object? within = _undefined}) => _then(
+    Input$PointGeoFilter._({
+      ..._instance._$data,
+      if (near != _undefined) 'near': (near as Input$NearFilter?),
+      if (within != _undefined) 'within': (within as Input$WithinFilter?),
+    }),
+  );
 
   CopyWith$Input$NearFilter<TRes> get near {
     final local$near = _instance.near;
@@ -4607,11 +4370,7 @@ class _CopyWithStubImpl$Input$PointGeoFilter<TRes>
 
   TRes _res;
 
-  call({
-    Input$NearFilter? near,
-    Input$WithinFilter? within,
-  }) =>
-      _res;
+  call({Input$NearFilter? near, Input$WithinFilter? within}) => _res;
 
   CopyWith$Input$NearFilter<TRes> get near =>
       CopyWith$Input$NearFilter.stub(_res);
@@ -4622,9 +4381,7 @@ class _CopyWithStubImpl$Input$PointGeoFilter<TRes>
 
 class Input$PointListRef {
   factory Input$PointListRef({required List<Input$PointRef> points}) =>
-      Input$PointListRef._({
-        r'points': points,
-      });
+      Input$PointListRef._({r'points': points});
 
   Input$PointListRef._(this._$data);
 
@@ -4649,17 +4406,14 @@ class Input$PointListRef {
   }
 
   CopyWith$Input$PointListRef<Input$PointListRef> get copyWith =>
-      CopyWith$Input$PointListRef(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$PointListRef(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$PointListRef) || runtimeType != other.runtimeType) {
+    if (other is! Input$PointListRef || runtimeType != other.runtimeType) {
       return false;
     }
     final l$points = points;
@@ -4695,17 +4449,16 @@ abstract class CopyWith$Input$PointListRef<TRes> {
 
   TRes call({List<Input$PointRef>? points});
   TRes points(
-      Iterable<Input$PointRef> Function(
-              Iterable<CopyWith$Input$PointRef<Input$PointRef>>)
-          _fn);
+    Iterable<Input$PointRef> Function(
+      Iterable<CopyWith$Input$PointRef<Input$PointRef>>,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Input$PointListRef<TRes>
     implements CopyWith$Input$PointListRef<TRes> {
-  _CopyWithImpl$Input$PointListRef(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$PointListRef(this._instance, this._then);
 
   final Input$PointListRef _instance;
 
@@ -4713,21 +4466,24 @@ class _CopyWithImpl$Input$PointListRef<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? points = _undefined}) => _then(Input$PointListRef._({
-        ..._instance._$data,
-        if (points != _undefined && points != null)
-          'points': (points as List<Input$PointRef>),
-      }));
+  TRes call({Object? points = _undefined}) => _then(
+    Input$PointListRef._({
+      ..._instance._$data,
+      if (points != _undefined && points != null)
+        'points': (points as List<Input$PointRef>),
+    }),
+  );
 
   TRes points(
-          Iterable<Input$PointRef> Function(
-                  Iterable<CopyWith$Input$PointRef<Input$PointRef>>)
-              _fn) =>
-      call(
-          points: _fn(_instance.points.map((e) => CopyWith$Input$PointRef(
-                e,
-                (i) => i,
-              ))).toList());
+    Iterable<Input$PointRef> Function(
+      Iterable<CopyWith$Input$PointRef<Input$PointRef>>,
+    )
+    _fn,
+  ) => call(
+    points: _fn(
+      _instance.points.map((e) => CopyWith$Input$PointRef(e, (i) => i)),
+    ).toList(),
+  );
 }
 
 class _CopyWithStubImpl$Input$PointListRef<TRes>
@@ -4745,11 +4501,7 @@ class Input$PointRef {
   factory Input$PointRef({
     required double longitude,
     required double latitude,
-  }) =>
-      Input$PointRef._({
-        r'longitude': longitude,
-        r'latitude': latitude,
-      });
+  }) => Input$PointRef._({r'longitude': longitude, r'latitude': latitude});
 
   Input$PointRef._(this._$data);
 
@@ -4778,17 +4530,14 @@ class Input$PointRef {
   }
 
   CopyWith$Input$PointRef<Input$PointRef> get copyWith =>
-      CopyWith$Input$PointRef(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$PointRef(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$PointRef) || runtimeType != other.runtimeType) {
+    if (other is! Input$PointRef || runtimeType != other.runtimeType) {
       return false;
     }
     final l$longitude = longitude;
@@ -4808,10 +4557,7 @@ class Input$PointRef {
   int get hashCode {
     final l$longitude = longitude;
     final l$latitude = latitude;
-    return Object.hashAll([
-      l$longitude,
-      l$latitude,
-    ]);
+    return Object.hashAll([l$longitude, l$latitude]);
   }
 }
 
@@ -4824,18 +4570,12 @@ abstract class CopyWith$Input$PointRef<TRes> {
   factory CopyWith$Input$PointRef.stub(TRes res) =
       _CopyWithStubImpl$Input$PointRef;
 
-  TRes call({
-    double? longitude,
-    double? latitude,
-  });
+  TRes call({double? longitude, double? latitude});
 }
 
 class _CopyWithImpl$Input$PointRef<TRes>
     implements CopyWith$Input$PointRef<TRes> {
-  _CopyWithImpl$Input$PointRef(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$PointRef(this._instance, this._then);
 
   final Input$PointRef _instance;
 
@@ -4843,17 +4583,16 @@ class _CopyWithImpl$Input$PointRef<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? longitude = _undefined,
-    Object? latitude = _undefined,
-  }) =>
-      _then(Input$PointRef._({
-        ..._instance._$data,
-        if (longitude != _undefined && longitude != null)
-          'longitude': (longitude as double),
-        if (latitude != _undefined && latitude != null)
-          'latitude': (latitude as double),
-      }));
+  TRes call({Object? longitude = _undefined, Object? latitude = _undefined}) =>
+      _then(
+        Input$PointRef._({
+          ..._instance._$data,
+          if (longitude != _undefined && longitude != null)
+            'longitude': (longitude as double),
+          if (latitude != _undefined && latitude != null)
+            'latitude': (latitude as double),
+        }),
+      );
 }
 
 class _CopyWithStubImpl$Input$PointRef<TRes>
@@ -4862,11 +4601,7 @@ class _CopyWithStubImpl$Input$PointRef<TRes>
 
   TRes _res;
 
-  call({
-    double? longitude,
-    double? latitude,
-  }) =>
-      _res;
+  call({double? longitude, double? latitude}) => _res;
 }
 
 class Input$PolygonGeoFilter {
@@ -4875,13 +4610,12 @@ class Input$PolygonGeoFilter {
     Input$WithinFilter? within,
     Input$ContainsFilter? contains,
     Input$IntersectsFilter? intersects,
-  }) =>
-      Input$PolygonGeoFilter._({
-        if (near != null) r'near': near,
-        if (within != null) r'within': within,
-        if (contains != null) r'contains': contains,
-        if (intersects != null) r'intersects': intersects,
-      });
+  }) => Input$PolygonGeoFilter._({
+    if (near != null) r'near': near,
+    if (within != null) r'within': within,
+    if (contains != null) r'contains': contains,
+    if (intersects != null) r'intersects': intersects,
+  });
 
   Input$PolygonGeoFilter._(this._$data);
 
@@ -4910,7 +4644,8 @@ class Input$PolygonGeoFilter {
       result$data['intersects'] = l$intersects == null
           ? null
           : Input$IntersectsFilter.fromJson(
-              (l$intersects as Map<String, dynamic>));
+              (l$intersects as Map<String, dynamic>),
+            );
     }
     return Input$PolygonGeoFilter._(result$data);
   }
@@ -4949,18 +4684,14 @@ class Input$PolygonGeoFilter {
   }
 
   CopyWith$Input$PolygonGeoFilter<Input$PolygonGeoFilter> get copyWith =>
-      CopyWith$Input$PolygonGeoFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$PolygonGeoFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$PolygonGeoFilter) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$PolygonGeoFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$near = near;
@@ -5038,10 +4769,7 @@ abstract class CopyWith$Input$PolygonGeoFilter<TRes> {
 
 class _CopyWithImpl$Input$PolygonGeoFilter<TRes>
     implements CopyWith$Input$PolygonGeoFilter<TRes> {
-  _CopyWithImpl$Input$PolygonGeoFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$PolygonGeoFilter(this._instance, this._then);
 
   final Input$PolygonGeoFilter _instance;
 
@@ -5054,16 +4782,17 @@ class _CopyWithImpl$Input$PolygonGeoFilter<TRes>
     Object? within = _undefined,
     Object? contains = _undefined,
     Object? intersects = _undefined,
-  }) =>
-      _then(Input$PolygonGeoFilter._({
-        ..._instance._$data,
-        if (near != _undefined) 'near': (near as Input$NearFilter?),
-        if (within != _undefined) 'within': (within as Input$WithinFilter?),
-        if (contains != _undefined)
-          'contains': (contains as Input$ContainsFilter?),
-        if (intersects != _undefined)
-          'intersects': (intersects as Input$IntersectsFilter?),
-      }));
+  }) => _then(
+    Input$PolygonGeoFilter._({
+      ..._instance._$data,
+      if (near != _undefined) 'near': (near as Input$NearFilter?),
+      if (within != _undefined) 'within': (within as Input$WithinFilter?),
+      if (contains != _undefined)
+        'contains': (contains as Input$ContainsFilter?),
+      if (intersects != _undefined)
+        'intersects': (intersects as Input$IntersectsFilter?),
+    }),
+  );
 
   CopyWith$Input$NearFilter<TRes> get near {
     final local$near = _instance.near;
@@ -5084,7 +4813,9 @@ class _CopyWithImpl$Input$PolygonGeoFilter<TRes>
     return local$contains == null
         ? CopyWith$Input$ContainsFilter.stub(_then(_instance))
         : CopyWith$Input$ContainsFilter(
-            local$contains, (e) => call(contains: e));
+            local$contains,
+            (e) => call(contains: e),
+          );
   }
 
   CopyWith$Input$IntersectsFilter<TRes> get intersects {
@@ -5092,7 +4823,9 @@ class _CopyWithImpl$Input$PolygonGeoFilter<TRes>
     return local$intersects == null
         ? CopyWith$Input$IntersectsFilter.stub(_then(_instance))
         : CopyWith$Input$IntersectsFilter(
-            local$intersects, (e) => call(intersects: e));
+            local$intersects,
+            (e) => call(intersects: e),
+          );
   }
 }
 
@@ -5107,8 +4840,7 @@ class _CopyWithStubImpl$Input$PolygonGeoFilter<TRes>
     Input$WithinFilter? within,
     Input$ContainsFilter? contains,
     Input$IntersectsFilter? intersects,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$NearFilter<TRes> get near =>
       CopyWith$Input$NearFilter.stub(_res);
@@ -5125,9 +4857,7 @@ class _CopyWithStubImpl$Input$PolygonGeoFilter<TRes>
 
 class Input$PolygonRef {
   factory Input$PolygonRef({required List<Input$PointListRef> coordinates}) =>
-      Input$PolygonRef._({
-        r'coordinates': coordinates,
-      });
+      Input$PolygonRef._({r'coordinates': coordinates});
 
   Input$PolygonRef._(this._$data);
 
@@ -5153,17 +4883,14 @@ class Input$PolygonRef {
   }
 
   CopyWith$Input$PolygonRef<Input$PolygonRef> get copyWith =>
-      CopyWith$Input$PolygonRef(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$PolygonRef(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$PolygonRef) || runtimeType != other.runtimeType) {
+    if (other is! Input$PolygonRef || runtimeType != other.runtimeType) {
       return false;
     }
     final l$coordinates = coordinates;
@@ -5199,17 +4926,16 @@ abstract class CopyWith$Input$PolygonRef<TRes> {
 
   TRes call({List<Input$PointListRef>? coordinates});
   TRes coordinates(
-      Iterable<Input$PointListRef> Function(
-              Iterable<CopyWith$Input$PointListRef<Input$PointListRef>>)
-          _fn);
+    Iterable<Input$PointListRef> Function(
+      Iterable<CopyWith$Input$PointListRef<Input$PointListRef>>,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Input$PolygonRef<TRes>
     implements CopyWith$Input$PolygonRef<TRes> {
-  _CopyWithImpl$Input$PolygonRef(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$PolygonRef(this._instance, this._then);
 
   final Input$PolygonRef _instance;
 
@@ -5217,22 +4943,26 @@ class _CopyWithImpl$Input$PolygonRef<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? coordinates = _undefined}) => _then(Input$PolygonRef._({
-        ..._instance._$data,
-        if (coordinates != _undefined && coordinates != null)
-          'coordinates': (coordinates as List<Input$PointListRef>),
-      }));
+  TRes call({Object? coordinates = _undefined}) => _then(
+    Input$PolygonRef._({
+      ..._instance._$data,
+      if (coordinates != _undefined && coordinates != null)
+        'coordinates': (coordinates as List<Input$PointListRef>),
+    }),
+  );
 
   TRes coordinates(
-          Iterable<Input$PointListRef> Function(
-                  Iterable<CopyWith$Input$PointListRef<Input$PointListRef>>)
-              _fn) =>
-      call(
-          coordinates:
-              _fn(_instance.coordinates.map((e) => CopyWith$Input$PointListRef(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Input$PointListRef> Function(
+      Iterable<CopyWith$Input$PointListRef<Input$PointListRef>>,
+    )
+    _fn,
+  ) => call(
+    coordinates: _fn(
+      _instance.coordinates.map(
+        (e) => CopyWith$Input$PointListRef(e, (i) => i),
+      ),
+    ).toList(),
+  );
 }
 
 class _CopyWithStubImpl$Input$PolygonRef<TRes>
@@ -5255,16 +4985,15 @@ class Input$StringExactFilter {
     String? ge,
     String? gt,
     Input$StringRange? between,
-  }) =>
-      Input$StringExactFilter._({
-        if (eq != null) r'eq': eq,
-        if ($in != null) r'in': $in,
-        if (le != null) r'le': le,
-        if (lt != null) r'lt': lt,
-        if (ge != null) r'ge': ge,
-        if (gt != null) r'gt': gt,
-        if (between != null) r'between': between,
-      });
+  }) => Input$StringExactFilter._({
+    if (eq != null) r'eq': eq,
+    if ($in != null) r'in': $in,
+    if (le != null) r'le': le,
+    if (lt != null) r'lt': lt,
+    if (ge != null) r'ge': ge,
+    if (gt != null) r'gt': gt,
+    if (between != null) r'between': between,
+  });
 
   Input$StringExactFilter._(this._$data);
 
@@ -5276,8 +5005,9 @@ class Input$StringExactFilter {
     }
     if (data.containsKey('in')) {
       final l$$in = data['in'];
-      result$data['in'] =
-          (l$$in as List<dynamic>?)?.map((e) => (e as String?)).toList();
+      result$data['in'] = (l$$in as List<dynamic>?)
+          ?.map((e) => (e as String?))
+          .toList();
     }
     if (data.containsKey('le')) {
       final l$le = data['le'];
@@ -5354,18 +5084,14 @@ class Input$StringExactFilter {
   }
 
   CopyWith$Input$StringExactFilter<Input$StringExactFilter> get copyWith =>
-      CopyWith$Input$StringExactFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$StringExactFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringExactFilter) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$StringExactFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -5451,8 +5177,8 @@ class Input$StringExactFilter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
       _$data.containsKey('le') ? l$le : const {},
       _$data.containsKey('lt') ? l$lt : const {},
@@ -5486,10 +5212,7 @@ abstract class CopyWith$Input$StringExactFilter<TRes> {
 
 class _CopyWithImpl$Input$StringExactFilter<TRes>
     implements CopyWith$Input$StringExactFilter<TRes> {
-  _CopyWithImpl$Input$StringExactFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringExactFilter(this._instance, this._then);
 
   final Input$StringExactFilter _instance;
 
@@ -5505,17 +5228,18 @@ class _CopyWithImpl$Input$StringExactFilter<TRes>
     Object? ge = _undefined,
     Object? gt = _undefined,
     Object? between = _undefined,
-  }) =>
-      _then(Input$StringExactFilter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as String?),
-        if ($in != _undefined) 'in': ($in as List<String?>?),
-        if (le != _undefined) 'le': (le as String?),
-        if (lt != _undefined) 'lt': (lt as String?),
-        if (ge != _undefined) 'ge': (ge as String?),
-        if (gt != _undefined) 'gt': (gt as String?),
-        if (between != _undefined) 'between': (between as Input$StringRange?),
-      }));
+  }) => _then(
+    Input$StringExactFilter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if ($in != _undefined) 'in': ($in as List<String?>?),
+      if (le != _undefined) 'le': (le as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (ge != _undefined) 'ge': (ge as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (between != _undefined) 'between': (between as Input$StringRange?),
+    }),
+  );
 
   CopyWith$Input$StringRange<TRes> get between {
     final local$between = _instance.between;
@@ -5539,18 +5263,14 @@ class _CopyWithStubImpl$Input$StringExactFilter<TRes>
     String? ge,
     String? gt,
     Input$StringRange? between,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$StringRange<TRes> get between =>
       CopyWith$Input$StringRange.stub(_res);
 }
 
 class Input$StringFullTextFilter {
-  factory Input$StringFullTextFilter({
-    String? alloftext,
-    String? anyoftext,
-  }) =>
+  factory Input$StringFullTextFilter({String? alloftext, String? anyoftext}) =>
       Input$StringFullTextFilter._({
         if (alloftext != null) r'alloftext': alloftext,
         if (anyoftext != null) r'anyoftext': anyoftext,
@@ -5591,17 +5311,14 @@ class Input$StringFullTextFilter {
   }
 
   CopyWith$Input$StringFullTextFilter<Input$StringFullTextFilter>
-      get copyWith => CopyWith$Input$StringFullTextFilter(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Input$StringFullTextFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringFullTextFilter) ||
+    if (other is! Input$StringFullTextFilter ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5646,18 +5363,12 @@ abstract class CopyWith$Input$StringFullTextFilter<TRes> {
   factory CopyWith$Input$StringFullTextFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$StringFullTextFilter;
 
-  TRes call({
-    String? alloftext,
-    String? anyoftext,
-  });
+  TRes call({String? alloftext, String? anyoftext});
 }
 
 class _CopyWithImpl$Input$StringFullTextFilter<TRes>
     implements CopyWith$Input$StringFullTextFilter<TRes> {
-  _CopyWithImpl$Input$StringFullTextFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringFullTextFilter(this._instance, this._then);
 
   final Input$StringFullTextFilter _instance;
 
@@ -5665,15 +5376,14 @@ class _CopyWithImpl$Input$StringFullTextFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? alloftext = _undefined,
-    Object? anyoftext = _undefined,
-  }) =>
-      _then(Input$StringFullTextFilter._({
-        ..._instance._$data,
-        if (alloftext != _undefined) 'alloftext': (alloftext as String?),
-        if (anyoftext != _undefined) 'anyoftext': (anyoftext as String?),
-      }));
+  TRes call({Object? alloftext = _undefined, Object? anyoftext = _undefined}) =>
+      _then(
+        Input$StringFullTextFilter._({
+          ..._instance._$data,
+          if (alloftext != _undefined) 'alloftext': (alloftext as String?),
+          if (anyoftext != _undefined) 'anyoftext': (anyoftext as String?),
+        }),
+      );
 }
 
 class _CopyWithStubImpl$Input$StringFullTextFilter<TRes>
@@ -5682,18 +5392,11 @@ class _CopyWithStubImpl$Input$StringFullTextFilter<TRes>
 
   TRes _res;
 
-  call({
-    String? alloftext,
-    String? anyoftext,
-  }) =>
-      _res;
+  call({String? alloftext, String? anyoftext}) => _res;
 }
 
 class Input$StringHashFilter {
-  factory Input$StringHashFilter({
-    String? eq,
-    List<String?>? $in,
-  }) =>
+  factory Input$StringHashFilter({String? eq, List<String?>? $in}) =>
       Input$StringHashFilter._({
         if (eq != null) r'eq': eq,
         if ($in != null) r'in': $in,
@@ -5709,8 +5412,9 @@ class Input$StringHashFilter {
     }
     if (data.containsKey('in')) {
       final l$$in = data['in'];
-      result$data['in'] =
-          (l$$in as List<dynamic>?)?.map((e) => (e as String?)).toList();
+      result$data['in'] = (l$$in as List<dynamic>?)
+          ?.map((e) => (e as String?))
+          .toList();
     }
     return Input$StringHashFilter._(result$data);
   }
@@ -5735,18 +5439,14 @@ class Input$StringHashFilter {
   }
 
   CopyWith$Input$StringHashFilter<Input$StringHashFilter> get copyWith =>
-      CopyWith$Input$StringHashFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$StringHashFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringHashFilter) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$StringHashFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$eq = eq;
@@ -5787,8 +5487,8 @@ class Input$StringHashFilter {
       _$data.containsKey('eq') ? l$eq : const {},
       _$data.containsKey('in')
           ? l$$in == null
-              ? null
-              : Object.hashAll(l$$in.map((v) => v))
+                ? null
+                : Object.hashAll(l$$in.map((v) => v))
           : const {},
     ]);
   }
@@ -5803,18 +5503,12 @@ abstract class CopyWith$Input$StringHashFilter<TRes> {
   factory CopyWith$Input$StringHashFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$StringHashFilter;
 
-  TRes call({
-    String? eq,
-    List<String?>? $in,
-  });
+  TRes call({String? eq, List<String?>? $in});
 }
 
 class _CopyWithImpl$Input$StringHashFilter<TRes>
     implements CopyWith$Input$StringHashFilter<TRes> {
-  _CopyWithImpl$Input$StringHashFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringHashFilter(this._instance, this._then);
 
   final Input$StringHashFilter _instance;
 
@@ -5822,15 +5516,13 @@ class _CopyWithImpl$Input$StringHashFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? eq = _undefined,
-    Object? $in = _undefined,
-  }) =>
-      _then(Input$StringHashFilter._({
-        ..._instance._$data,
-        if (eq != _undefined) 'eq': (eq as String?),
-        if ($in != _undefined) 'in': ($in as List<String?>?),
-      }));
+  TRes call({Object? eq = _undefined, Object? $in = _undefined}) => _then(
+    Input$StringHashFilter._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if ($in != _undefined) 'in': ($in as List<String?>?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$StringHashFilter<TRes>
@@ -5839,22 +5531,12 @@ class _CopyWithStubImpl$Input$StringHashFilter<TRes>
 
   TRes _res;
 
-  call({
-    String? eq,
-    List<String?>? $in,
-  }) =>
-      _res;
+  call({String? eq, List<String?>? $in}) => _res;
 }
 
 class Input$StringRange {
-  factory Input$StringRange({
-    required String min,
-    required String max,
-  }) =>
-      Input$StringRange._({
-        r'min': min,
-        r'max': max,
-      });
+  factory Input$StringRange({required String min, required String max}) =>
+      Input$StringRange._({r'min': min, r'max': max});
 
   Input$StringRange._(this._$data);
 
@@ -5883,17 +5565,14 @@ class Input$StringRange {
   }
 
   CopyWith$Input$StringRange<Input$StringRange> get copyWith =>
-      CopyWith$Input$StringRange(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$StringRange(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringRange) || runtimeType != other.runtimeType) {
+    if (other is! Input$StringRange || runtimeType != other.runtimeType) {
       return false;
     }
     final l$min = min;
@@ -5913,10 +5592,7 @@ class Input$StringRange {
   int get hashCode {
     final l$min = min;
     final l$max = max;
-    return Object.hashAll([
-      l$min,
-      l$max,
-    ]);
+    return Object.hashAll([l$min, l$max]);
   }
 }
 
@@ -5929,18 +5605,12 @@ abstract class CopyWith$Input$StringRange<TRes> {
   factory CopyWith$Input$StringRange.stub(TRes res) =
       _CopyWithStubImpl$Input$StringRange;
 
-  TRes call({
-    String? min,
-    String? max,
-  });
+  TRes call({String? min, String? max});
 }
 
 class _CopyWithImpl$Input$StringRange<TRes>
     implements CopyWith$Input$StringRange<TRes> {
-  _CopyWithImpl$Input$StringRange(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringRange(this._instance, this._then);
 
   final Input$StringRange _instance;
 
@@ -5948,15 +5618,13 @@ class _CopyWithImpl$Input$StringRange<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? min = _undefined,
-    Object? max = _undefined,
-  }) =>
-      _then(Input$StringRange._({
-        ..._instance._$data,
-        if (min != _undefined && min != null) 'min': (min as String),
-        if (max != _undefined && max != null) 'max': (max as String),
-      }));
+  TRes call({Object? min = _undefined, Object? max = _undefined}) => _then(
+    Input$StringRange._({
+      ..._instance._$data,
+      if (min != _undefined && min != null) 'min': (min as String),
+      if (max != _undefined && max != null) 'max': (max as String),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$StringRange<TRes>
@@ -5965,18 +5633,12 @@ class _CopyWithStubImpl$Input$StringRange<TRes>
 
   TRes _res;
 
-  call({
-    String? min,
-    String? max,
-  }) =>
-      _res;
+  call({String? min, String? max}) => _res;
 }
 
 class Input$StringRegExpFilter {
   factory Input$StringRegExpFilter({String? regexp}) =>
-      Input$StringRegExpFilter._({
-        if (regexp != null) r'regexp': regexp,
-      });
+      Input$StringRegExpFilter._({if (regexp != null) r'regexp': regexp});
 
   Input$StringRegExpFilter._(this._$data);
 
@@ -6003,17 +5665,14 @@ class Input$StringRegExpFilter {
   }
 
   CopyWith$Input$StringRegExpFilter<Input$StringRegExpFilter> get copyWith =>
-      CopyWith$Input$StringRegExpFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$StringRegExpFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringRegExpFilter) ||
+    if (other is! Input$StringRegExpFilter ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -6049,10 +5708,7 @@ abstract class CopyWith$Input$StringRegExpFilter<TRes> {
 
 class _CopyWithImpl$Input$StringRegExpFilter<TRes>
     implements CopyWith$Input$StringRegExpFilter<TRes> {
-  _CopyWithImpl$Input$StringRegExpFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringRegExpFilter(this._instance, this._then);
 
   final Input$StringRegExpFilter _instance;
 
@@ -6060,10 +5716,12 @@ class _CopyWithImpl$Input$StringRegExpFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? regexp = _undefined}) => _then(Input$StringRegExpFilter._({
-        ..._instance._$data,
-        if (regexp != _undefined) 'regexp': (regexp as String?),
-      }));
+  TRes call({Object? regexp = _undefined}) => _then(
+    Input$StringRegExpFilter._({
+      ..._instance._$data,
+      if (regexp != _undefined) 'regexp': (regexp as String?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$StringRegExpFilter<TRes>
@@ -6076,10 +5734,7 @@ class _CopyWithStubImpl$Input$StringRegExpFilter<TRes>
 }
 
 class Input$StringTermFilter {
-  factory Input$StringTermFilter({
-    String? allofterms,
-    String? anyofterms,
-  }) =>
+  factory Input$StringTermFilter({String? allofterms, String? anyofterms}) =>
       Input$StringTermFilter._({
         if (allofterms != null) r'allofterms': allofterms,
         if (anyofterms != null) r'anyofterms': anyofterms,
@@ -6120,18 +5775,14 @@ class Input$StringTermFilter {
   }
 
   CopyWith$Input$StringTermFilter<Input$StringTermFilter> get copyWith =>
-      CopyWith$Input$StringTermFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$StringTermFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$StringTermFilter) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$StringTermFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$allofterms = allofterms;
@@ -6175,18 +5826,12 @@ abstract class CopyWith$Input$StringTermFilter<TRes> {
   factory CopyWith$Input$StringTermFilter.stub(TRes res) =
       _CopyWithStubImpl$Input$StringTermFilter;
 
-  TRes call({
-    String? allofterms,
-    String? anyofterms,
-  });
+  TRes call({String? allofterms, String? anyofterms});
 }
 
 class _CopyWithImpl$Input$StringTermFilter<TRes>
     implements CopyWith$Input$StringTermFilter<TRes> {
-  _CopyWithImpl$Input$StringTermFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$StringTermFilter(this._instance, this._then);
 
   final Input$StringTermFilter _instance;
 
@@ -6197,12 +5842,13 @@ class _CopyWithImpl$Input$StringTermFilter<TRes>
   TRes call({
     Object? allofterms = _undefined,
     Object? anyofterms = _undefined,
-  }) =>
-      _then(Input$StringTermFilter._({
-        ..._instance._$data,
-        if (allofterms != _undefined) 'allofterms': (allofterms as String?),
-        if (anyofterms != _undefined) 'anyofterms': (anyofterms as String?),
-      }));
+  }) => _then(
+    Input$StringTermFilter._({
+      ..._instance._$data,
+      if (allofterms != _undefined) 'allofterms': (allofterms as String?),
+      if (anyofterms != _undefined) 'anyofterms': (anyofterms as String?),
+    }),
+  );
 }
 
 class _CopyWithStubImpl$Input$StringTermFilter<TRes>
@@ -6211,11 +5857,7 @@ class _CopyWithStubImpl$Input$StringTermFilter<TRes>
 
   TRes _res;
 
-  call({
-    String? allofterms,
-    String? anyofterms,
-  }) =>
-      _res;
+  call({String? allofterms, String? anyofterms}) => _res;
 }
 
 class Input$UpdateMyBookInput {
@@ -6223,20 +5865,20 @@ class Input$UpdateMyBookInput {
     required Input$MyBookFilter filter,
     Input$MyBookPatch? $set,
     Input$MyBookPatch? remove,
-  }) =>
-      Input$UpdateMyBookInput._({
-        r'filter': filter,
-        if ($set != null) r'set': $set,
-        if (remove != null) r'remove': remove,
-      });
+  }) => Input$UpdateMyBookInput._({
+    r'filter': filter,
+    if ($set != null) r'set': $set,
+    if (remove != null) r'remove': remove,
+  });
 
   Input$UpdateMyBookInput._(this._$data);
 
   factory Input$UpdateMyBookInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$filter = data['filter'];
-    result$data['filter'] =
-        Input$MyBookFilter.fromJson((l$filter as Map<String, dynamic>));
+    result$data['filter'] = Input$MyBookFilter.fromJson(
+      (l$filter as Map<String, dynamic>),
+    );
     if (data.containsKey('set')) {
       final l$$set = data['set'];
       result$data['set'] = l$$set == null
@@ -6276,18 +5918,14 @@ class Input$UpdateMyBookInput {
   }
 
   CopyWith$Input$UpdateMyBookInput<Input$UpdateMyBookInput> get copyWith =>
-      CopyWith$Input$UpdateMyBookInput(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$UpdateMyBookInput(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$UpdateMyBookInput) ||
-        runtimeType != other.runtimeType) {
+    if (other is! Input$UpdateMyBookInput || runtimeType != other.runtimeType) {
       return false;
     }
     final l$filter = filter;
@@ -6348,10 +5986,7 @@ abstract class CopyWith$Input$UpdateMyBookInput<TRes> {
 
 class _CopyWithImpl$Input$UpdateMyBookInput<TRes>
     implements CopyWith$Input$UpdateMyBookInput<TRes> {
-  _CopyWithImpl$Input$UpdateMyBookInput(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$UpdateMyBookInput(this._instance, this._then);
 
   final Input$UpdateMyBookInput _instance;
 
@@ -6363,14 +5998,15 @@ class _CopyWithImpl$Input$UpdateMyBookInput<TRes>
     Object? filter = _undefined,
     Object? $set = _undefined,
     Object? remove = _undefined,
-  }) =>
-      _then(Input$UpdateMyBookInput._({
-        ..._instance._$data,
-        if (filter != _undefined && filter != null)
-          'filter': (filter as Input$MyBookFilter),
-        if ($set != _undefined) 'set': ($set as Input$MyBookPatch?),
-        if (remove != _undefined) 'remove': (remove as Input$MyBookPatch?),
-      }));
+  }) => _then(
+    Input$UpdateMyBookInput._({
+      ..._instance._$data,
+      if (filter != _undefined && filter != null)
+        'filter': (filter as Input$MyBookFilter),
+      if ($set != _undefined) 'set': ($set as Input$MyBookPatch?),
+      if (remove != _undefined) 'remove': (remove as Input$MyBookPatch?),
+    }),
+  );
 
   CopyWith$Input$MyBookFilter<TRes> get filter {
     final local$filter = _instance.filter;
@@ -6402,8 +6038,7 @@ class _CopyWithStubImpl$Input$UpdateMyBookInput<TRes>
     Input$MyBookFilter? filter,
     Input$MyBookPatch? $set,
     Input$MyBookPatch? remove,
-  }) =>
-      _res;
+  }) => _res;
 
   CopyWith$Input$MyBookFilter<TRes> get filter =>
       CopyWith$Input$MyBookFilter.stub(_res);
@@ -6417,17 +6052,16 @@ class _CopyWithStubImpl$Input$UpdateMyBookInput<TRes>
 
 class Input$WithinFilter {
   factory Input$WithinFilter({required Input$PolygonRef polygon}) =>
-      Input$WithinFilter._({
-        r'polygon': polygon,
-      });
+      Input$WithinFilter._({r'polygon': polygon});
 
   Input$WithinFilter._(this._$data);
 
   factory Input$WithinFilter.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$polygon = data['polygon'];
-    result$data['polygon'] =
-        Input$PolygonRef.fromJson((l$polygon as Map<String, dynamic>));
+    result$data['polygon'] = Input$PolygonRef.fromJson(
+      (l$polygon as Map<String, dynamic>),
+    );
     return Input$WithinFilter._(result$data);
   }
 
@@ -6443,17 +6077,14 @@ class Input$WithinFilter {
   }
 
   CopyWith$Input$WithinFilter<Input$WithinFilter> get copyWith =>
-      CopyWith$Input$WithinFilter(
-        this,
-        (i) => i,
-      );
+      CopyWith$Input$WithinFilter(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Input$WithinFilter) || runtimeType != other.runtimeType) {
+    if (other is! Input$WithinFilter || runtimeType != other.runtimeType) {
       return false;
     }
     final l$polygon = polygon;
@@ -6486,10 +6117,7 @@ abstract class CopyWith$Input$WithinFilter<TRes> {
 
 class _CopyWithImpl$Input$WithinFilter<TRes>
     implements CopyWith$Input$WithinFilter<TRes> {
-  _CopyWithImpl$Input$WithinFilter(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Input$WithinFilter(this._instance, this._then);
 
   final Input$WithinFilter _instance;
 
@@ -6497,11 +6125,13 @@ class _CopyWithImpl$Input$WithinFilter<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? polygon = _undefined}) => _then(Input$WithinFilter._({
-        ..._instance._$data,
-        if (polygon != _undefined && polygon != null)
-          'polygon': (polygon as Input$PolygonRef),
-      }));
+  TRes call({Object? polygon = _undefined}) => _then(
+    Input$WithinFilter._({
+      ..._instance._$data,
+      if (polygon != _undefined && polygon != null)
+        'polygon': (polygon as Input$PolygonRef),
+    }),
+  );
 
   CopyWith$Input$PolygonRef<TRes> get polygon {
     final local$polygon = _instance.polygon;
@@ -6537,7 +6167,12 @@ enum Enum$DgraphIndex {
   day,
   hour,
   geo,
-  $unknown
+  $unknown;
+
+  factory Enum$DgraphIndex.fromJson(String value) =>
+      fromJson$Enum$DgraphIndex(value);
+
+  String toJson() => toJson$Enum$DgraphIndex(this);
 }
 
 String toJson$Enum$DgraphIndex(Enum$DgraphIndex e) {
@@ -6614,7 +6249,19 @@ Enum$DgraphIndex fromJson$Enum$DgraphIndex(String value) {
   }
 }
 
-enum Enum$HTTPMethod { GET, POST, PUT, PATCH, DELETE, $unknown }
+enum Enum$HTTPMethod {
+  GET,
+  POST,
+  PUT,
+  PATCH,
+  DELETE,
+  $unknown;
+
+  factory Enum$HTTPMethod.fromJson(String value) =>
+      fromJson$Enum$HTTPMethod(value);
+
+  String toJson() => toJson$Enum$HTTPMethod(this);
+}
 
 String toJson$Enum$HTTPMethod(Enum$HTTPMethod e) {
   switch (e) {
@@ -6650,7 +6297,15 @@ Enum$HTTPMethod fromJson$Enum$HTTPMethod(String value) {
   }
 }
 
-enum Enum$Mode { BATCH, SINGLE, $unknown }
+enum Enum$Mode {
+  BATCH,
+  SINGLE,
+  $unknown;
+
+  factory Enum$Mode.fromJson(String value) => fromJson$Enum$Mode(value);
+
+  String toJson() => toJson$Enum$Mode(this);
+}
 
 String toJson$Enum$Mode(Enum$Mode e) {
   switch (e) {
@@ -6674,7 +6329,19 @@ Enum$Mode fromJson$Enum$Mode(String value) {
   }
 }
 
-enum Enum$MyBookHasFilter { id, bookNumber, title, readOn, favorite, $unknown }
+enum Enum$MyBookHasFilter {
+  id,
+  bookNumber,
+  title,
+  readOn,
+  favorite,
+  $unknown;
+
+  factory Enum$MyBookHasFilter.fromJson(String value) =>
+      fromJson$Enum$MyBookHasFilter(value);
+
+  String toJson() => toJson$Enum$MyBookHasFilter(this);
+}
 
 String toJson$Enum$MyBookHasFilter(Enum$MyBookHasFilter e) {
   switch (e) {
@@ -6710,7 +6377,18 @@ Enum$MyBookHasFilter fromJson$Enum$MyBookHasFilter(String value) {
   }
 }
 
-enum Enum$MyBookOrderable { id, bookNumber, title, readOn, $unknown }
+enum Enum$MyBookOrderable {
+  id,
+  bookNumber,
+  title,
+  readOn,
+  $unknown;
+
+  factory Enum$MyBookOrderable.fromJson(String value) =>
+      fromJson$Enum$MyBookOrderable(value);
+
+  String toJson() => toJson$Enum$MyBookOrderable(this);
+}
 
 String toJson$Enum$MyBookOrderable(Enum$MyBookOrderable e) {
   switch (e) {
@@ -6751,7 +6429,12 @@ enum Enum$__TypeKind {
   INPUT_OBJECT,
   LIST,
   NON_NULL,
-  $unknown
+  $unknown;
+
+  factory Enum$__TypeKind.fromJson(String value) =>
+      fromJson$Enum$__TypeKind(value);
+
+  String toJson() => toJson$Enum$__TypeKind(this);
 }
 
 String toJson$Enum$__TypeKind(Enum$__TypeKind e) {
@@ -6820,7 +6503,12 @@ enum Enum$__DirectiveLocation {
   ENUM_VALUE,
   INPUT_OBJECT,
   INPUT_FIELD_DEFINITION,
-  $unknown
+  $unknown;
+
+  factory Enum$__DirectiveLocation.fromJson(String value) =>
+      fromJson$Enum$__DirectiveLocation(value);
+
+  String toJson() => toJson$Enum$__DirectiveLocation(this);
 }
 
 String toJson$Enum$__DirectiveLocation(Enum$__DirectiveLocation e) {
