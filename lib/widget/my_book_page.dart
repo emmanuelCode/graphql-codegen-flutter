@@ -100,7 +100,6 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   late String _selectedDate = _dateFormat(currentDate!);
 
   String _dateFormat(DateTime date) {
-    debugPrint('Current Date: $currentDate');
     return '${date.year}/${date.month}/${date.day}';
   }
 
@@ -273,7 +272,6 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                 if (_formKey.currentState!.validate()) {
                   switch (widget.querySelected) {
                     case Queries.upsertBook:
-                    debugPrint('currentDate before upsert: $currentDate and _selectedDate: $_selectedDate');
                       await myBookQueries.upsertBook(
                         id: _textEditId.text.isEmpty ? null : _textEditId.text,
                         bookNumber: int.parse(_textEditBookNumber.text),
