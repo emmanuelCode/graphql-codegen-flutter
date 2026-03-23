@@ -81,6 +81,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   final idField = 'id (optional to add data)';
   final activityField = 'GraphQL Activity (Tap to copy id)';
   late bool enabled;
+  late ScrollController _scrollController;
   InputDecoration _decoration(String value) {
     // check which category where in and disable fields
     enabled = (idField == value || activityField == value)
@@ -95,14 +96,12 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   }
 
   // variables for date picker field
-  late DateTime? currentDate;
-  late String _selectedDate = _dateFormat(DateTime.now());
+  DateTime? currentDate = DateTime.now();
+  late String _selectedDate = _dateFormat(currentDate!);
 
-  String _dateFormat(DateTime? date) {
-    currentDate = date;
-    return date == null
-        ? _selectedDate
-        : '${date.year}/${date.month}/${date.day}';
+  String _dateFormat(DateTime date) {
+    debugPrint('Current Date: $currentDate');
+    return '${date.year}/${date.month}/${date.day}';
   }
 
   // variables for dropdown favorite field
@@ -136,15 +135,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
   final TextEditingController _textEditBookNumber = TextEditingController();
   final TextEditingController _textEditTitle = TextEditingController();
 
-  // riverpod variables for queries, activity list and requestTypeList
-  late final _graphQLClient = ref.watch(graphQLClientProvider);
-  late final _myBookQueries =
-      ref.watch(myBookQueriesProvider(_graphQLClient).notifier);
-  late List<MyBook> _myBookList = _myBookQueries.myBookListActivity;
-  late final List<String> _requestTypeList =
-      _myBookQueries.graphQLActivityListType;
-  void _updateList() =>
-      setState(() => _myBookList = _myBookQueries.myBookListActivity);
+  final _formKey = GlobalKey<FormState>();
 
   // empty field checker for title/bookNumber
   String? _emptyFieldValidator(String? value) {
@@ -154,10 +145,45 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
     return null;
   }
 
-  final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _textEditId.dispose();
+    _textEditBookNumber.dispose();
+    _textEditTitle.dispose();
+    super.dispose();
+  }
+
+  // scroll to bottom of list after every query
+  void _scrollToBottom() {
+  // Wait for the next frame to ensure the list has been updated before scrolling
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+
+  // riverpod variables for queries, activity list and requestTypeList
+  final graphQLClient = ref.watch(graphQLClientProvider);
+  final myBookQueries = ref.watch(myBookQueriesProvider(graphQLClient).notifier);
+  List<MyBook> myBookList = myBookQueries.myBookListActivity;
+  final List<String> requestTypeList = myBookQueries.graphQLActivityListType;
+
+  void updateList() {
+    setState(() => myBookList = myBookQueries.myBookListActivity);
+    _scrollToBottom();
+  }
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Form(
@@ -209,13 +235,13 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                     decoration: _decoration('read on:\n$_selectedDate'),
                     canRequestFocus: false,
                     onTap: () async {
-                      DateTime? selectedDate = await showDatePicker(
+                      currentDate = await showDatePicker(
                         context: context,
                         firstDate:
                             DateTime.now().subtract(const Duration(days: 365)),
                         lastDate: DateTime.now().add(const Duration(days: 365)),
                       );
-                      setState(() => _selectedDate = _dateFormat(selectedDate));
+                      setState(() => _selectedDate = _dateFormat(currentDate!));
                     },
                   ),
                 ),
@@ -224,7 +250,7 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                   child: DropdownButtonFormField<String>(
                     style: Theme.of(context).textTheme.bodyLarge,
                     decoration: _decoration('favorite'),
-                    value: _selectedFavorite,
+                    initialValue: _selectedFavorite,
                     items: _favoriteValues.map((String favorite) {
                       return DropdownMenuItem<String>(
                         value: favorite,
@@ -247,22 +273,23 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
                 if (_formKey.currentState!.validate()) {
                   switch (widget.querySelected) {
                     case Queries.upsertBook:
-                      await _myBookQueries.upsertBook(
+                    debugPrint('currentDate before upsert: $currentDate and _selectedDate: $_selectedDate');
+                      await myBookQueries.upsertBook(
                         id: _textEditId.text.isEmpty ? null : _textEditId.text,
                         bookNumber: int.parse(_textEditBookNumber.text),
                         title: _textEditTitle.text,
                         readOn: currentDate!,
                         favorite: _favoriteCase(_selectedFavorite),
                       );
-                      _updateList();
+                      updateList();
                       break;
                     case Queries.getBook:
-                      await _myBookQueries.getBook(id: _textEditId.text);
-                      _updateList();
+                      await myBookQueries.getBook(id: _textEditId.text);
+                      updateList();
                       break;
                     case Queries.deleteBook:
-                      await _myBookQueries.deleteBook(id: _textEditId.text);
-                      _updateList();
+                      await myBookQueries.deleteBook(id: _textEditId.text);
+                      updateList();
                       break;
                   }
                 }
@@ -276,33 +303,34 @@ class _MyBookFormFieldState extends ConsumerState<MyBookFormField> {
               aspectRatio: 3 / 2,
               child: InputDecorator(
                 decoration: _decoration('GraphQL Activity (Tap to copy id)'),
-                child: _myBookList.isEmpty
+                child: myBookList.isEmpty
                     ? const Center(child: Text('NO DATA'))
                     : ListView.separated(
+                        controller: _scrollController,
                         separatorBuilder: (context, index) => const Divider(),
-                        itemCount: _myBookList.length,
+                        itemCount: myBookList.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) =>
                             ListTile(
-                                leading: Text(_requestTypeList[index]),
+                                leading: Text(requestTypeList[index]),
                                 title: Text(
-                                    'Nº:${_myBookList[index].bookNumber} ❘ ${_myBookList[index].title}'),
+                                    'Nº:${myBookList[index].bookNumber} ❘ ${myBookList[index].title}'),
                                 subtitle: Text(
-                                  'ID:${_myBookList[index].id}\n${_dateFormat(_myBookList[index].readOn)}',
+                                  'ID:${myBookList[index].id}\n${_dateFormat(myBookList[index].readOn)}',
                                 ),
                                 trailing: Text(
-                                    'Fav:\n${_favoriteFormat(_myBookList[index].favorite)}'),
+                                    'Fav:\n${_favoriteFormat(myBookList[index].favorite)}'),
                                 onTap: () async {
                                   // copy id
                                   await Clipboard.setData(
-                                    ClipboardData(text: _myBookList[index].id),
+                                    ClipboardData(text: myBookList[index].id),
                                   ).then(
-                                    (value) => ScaffoldMessenger.of(context)
+                                    (value) => context.mounted ? ScaffoldMessenger.of(context)
                                         .showSnackBar(
                                       const SnackBar(
                                         content: Text('copied id to clipboard'),
                                       ),
-                                    ),
+                                    ): null ,
                                   );
                                 }),
                       ),
