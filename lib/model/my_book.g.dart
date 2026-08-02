@@ -112,7 +112,7 @@ abstract class _$MyBookQueries extends $Notifier<MyBook> {
   MyBook build(GraphQLClient client);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<MyBook, MyBook>;
     final element =
         ref.element
@@ -122,6 +122,6 @@ abstract class _$MyBookQueries extends $Notifier<MyBook> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
